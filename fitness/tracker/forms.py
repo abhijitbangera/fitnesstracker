@@ -5,3 +5,4 @@ class basictrackerForm(forms.ModelForm):
 	class Meta:
 		model=basictracker
 		fields = '__all__'
+		exclude = ["user"]
