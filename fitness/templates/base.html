@@ -3,11 +3,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  	<link rel="stylesheet" href="/static/css/bootstrap.css">
   </head>
-
+  
   <body>
-  {% block content %}
-  {% endblock %}
+  	<div class="row">
+	    <div class="col-md-2 col-md-offset-5">
+		  <br><br><br>
+		</div>
+	</div>
+  	<div class="row">
+	    <div class="col-md-2 col-md-offset-5">
+		  {% block content %}
+		  {% endblock %}
+		</div>
+	</div>
     
   </body>
   
