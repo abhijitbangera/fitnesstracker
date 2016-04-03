@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def homepage(request):
-	context={}
-	return render(request, "index.html", context)
+	context={'y':1000}
+	return render(request, "plot.html", context)
 
 

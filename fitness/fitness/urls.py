@@ -18,7 +18,10 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', 'fitness.views.homepage'),
+    url(r'^$', 'tracker.views.weighttracker'),
     url(r'^accounts/',include('registration.backends.hmac.urls')),
-    url(r'^tracker/', 'tracker.views.basictracker'),
+    url(r'^tracker/', 'tracker.views.weighttracker'),
+    url(r'^plot/', 'tracker.views.plot'),
+
+    
 ]
