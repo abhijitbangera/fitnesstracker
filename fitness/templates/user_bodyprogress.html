@@ -4,22 +4,36 @@
 <div class="row" >
 
 
-            <div class="col-md-12 col-sm-6 col-xs-12">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h2>Biscep Progress<small>Graph</small></h2>
-                  
-                    
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content" >
-                  <canvas id="lineChart"></canvas>
-                </div>
-              </div>
-            </div>
-
+  <div class="col-md-12 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Biscep Progress<small>Graph</small></h2>
         
-          </div>
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="biscepChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Biscep Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="chestChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+
+</div>
 
 
 
@@ -33,7 +47,7 @@
     };
 
     // Line chart
-    var ctx = document.getElementById("lineChart");
+    var ctx = document.getElementById("biscepChart");
     var lineChart = new Chart(ctx, {
       type: 'line',
       data: {
@@ -48,6 +62,26 @@
           pointHoverBorderColor: "rgba(220,220,220,1)",
           pointBorderWidth: 1,
           data: [{{y4}},{{y3}},{{y2}},{{y1}},{{y0}}]
+        }, ]
+      },
+    });
+
+    // Line chart
+    var ctx = document.getElementById("chestChart");
+    var lineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [new Date({{a4}}), new Date({{a3}}),new Date({{a2}}),new Date({{a1}}),new Date({{a0}})],
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{b4}},{{b3}},{{b2}},{{b1}},{{b0}}]
         }, ]
       },
     });

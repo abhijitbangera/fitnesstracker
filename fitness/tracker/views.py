@@ -66,7 +66,7 @@ def weightprogress(request):
 		print("Object is:")
 		print(i.datetime.date())
 		print(i.weight)
-		x.append(str(i.datetime.date()).replace("-",", "))
+		x.append(str(i.datetime.date()))
 		y.append(i.weight)
 	print(x)
 	print(y)
@@ -96,8 +96,30 @@ def bodyprogress(request):
 		y.append(i.biscep)
 	print(x)
 	print(y)
+
+	obj1 = chesttracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
+	a=[]
+	b=[]
+	for i in obj1:
+		print("Object is:")
+		print(i.datetime.date())
+		print(i.chest)
+		a.append(str(i.datetime.date()).replace("-",", "))
+		b.append(i.chest)
+	print(a)
+	print(b)
 	
-	context={'x0':x[0],
+	context={'a0':a[0],
+			'b0':b[0],
+			'a1':a[1],
+			'b1':b[1],
+			'a2':a[2],
+			'b2':b[2],
+			'a3':a[3],
+			'b3':b[3],
+			'a4':a[4],
+			'b4':b[4],
+			'x0':x[0],
 			'y0':y[0],
 			'x1':x[1],
 			'y1':y[1],
@@ -106,7 +128,7 @@ def bodyprogress(request):
 			'x3':x[3],
 			'y3':y[3],
 			'x4':x[4],
-			'y4':y[4],	}
+			'y4':y[4],		}
 	return render(request, "user_bodyprogress.html", context)
 
 
