@@ -3,7 +3,16 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def homepage(request):
-	context={'y':1000}
-	return render(request, "plot.html", context)
+	username=request.user
+	
+	context={'username':str(username).title(),
+			'pagetitle': "Homepage"}
+	return render(request, "loggedin_base.html", context)
 
 
+@login_required
+def test(request):
+	username=request.user
+	
+	context={'username':str(username).title()}
+	return render(request, "user_tracker.html", context)

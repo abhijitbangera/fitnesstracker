@@ -8,6 +8,7 @@ from tracker.models import basictracker
 # Create your views here.
 @login_required
 def weighttracker(request):
+	username=request.user
 	if request.method=='POST':
 		form= basictrackerForm(request.POST)
 		if form.is_valid():
@@ -19,13 +20,15 @@ def weighttracker(request):
 	else:
 		form=basictrackerForm()
 
-	context={}
+	context={'username':str(username).title(),
+			'pagetitle': "Weight Tracker",}
 	context.update(csrf(request))
+	form['weight'].label = "Enter your weight"
 	context['form']=form
-	return render(request, "basictracker.html", context)
+	return render(request, "user_tracker.html", context)
 
 def plot(request):
-	obj = basictracker.objects.filter(user_id=1).order_by('datetime').reverse()[:5]
+	obj = basictracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
 	x=[]
 	y=[]
 	for i in obj:
@@ -36,6 +39,7 @@ def plot(request):
 		y.append(i.weight)
 	print(x)
 	print(y)
+	
 	context={'x0':x[0].replace("-",", "),
 			'y0':y[0],
 			'x1':x[1].replace("-",", "),
