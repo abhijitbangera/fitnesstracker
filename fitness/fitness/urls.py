@@ -21,9 +21,12 @@ urlpatterns = [
     url(r'^$', 'fitness.views.homepage'),
     url(r'^accounts/',include('registration.backends.hmac.urls')),
     url(r'^tracker/', 'tracker.views.weighttracker'),
+    url(r'^bodytracker/', 'tracker.views.bodytracker'),
     url(r'^plot/', 'tracker.views.plot'),
     url(r'^test/', 'fitness.views.homepage'),
     url(r'^weighttracker/', 'tracker.views.weighttracker'),
+    url(r'^weightprogress/', 'tracker.views.weightprogress'),
+    url(r'^bodyprogress/', 'tracker.views.bodyprogress'),
 
     
 ]

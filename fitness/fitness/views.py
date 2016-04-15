@@ -15,4 +15,4 @@ def test(request):
 	username=request.user
 	
 	context={'username':str(username).title()}
-	return render(request, "user_tracker.html", context)
+	return render(request, "user_weighttracker.html", context)

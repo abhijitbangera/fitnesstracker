@@ -1,0 +1,58 @@
+{% extends "loggedin_base.html" %}
+
+{% block content %}
+<div class="row" >
+
+
+            <div class="col-md-12 col-sm-6 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Weight Progress<small>Graph</small></h2>
+                  
+                    
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content" >
+                  <canvas id="lineChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+        
+          </div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+
+    // Line chart
+    var ctx = document.getElementById("lineChart");
+    var lineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [new Date({{x4}}), new Date({{x3}}),new Date({{x2}}),new Date({{x1}}),new Date({{x0}})],
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{y4}},{{y3}},{{y2}},{{y1}},{{y0}}]
+        }, ]
+      },
+    });
+
+    
+  </script>
+
+{% endblock %}
