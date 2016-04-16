@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^weighttracker/', 'tracker.views.weighttracker'),
     url(r'^weightprogress/', 'tracker.views.weightprogress'),
     url(r'^bodyprogress/', 'tracker.views.bodyprogress'),
+    url(r'^user/(?P<username>[\w.@+-]+)$', 'tracker.views.profile'),
 
     
 ]

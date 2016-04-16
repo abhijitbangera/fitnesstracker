@@ -1,0 +1,88 @@
+{% extends "loggedin_base.html" %}
+
+{% block content %}
+
+<div class="main_container">
+  <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+
+    <div class="profile_img">
+
+      <!-- end of image cropping -->
+
+        <!-- Current avatar -->
+        <div class="avatar-view" title="Avatar">
+          <img src="/static/images/picture.jpg" alt="Avatar">
+        </div>
+        <!-- Loading state -->
+        <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+
+      <!-- end of image cropping -->
+
+    </div>
+    <h3>{{username}}</h3>
+
+    <ul class="list-unstyled user_data">
+      <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
+      </li>
+
+      <li>
+        <i class="fa fa-briefcase user-profile-icon"></i> Software Engineer
+      </li>
+
+      <li class="m-top-xs">
+        <i class="fa fa-external-link user-profile-icon"></i>
+        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
+      </li>
+    </ul>
+
+    <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+    <br />
+    
+</div>
+
+  <div class="row">
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="tile-stats">
+        <div class="icon"><i class="fa fa-male"></i>
+        </div>
+        <div class="count">{{weight}}</div>
+
+        <h3>Weight</h3>
+        <p>Weigh as of {{weight_date}}</p>
+      </div>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="tile-stats">
+        <div class="icon"><i class="fa fa-arrows-v"></i>
+        </div>
+        <div class="count">{{biscep}}</div>
+
+        <h3>Biscep</h3>
+        <p>Biscep size as of {{biscep_date}}</p>
+      </div>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="tile-stats">
+        <div class="icon"><i class="fa fa-arrows-h"></i>
+        </div>
+        <div class="count">{{chest}}</div>
+
+        <h3>Chest</h3>
+        <p>Chest size as of {{chest_date}}</p>
+      </div>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="tile-stats">
+        <div class="icon"><i class="fa fa-caret-square-o-right"></i>
+        </div>
+        <div class="count">179</div>
+
+        <h3>New Sign ups</h3>
+        <p>Lorem ipsum psdea itgum rixt.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

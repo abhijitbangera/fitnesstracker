@@ -1,11 +1,39 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from tracker.forms import basictrackerForm,bisceptrackerForm,chesttrackerForm
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from tracker.models import basictracker,bisceptracker,chesttracker
+from django.contrib.auth.models import User
 
 # Create your views here.
+def profile(request,username):
+	u = User.objects.get(username=username)
+	# username=request.user
+	print(u)
+	obj = basictracker.objects.filter(user_id=u).order_by('datetime').reverse()[:1]
+	for i in obj:
+		weight=i.weight
+		weight_date=i.datetime.date()
+	obj1 = bisceptracker.objects.filter(user_id=u).order_by('datetime').reverse()[:1]
+	for i in obj1:
+		biscep=i.biscep
+		biscep_date=i.datetime.date()
+	obj2 = chesttracker.objects.filter(user_id=u).order_by('datetime').reverse()[:1]
+	for i in obj2:
+		chest=i.chest
+		chest_date=i.datetime.date()
+	context={'username':str(username).title(),
+			'username_original':username,
+			'biscep':biscep,
+			'chest':chest,
+			'weight':weight,
+			'weight_date':weight_date,
+			'biscep_date':biscep_date,
+			'chest_date':chest_date}
+	return render(request, "user_profile.html", context)
+
+
 @login_required
 def weighttracker(request):
 	username=request.user
@@ -21,13 +49,14 @@ def weighttracker(request):
 		form=basictrackerForm()
 
 	context={'username':str(username).title(),
+			'username_original':username,
 			'pagetitle': "Weight Tracker",}
 	context.update(csrf(request))
 	form['weight'].label = "Enter your weight"
 	context['form']=form
 	return render(request, "user_weighttracker.html", context)
 
-
+@login_required
 def bodytracker(request):
 	username=request.user
 	if request.method=='POST':
@@ -56,10 +85,12 @@ def bodytracker(request):
 	context={'form':form,
 			'form2':form2,
 			'username':str(username).title(),
+			'username_original':username,
 			'pagetitle': "Body Tracker",}
 	context.update(csrf(request))
 	return render(request, "user_bodytracker.html", context)
 
+@login_required
 def weightprogress(request):
 	username=request.user
 	obj = basictracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
@@ -84,11 +115,14 @@ def weightprogress(request):
 			'y3':y[3],
 			'x4':x[4],
 			'y4':y[4],
+			'x':x,
+			'y':y,
 			'username':str(username).title(),
+			'username_original':username,
 			'pagetitle': "Progress Tracker",	}
 	return render(request, "user_weightprogress.html", context)
 
-
+@login_required
 def bodyprogress(request):
 	username=request.user
 	obj = bisceptracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
@@ -136,6 +170,7 @@ def bodyprogress(request):
 			'x4':x[4],
 			'y4':y[4],	
 			'username':str(username).title(),
+			'username_original':username,
 			'pagetitle': "Progress Tracker",	}
 	return render(request, "user_bodyprogress.html", context)
 
@@ -144,7 +179,7 @@ def bodyprogress(request):
 
 
 
-
+@login_required
 def plot(request):
 	obj = basictracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
 	x=[]

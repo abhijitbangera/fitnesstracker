@@ -6,6 +6,7 @@ def homepage(request):
 	username=request.user
 	
 	context={'username':str(username).title(),
+			'username_original':username,
 			'pagetitle': "Homepage"}
 	return render(request, "loggedin_base.html", context)
 
@@ -14,5 +15,8 @@ def homepage(request):
 def test(request):
 	username=request.user
 	
-	context={'username':str(username).title()}
+	context={'username':str(username).title(),
+			'username_original':username,
+			}
 	return render(request, "user_weighttracker.html", context)
+
