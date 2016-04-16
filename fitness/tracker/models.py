@@ -25,3 +25,27 @@ class chesttracker(models.Model):
 
 	def __unicode__(self):
 		return self.user
+
+class backtracker(models.Model):
+	back=models.IntegerField()
+	datetime = models.DateTimeField(auto_now_add=True)
+	user= models.ForeignKey(User)
+
+	def __unicode__(self):
+		return self.user
+
+class hiptracker(models.Model):
+	hip=models.IntegerField()
+	datetime = models.DateTimeField(auto_now_add=True)
+	user= models.ForeignKey(User)
+
+	def __unicode__(self):
+		return self.user
+
+class thightracker(models.Model):
+	thigh=models.IntegerField()
+	datetime = models.DateTimeField(auto_now_add=True)
+	user= models.ForeignKey(User)
+
+	def __unicode__(self):
+		return self.user

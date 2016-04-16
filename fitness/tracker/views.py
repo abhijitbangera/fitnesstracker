@@ -49,16 +49,19 @@ def bodytracker(request):
 		form=bisceptrackerForm()
 		form2=chesttrackerForm()
 
-	context={'username':str(username).title(),
-			'pagetitle': "Body Tracker",}
-	context.update(csrf(request))
+	
+	
 	form['biscep'].label = "Enter your biscep size"
 	form2['chest'].label = "Enter your chest size"
 	context={'form':form,
-			'form2':form2}
+			'form2':form2,
+			'username':str(username).title(),
+			'pagetitle': "Body Tracker",}
+	context.update(csrf(request))
 	return render(request, "user_bodytracker.html", context)
 
 def weightprogress(request):
+	username=request.user
 	obj = basictracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
 	x=[]
 	y=[]
@@ -80,11 +83,14 @@ def weightprogress(request):
 			'x3':x[3],
 			'y3':y[3],
 			'x4':x[4],
-			'y4':y[4],	}
+			'y4':y[4],
+			'username':str(username).title(),
+			'pagetitle': "Progress Tracker",	}
 	return render(request, "user_weightprogress.html", context)
 
 
 def bodyprogress(request):
+	username=request.user
 	obj = bisceptracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
 	x=[]
 	y=[]
@@ -128,7 +134,9 @@ def bodyprogress(request):
 			'x3':x[3],
 			'y3':y[3],
 			'x4':x[4],
-			'y4':y[4],		}
+			'y4':y[4],	
+			'username':str(username).title(),
+			'pagetitle': "Progress Tracker",	}
 	return render(request, "user_bodyprogress.html", context)
 
 
@@ -137,27 +145,27 @@ def bodyprogress(request):
 
 
 
-# def plot(request):
-# 	obj = basictracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
-# 	x=[]
-# 	y=[]
-# 	for i in obj:
-# 		print("Object is:")
-# 		print(i.datetime.date())
-# 		print(i.weight)
-# 		x.append(str(i.datetime.date()).replace("-",", "))
-# 		y.append(i.weight)
-# 	print(x)
-# 	print(y)
+def plot(request):
+	obj = basictracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
+	x=[]
+	y=[]
+	for i in obj:
+		print("Object is:")
+		print(i.datetime.date())
+		print(i.weight)
+		x.append(str(i.datetime.date()).replace("-",", "))
+		y.append(i.weight)
+	print(x)
+	print(y)
 	
-# 	context={'x0':x[0],
-# 			'y0':y[0],
-# 			'x1':x[1],
-# 			'y1':y[1],
-# 			'x2':x[2],
-# 			'y2':y[2],
-# 			'x3':x[3],
-# 			'y3':y[3],
-# 			'x4':x[4],
-# 			'y4':y[4],	}
-# 	return render(request, "plot.html", context)
+	context={'x0':x[0],
+			'y0':y[0],
+			'x1':x[1],
+			'y1':y[1],
+			'x2':x[2],
+			'y2':y[2],
+			'x3':x[3],
+			'y3':y[3],
+			'x4':x[4],
+			'y4':y[4],	}
+	return render(request, "plot.html", context)

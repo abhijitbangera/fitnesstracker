@@ -21,7 +21,7 @@
   <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Biscep Progress<small>Graph</small></h2>
+        <h2>Chest Progress<small>Graph</small></h2>
         
           
         <div class="clearfix"></div>
@@ -45,13 +45,23 @@
     Chart.defaults.global.legend = {
       enabled: true
     };
-
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
     // Line chart
     var ctx = document.getElementById("biscepChart");
     var lineChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: [new Date({{x4}}), new Date({{x3}}),new Date({{x2}}),new Date({{x1}}),new Date({{x0}})],
+        labels: [customDate("{{x4}}"), customDate("{{x3}}"),customDate("{{x2}}"),customDate("{{x1}}"),customDate("{{x0}}")],
+
         datasets: [{
           label: "Weight",
           backgroundColor: "rgba(38, 185, 154, 0.31)",
@@ -66,12 +76,20 @@
       },
     });
 
+
+    var customDate1 = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
     // Line chart
     var ctx = document.getElementById("chestChart");
     var lineChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: [new Date({{a4}}), new Date({{a3}}),new Date({{a2}}),new Date({{a1}}),new Date({{a0}})],
+        labels: [customDate1("{{a4}}"), customDate1("{{a3}}"),customDate1("{{a2}}"),customDate1("{{a1}}"),customDate1("{{a0}}")],
+
         datasets: [{
           label: "Weight",
           backgroundColor: "rgba(38, 185, 154, 0.31)",
@@ -85,8 +103,7 @@
         }, ]
       },
     });
+</script>
 
-    
-  </script>
 
 {% endblock %}

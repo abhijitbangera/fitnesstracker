@@ -6,7 +6,7 @@
   {% csrf_token %} 
   {{ form.as_p }}
 
-  <input type="submit" value="{% trans 'Log in' %}" />
+  <input type="submit" value="{% trans 'Log in' %}"  style="width:250px"  />
   <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
