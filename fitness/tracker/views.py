@@ -23,15 +23,60 @@ def profile(request,username):
 	for i in obj2:
 		chest=i.chest
 		chest_date=i.datetime.date()
-	context={'username':str(username).title(),
-			'username_original':username,
-			'biscep':biscep,
-			'chest':chest,
-			'weight':weight,
-			'weight_date':weight_date,
-			'biscep_date':biscep_date,
-			'chest_date':chest_date}
-	return render(request, "user_profile.html", context)
+	obj3=userprofile_extended.objects.filter(user_id=u)
+	obj_count=userprofile_extended.objects.filter(user_id=u).count()
+	print(obj_count)
+	if obj_count>0:
+		for i in obj3:
+			print(i)
+			age1=i.age
+			if age1=="":
+				age1="Not Set"
+			
+			gender=i.gender
+			if gender=="M":
+				gender_full="Male"
+			elif gender=="F":
+				gender_full="Female"
+			else:
+				gender_full="Not Set"
+			goal_id=i.goal
+			if goal_id =="1":
+				goal_plan="Weight Loss"
+			elif goal_id =="2":
+				goal_plan="Mass Gain"
+			elif goal_id =="3":
+				goal_plan="Lean Muscle Gain"
+			elif goal_id =="4":
+				goal_plan="Stay Fit"
+			else:
+				goal_plan="Not Set"
+        
+		context={'username':str(username).title(),
+				'username_original':username,
+				'biscep':biscep,
+				'chest':chest,
+				'weight':weight,
+				'weight_date':weight_date,
+				'biscep_date':biscep_date,
+				'chest_date':chest_date,
+				'age':age1,
+				'gender':gender_full,
+				'goal':goal_plan}
+		return render(request, "user_profile.html", context)
+	else:
+		context={'username':str(username).title(),
+				'username_original':username,
+				'biscep':biscep,
+				'chest':chest,
+				'weight':weight,
+				'weight_date':weight_date,
+				'biscep_date':biscep_date,
+				'chest_date':chest_date,
+				'age':"Not Set",
+				'gender':"Not Set",
+				'goal':"Not Set"}
+		return render(request, "user_profile.html", context)
 
 
 @login_required
@@ -176,13 +221,64 @@ def bodyprogress(request):
 
 
 def goal_settings(request):
-	form=userprofile_extended_goalsettings_Form()
-	context={'form':form,}
+	username=request.user
+	if request.method=='POST':
+		if userprofile_extended.objects.filter(user_id=request.user):
+			userprofile_instance=userprofile_extended.objects.get(user_id=request.user)
+			form= userprofile_extended_goalsettings_Form(request.POST, instance=userprofile_instance)
+			print("yes............")
+			if form.is_valid():
+				save_it=form.save(commit = False)
+				save_it.user = request.user
+				save_it.save(update_fields=["gender","goal"])
+				print("saved successfully.")
+				return HttpResponseRedirect("goalsettings/")
+		else:
+			form= userprofile_extended_goalsettings_Form(request.POST)
+			if form.is_valid():
+				save_it=form.save(commit = False)
+				save_it.user = request.user
+				save_it.save()
+				print("saved successfully.")
+				return HttpResponseRedirect("/")
+	else:
+		form=userprofile_extended_goalsettings_Form()
+	context={'username':str(username).title(),
+			'username_original':username,
+			'pagetitle': "Weight Tracker",
+			'form':form,}
+	context.update(csrf(request))
+
 	return render(request, "user_goal_settings.html", context)
 
 def profile_settings(request):
-	form=userprofile_extended_profilesettings_Form()
-	context={'form':form,}
+	
+	username=request.user
+	if request.method=='POST':
+		if userprofile_extended.objects.filter(user_id=request.user):
+			userprofile_instance=userprofile_extended.objects.get(user_id=request.user)
+			form= userprofile_extended_profilesettings_Form(request.POST, instance=userprofile_instance)
+			print("yes............")
+			if form.is_valid():
+				save_it=form.save(commit = False)
+				save_it.user = request.user
+				save_it.save(update_fields=["mobile","age"])
+				print("saved successfully.")
+				return HttpResponseRedirect("/")
+		else:
+			form= userprofile_extended_profilesettings_Form(request.POST)
+			if form.is_valid():
+				save_it=form.save(commit = False)
+				save_it.user = request.user
+				save_it.save()
+				print("saved successfully.")
+				return HttpResponseRedirect("/")
+	else:
+		form=userprofile_extended_profilesettings_Form()
+	context={'username':str(username).title(),
+			'username_original':username,
+			'pagetitle': "Weight Tracker",
+			'form':form,}
 	return render(request, "user_profile_settings.html", context)
 
 

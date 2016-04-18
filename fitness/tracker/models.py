@@ -8,9 +8,10 @@ class userprofile_extended(models.Model):
 	GENDER_CHOICES = (('M', 'Male'),('F', 'Female'),)
 	GOAL_CHOICES=(('1', 'Weight Loss'),('2', 'Mass Gain'),('3', 'Lean Muscle Gain'),('4', 'Stay Fit'),)
 	user = models.OneToOneField(User)
-	mobile = models.CharField(max_length=10, null=True, blank=True)
+	mobile = models.IntegerField(max_length=10, null=True, blank=True)
 	gender = models.CharField(max_length=1, choices=GENDER_CHOICES,null=True, blank=True)
 	goal=models.CharField(max_length=1, choices=GOAL_CHOICES,null=True, blank=True)
+	age=models.IntegerField(max_length=3, null=True, blank=True)
 
 
 # Create your models here.
