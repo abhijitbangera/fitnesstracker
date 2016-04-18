@@ -1,9 +1,9 @@
 from django.shortcuts import render,get_object_or_404
-from tracker.forms import basictrackerForm,bisceptrackerForm,chesttrackerForm
+from tracker.forms import basictrackerForm,bisceptrackerForm,chesttrackerForm,userprofile_extended_goalsettings_Form,userprofile_extended_profilesettings_Form
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from tracker.models import basictracker,bisceptracker,chesttracker
+from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_extended
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -175,8 +175,15 @@ def bodyprogress(request):
 	return render(request, "user_bodyprogress.html", context)
 
 
+def goal_settings(request):
+	form=userprofile_extended_goalsettings_Form()
+	context={'form':form,}
+	return render(request, "user_goal_settings.html", context)
 
-
+def profile_settings(request):
+	form=userprofile_extended_profilesettings_Form()
+	context={'form':form,}
+	return render(request, "user_profile_settings.html", context)
 
 
 @login_required

@@ -1,5 +1,5 @@
 from django import forms
-from tracker.models import basictracker,bisceptracker,chesttracker
+from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_extended
 
 class basictrackerForm(forms.ModelForm):
 	class Meta:
@@ -18,3 +18,15 @@ class chesttrackerForm(forms.ModelForm):
 		model=chesttracker
 		fields = '__all__'
 		exclude = ["user"]
+
+class userprofile_extended_goalsettings_Form(forms.ModelForm):
+	class Meta:
+		model=userprofile_extended
+		fields = '__all__'
+		exclude = ["mobile","user"]
+
+class userprofile_extended_profilesettings_Form(forms.ModelForm):
+	class Meta:
+		model=userprofile_extended
+		fields = '__all__'
+		exclude = ["gender","user","goal"]
