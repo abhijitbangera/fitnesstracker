@@ -33,5 +33,6 @@ urlpatterns = [
     url(r'^user/(?P<username>[\w.@+-]+)$', 'tracker.views.profile'),
     url(r'^goalsettings/', 'tracker.views.goal_settings'),
     url(r'^profilesettings/', 'tracker.views.profile_settings'),
+    url(r'^messages/', include('django_messages.urls')),
     
 ]
