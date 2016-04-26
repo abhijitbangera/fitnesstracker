@@ -57,6 +57,8 @@ def trash(request, template_name='django_messages/trash.html'):
         'message_list': message_list,
     }, context_instance=RequestContext(request))
 
+
+
 @login_required
 def compose(request, recipient=None, form_class=ComposeForm,
         template_name='django_messages/compose.html', success_url=None, recipient_filter=None):
@@ -73,8 +75,27 @@ def compose(request, recipient=None, form_class=ComposeForm,
     """
     if request.method == "POST":
         sender = request.user
-        form = form_class(request.POST, recipient_filter=recipient_filter)
+        # recipient=User.objects.get(username='abhi')
+        # form = form_class(request.POST, recipient_filter=recipient_filter)
+        
+        form = form_class(request.POST)
+        
+        print("********")
+        print(recipient_filter)
+     
+        for i in form:
+            print(i.name)
+        print(recipient)
+        # form.recipient.value=""
+        # form.recipient.value='abhi'
+        print("--------")
+        # print(form.fields['id_recipient'])
+        for i in form:
+            print(i)
+
         if form.is_valid():
+            
+            # form.recipient_id=2
             form.save(sender=request.user)
             messages.info(request, _(u"Message successfully sent."))
             if success_url is None:
@@ -82,11 +103,13 @@ def compose(request, recipient=None, form_class=ComposeForm,
             if 'next' in request.GET:
                 success_url = request.GET['next']
             return HttpResponseRedirect(success_url)
+
     else:
         form = form_class()
         if recipient is not None:
             recipients = [u for u in User.objects.filter(**{'%s__in' % get_username_field(): [r.strip() for r in recipient.split('+')]})]
             form.fields['recipient'].initial = recipients
+
     return render_to_response(template_name, {
         'form': form,
     }, context_instance=RequestContext(request))

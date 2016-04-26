@@ -5,26 +5,65 @@
 {% block content %}
 <h1>{% trans "Inbox" %}</h1>
 {% if message_list %} 
-<table class="messages">
-    <thead>
-        <tr><th>{% trans "Sender" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Received" %}</th><th>{% trans "Action" %}</th></tr>
-    </thead>
-    <tbody>
+
+              
+
 {% for message in message_list %} 
-    <tr>
-        <td>{{ message.sender }}</td>
-        <td>
-            {% if message.new %}<strong>{% endif %}
-            {% if message.replied %}<em>{% endif %}
-            <a href="{{message.get_absolute_url }}">{{ message.subject }}</a>
-            {% if message.replied %}</em>{% endif %}
-            {% if message.new %}</strong>{% endif %}</td>
-        <td>{{ message.sent_at|date:_("DATETIME_FORMAT") }}</td>
-        <td><a href="{% url 'messages_delete' message.id %}">{% trans "delete" %}</a></td>
-    </tr>
+            
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_content">
+                  <div class="row">
+                  
+                    <div class="col-sm-3 mail_list_column">
+
+                      <div class="mail_list">
+                        <div class="left">
+                          <i class="fa fa-circle"></i> <i class="fa fa-edit"></i>
+                        </div>
+                        <div class="right">
+                          <h3>{{ message.sender }}</h3>
+                          <p>{{ message.sent_at|date:_("DATETIME_FORMAT") }}</p>
+                        </div>
+                       </div>                     
+
+                    </div>
+                    <!-- /MAIL LIST -->
+
+
+                    <!-- CONTENT MAIL -->
+                    <div class="col-sm-9 mail_view">
+                      <div class="inbox-body">
+                        <div class="mail_heading row">
+                        
+                          <div class="col-md-12">
+                            {% if message.new %}<strong><style>strong{color: #000000;}</style>{% endif %}
+                            {% if message.replied %}<em>{% endif %}
+                            {{ message.subject }}<br><br>
+                            {% if message.replied %}</em>{% endif %}
+                            {% if message.new %}</strong>{% endif %}
+                          </div>
+                        </div>
+                        
+                        
+                        
+                        <div class="compose-btn pull-left">
+                          <a class="btn btn-sm btn-primary" href="{{message.get_absolute_url }}"><i class="fa fa-reply"></i> View</a>
+                          <button title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm tooltips"><i class="fa fa-trash-o"><a href="{% url 'messages_delete' message.id %}">{% trans " Delete" %}</a></i>
+                          </button>
+                        </div>
+                      </div>
+
+                    </div>
+                    <!-- /CONTENT MAIL -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
 {% endfor %}
-    </tbody>
-</table>
+
 {% else %}
 <p>{% trans "No messages." %}</p>
 {% endif %}  

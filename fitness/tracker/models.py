@@ -1,9 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
-
-
 class userprofile_extended(models.Model):
 	GENDER_CHOICES = (('M', 'Male'),('F', 'Female'),)
 	GOAL_CHOICES=(('1', 'Weight Loss'),('2', 'Mass Gain'),('3', 'Lean Muscle Gain'),('4', 'Stay Fit'),)
