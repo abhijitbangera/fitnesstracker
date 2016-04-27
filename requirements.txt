@@ -1,3 +1,10 @@
+anyjson==0.3.3
 Django==1.9.4
 django-registration==2.0.4
-wheel==0.24.0
+Jinja2==2.8
+MarkupSafe==0.23
+Pillow==3.2.0
+python-nvd3==0.14.2
+python-slugify==1.1.4
+six==1.10.0
+Unidecode==0.4.19
