@@ -2,7 +2,7 @@
 
 {% block content %}
 <div>
-	<center><form action="/profilesettings/" method="post">{% csrf_token %}
+	<center><form action="/profilesettings/" method="post" enctype="multipart/form-data">{% csrf_token %}
 		{{form.as_p}}
 		<input type="submit" value="submit">
 		

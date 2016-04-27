@@ -11,6 +11,9 @@ def homepage(request):
 	obj_count=obj.count()
 	if obj_count>0:
 		for i in obj:
+			print("-----------")
+			print(i.image.url)
+			print("-----------")
 			goal_id=i.goal
 			if goal_id =="1":
 				goal_plan="Weight Loss"
@@ -22,19 +25,21 @@ def homepage(request):
 				goal_plan="Stay Fit"
 			else:
 				goal_plan="Not Set"
-		
+			profilepic=i.image.url
 		context={'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Dashboard",
 				'goal':goal_plan,
-				'goal_id':goal_id}
+				'goal_id':goal_id,
+				'profilepic':profilepic}
 		return render(request, "loggedin_homepage.html", context)
 	else:
 		context={'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Dashboard",
 				'goal':"Not Set",
-				'goal_id':goal_id}
+				'profilepic':"/media/avatar.png"
+				}
 		return render(request, "loggedin_homepage.html", context)
 
 

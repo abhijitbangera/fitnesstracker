@@ -57,6 +57,8 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 ROOT_URLCONF = 'fitness.urls'
 
 TEMPLATES = [
@@ -129,7 +131,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static","static_root")
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "static","media_root")
     
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static", "static_dirs"),
     )
+
+
+    

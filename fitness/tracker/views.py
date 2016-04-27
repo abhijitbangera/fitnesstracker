@@ -51,7 +51,7 @@ def profile(request,username):
 				goal_plan="Stay Fit"
 			else:
 				goal_plan="Not Set"
-        
+			profilepic=i.image.url
 		context={'username':str(username).title(),
 				'username_original':username,
 				'biscep':biscep,
@@ -62,7 +62,8 @@ def profile(request,username):
 				'chest_date':chest_date,
 				'age':age1,
 				'gender':gender_full,
-				'goal':goal_plan}
+				'goal':goal_plan,
+				'profilepic':profilepic}
 		return render(request, "user_profile.html", context)
 	else:
 		context={'username':str(username).title(),
@@ -257,16 +258,16 @@ def profile_settings(request):
 	if request.method=='POST':
 		if userprofile_extended.objects.filter(user_id=request.user):
 			userprofile_instance=userprofile_extended.objects.get(user_id=request.user)
-			form= userprofile_extended_profilesettings_Form(request.POST, instance=userprofile_instance)
+			form= userprofile_extended_profilesettings_Form(request.POST or None,request.FILES or None, instance=userprofile_instance )
 			print("yes............")
 			if form.is_valid():
 				save_it=form.save(commit = False)
 				save_it.user = request.user
-				save_it.save(update_fields=["mobile","age"])
+				save_it.save(update_fields=["mobile","age","image"])
 				print("saved successfully.")
 				return HttpResponseRedirect("/")
 		else:
-			form= userprofile_extended_profilesettings_Form(request.POST)
+			form= userprofile_extended_profilesettings_Form(request.POST or None,request.FILES or None)
 			if form.is_valid():
 				save_it=form.save(commit = False)
 				save_it.user = request.user
