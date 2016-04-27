@@ -7,6 +7,7 @@ from tracker.models import userprofile_extended
 def homepage(request):
 	username=request.user
 	obj=userprofile_extended.objects.filter(user_id=username)
+
 	obj_count=obj.count()
 	if obj_count>0:
 		for i in obj:
@@ -24,14 +25,16 @@ def homepage(request):
 		
 		context={'username':str(username).title(),
 				'username_original':username,
-				'pagetitle': "Homepage",
-				'goal':goal_plan}
+				'pagetitle': "Dashboard",
+				'goal':goal_plan,
+				'goal_id':goal_id}
 		return render(request, "loggedin_homepage.html", context)
 	else:
 		context={'username':str(username).title(),
 				'username_original':username,
-				'pagetitle': "Homepage",
-				'goal':"Not Set"}
+				'pagetitle': "Dashboard",
+				'goal':"Not Set",
+				'goal_id':goal_id}
 		return render(request, "loggedin_homepage.html", context)
 
 

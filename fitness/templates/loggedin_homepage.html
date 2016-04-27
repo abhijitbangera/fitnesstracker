@@ -1,25 +1,12 @@
 {% extends "loggedin_base.html" %}
 
 {% block content %}
-<!-- Current goal: {{goal}}
+Current goal: {{goal}} {{goal_id}}
 <br>
-
-{% load i18n %} 
-
-
-
-
-<h1>{% trans "Compose Message"%}</h1>
-<form action="" method="post">
-{% csrf_token %} 
-<table>
-{{ form.as_table }}
-</table>
-<input type="submit" value="{% trans "Send" %} &raquo;"/>
-</form>
-
-{{ messages_inbox_count }} -->
-
-
+{% if goal_id == '1' %}
+{% include "plans_massgain.html" %}
+{% elif goal_id == '3' %}
+{% include "plans_weightloss.html" %}
+{% endif %}
 
 {% endblock %}
