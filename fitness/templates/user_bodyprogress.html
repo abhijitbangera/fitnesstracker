@@ -1,9 +1,39 @@
 {% extends "loggedin_base.html" %}
 
 {% block content %}
+{% if message_bis  %}
+
 <div class="row" >
+<div class="col-md-6 col-sm-6 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>Biscep Progress<small>Graph</small></h2>
+      
+        
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content" >
+      {{message_bis}}
+    </div>
+  </div>
+</div>
+<div class="row" >
+<div class="col-md-6 col-sm-6 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>Chest Progress<small>Graph</small></h2>
+      
+        
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content" >
+      {{message_chest}}
+    </div>
+  </div>
+</div>
 
-
+{% else %}
+<div class="row" >
   <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
@@ -32,9 +62,45 @@
     </div>
   </div>
 
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Back Progress<small>Graph</small></h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="backChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Hip Progress<small>Graph</small></h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="hipChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Thigh Progress<small>Graph</small></h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="thighChart"></canvas>
+      </div>
+    </div>
+  </div>
+
 
 </div>
-
+{% endif %}
 
 
 {% endblock %}
@@ -56,7 +122,8 @@
   }
   
     // Line chart
-    var ctx = document.getElementById("biscepChart");
+    var ctx = document.getElementById("biscepChart");      
+    
     var lineChart = new Chart(ctx, {
       type: 'line',
       data: {
@@ -74,7 +141,8 @@
           data: [{{y4}},{{y3}},{{y2}},{{y1}},{{y0}}]
         }, ]
       },
-    });
+    }
+    );
 
 
     var customDate1 = function(dateString){
@@ -103,6 +171,89 @@
         }, ]
       },
     });
+
+    var customDate1 = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("backChart");
+    var lineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate1("{{c4}}"), customDate1("{{c3}}"),customDate1("{{c2}}"),customDate1("{{c1}}"),customDate1("{{c0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{d4}},{{d3}},{{d2}},{{d1}},{{d0}}]
+        }, ]
+      },
+    });
+
+    var customDate1 = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("hipChart");
+    var lineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate1("{{e4}}"), customDate1("{{e3}}"),customDate1("{{e2}}"),customDate1("{{e1}}"),customDate1("{{e0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{f4}},{{f3}},{{f2}},{{f1}},{{f0}}]
+        }, ]
+      },
+    });
+
+
+    var customDate1 = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("thighChart");
+    var lineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate1("{{g4}}"), customDate1("{{g3}}"),customDate1("{{g2}}"),customDate1("{{g1}}"),customDate1("{{g0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{h4}},{{h3}},{{h2}},{{h1}},{{h0}}]
+        }, ]
+      },
+    });
+
 </script>
 
 

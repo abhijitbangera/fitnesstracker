@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'tracker',   
     'django_messages',
+
 ]
 
 SITE_ID = 1

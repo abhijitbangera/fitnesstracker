@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'^profilesettings/', 'tracker.views.profile_settings'),
     url(r'^messages/', include('django_messages.urls')),
     
+    
 ]
 
 if settings.DEBUG:
