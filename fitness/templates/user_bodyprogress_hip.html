@@ -1,0 +1,106 @@
+
+{% if message_hip %}
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Hip Progress<small>Graph</small></h2>
+          
+        <div class="clearfix"></div>
+        
+      </div>
+      <div class="x_content" >
+        {{message_hip}}
+      </div>
+    </div>
+  </div>
+
+
+{% elif len_hip == 1 %}
+
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Hip Progress<small>Graph</small></h2>
+          
+        <div class="clearfix"></div>
+        
+      </div>
+      <div class="x_content" >
+        <canvas id="hipChart1"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len_hip == 2 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Hip Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="hipChart2"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len_hip == 3 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Hip Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="hipChart3"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len_hip_hip == 4 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Hip Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="hipChart4"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% else %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Hip Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="hipChart5"></canvas>
+      </div>
+    </div>
+  </div>
+
+
+{% endif %}
+
+
+
+
+

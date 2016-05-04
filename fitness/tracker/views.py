@@ -83,6 +83,9 @@ def profile(request,username):
 @login_required
 def weighttracker(request):
 	username=request.user
+	
+		
+	
 	if request.method=='POST':
 		form= basictrackerForm(request.POST)
 		if form.is_valid():
@@ -93,10 +96,19 @@ def weighttracker(request):
 			return HttpResponseRedirect("/")
 	else:
 		form=basictrackerForm()
+	#Profile pic code ------------------------------
+	obj=userprofile_extended.objects.filter(user_id=username)
+	profilepic="/media/avatar.png"
+	obj_count=obj.count()
+	if obj_count>0:
+		for i in obj:
+			profilepic=i.image.url
 
+	#-------------------------------------------------------
 	context={'username':str(username).title(),
 			'username_original':username,
-			'pagetitle': "Weight Tracker",}
+			'pagetitle': "Weight Tracker",
+			'profilepic':profilepic}
 	context.update(csrf(request))
 	form['weight'].label = "Enter your weight"
 	context['form']=form
@@ -105,6 +117,13 @@ def weighttracker(request):
 @login_required
 def bodytracker(request):
 	username=request.user
+	obj=userprofile_extended.objects.filter(user_id=username)
+	profilepic="/media/avatar.png"
+	obj_count=obj.count()
+	if obj_count>0:
+		for i in obj:
+			profilepic=i.image.url
+
 	if request.method=='POST':
 		form= bisceptrackerForm(request.POST)
 		form2=chesttrackerForm(request.POST)
@@ -162,7 +181,8 @@ def bodytracker(request):
 			'form5':form5,
 			'username':str(username).title(),
 			'username_original':username,
-			'pagetitle': "Body Tracker",}
+			'pagetitle': "Body Tracker",
+			'profilepic':profilepic}
 	context.update(csrf(request))
 	return render(request, "user_bodytracker.html", context)
 
@@ -265,80 +285,57 @@ def bodyprogress(request):
 		print("Object is:")
 		print(i.datetime.date())
 		print(i.biscep)
-		x.append(str(i.datetime.date()).replace("-",", "))
+		x.append(str(i.datetime.date()))
 		y.append(i.biscep)
 	print(x)
 	print(y)
 
-	obj1 = chesttracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
-	a=[]
-	b=[]
-	for i in obj1:
-		print("Object is:")
-		print(i.datetime.date())
-		print(i.chest)
-		a.append(str(i.datetime.date()).replace("-",", "))
-		b.append(i.chest)
-	print(a)
-	print(b)
-
-	obj2 = backtracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
-	c=[]
-	d=[]
-	for i in obj2:
-		print("Object is:")
-		print(i.datetime.date())
-		print(i.back)
-		c.append(str(i.datetime.date()).replace("-",", "))
-		d.append(i.back)
-	print(c)
-	print(d)
-
-	obj3 = hiptracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
-	e=[]
-	f=[]
-	for i in obj3:
-		print("Object is:")
-		print(i.datetime.date())
-		print(i.hip)
-		e.append(str(i.datetime.date()).replace("-",", "))
-		f.append(i.hip)
-	print(e)
-	print(f)
-
-	obj4 = thightracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
-	g=[]
-	h=[]
-	for i in obj4:
-		print("Object is:")
-		print(i.datetime.date())
-		print(i.thigh)
-		g.append(str(i.datetime.date()).replace("-",", "))
-		h.append(i.thigh)
-	print(g)
-	print(h)
-
-	print(len(x))
-	print(y)
-	if len(x)==0 and len(a)==0:
-		message_bis="Update the details"
-		message_chest="Update the details"
-		context={'message_bis':message_bis,
-			'message_chest':message_chest}
-	
-	else:
-
-		context={'a0':a[0],
-				'b0':b[0],
-				'a1':a[1],
-				'b1':b[1],
-				'a2':a[2],
-				'b2':b[2],
-				'a3':a[3],
-				'b3':b[3],
-				'a4':a[4],
-				'b4':b[4],
+	if len(x)==0:
+		message_biscep="No Biscep record found. Please update your Biscep size in tracker."
+		context1={'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Weight Tracker",
+				'message_biscep':message_biscep}
+		# context1.update(csrf(request))
+		# return render(request, "user_bodyprogress.html", context1)
+	elif len(x)==1:
+		context1={'len':1,
 				'x0':x[0],
+				'y0':y[0],
+				}
+		
+	elif len(x)==2:
+		context1={'len':2,
+				'x0':x[0],
+				'y0':y[0],
+				'y1':y[1],
+				'x1':x[1],
+				}
+		
+	elif len(x)==3:
+		context1={'len':3,
+				'x0':x[0],
+				'y0':y[0],
+				'x1':x[1],
+				'y1':y[1],
+				'x2':x[2],
+				'y2':y[2],
+				}
+		
+	elif len(x)==4:
+		context1={'len':4,
+				'x0':x[0],
+				'y0':y[0],
+				'x1':x[1],
+				'y1':y[1],
+				'x2':x[2],
+				'y2':y[2],
+				'x3':x[3],
+				'y3':y[3],
+				}
+		
+	elif len(x)>4:
+		context1={'x0':x[0],
 				'y0':y[0],
 				'x1':x[1],
 				'y1':y[1],
@@ -348,6 +345,139 @@ def bodyprogress(request):
 				'y3':y[3],
 				'x4':x[4],
 				'y4':y[4],
+				'x':x,
+				'y':y,
+				'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Progress Tracker",	}
+		# return render(request, "user_bodyprogress.html", context1)
+
+
+	obj1 = chesttracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
+	a=[]
+	b=[]
+	for i in obj1:
+		print("Object is:")
+		print(i.datetime.date())
+		print(i.chest)
+		a.append(str(i.datetime.date()))
+		b.append(i.chest)
+	print(a)
+	print(b)
+	print(len(a))
+	print("0000000000000000000000000")
+	if len(a)==0:
+		message_chest="No Chest record found. Please update your Chest size in tracker."
+		context={'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Weight Tracker",
+				'message_chest':message_chest}
+		# context.update(csrf(request))
+		# return render(request, "user_bodyprogress.html", context)
+	elif len(a)==1:
+		context={'len_chest':1,
+				'a0':a[0],
+				'b0':b[0],
+				}
+	elif len(a)==2:
+		context={'len_chest':2,
+				'a0':a[0],
+				'b0':b[0],
+				'b1':b[1],
+				'a1':a[1],
+				}
+	elif len(a)==3:
+		context={'len_chest':3,
+				'a0':a[0],
+				'b0':b[0],
+				'a1':a[1],
+				'b1':b[1],
+				'a2':a[2],
+				'b2':b[2],
+				}
+	elif len(a)==4:
+		context={'len_chest':4,
+				'a0':a[0],
+				'b0':b[0],
+				'a1':a[1],
+				'b1':b[1],
+				'a2':a[2],
+				'b2':b[2],
+				'a3':a[3],
+				'b3':b[3],
+				}
+	elif len(a)>4:
+		context={'len_chest':5,
+				'a0':a[0],
+				'b0':b[0],
+				'a1':a[1],
+				'b1':b[1],
+				'a2':a[2],
+				'b2':b[2],
+				'a3':a[3],
+				'b3':b[3],
+				'a4':a[4],
+				'b4':b[4],
+				'a':a,
+				'b':b,
+				'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Progress Tracker",	}
+	
+
+	obj2 = backtracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
+	c=[]
+	d=[]
+	for i in obj2:
+		print("Object is:")
+		print(i.datetime.date())
+		print(i.back)
+		c.append(str(i.datetime.date()))
+		d.append(i.back)
+	print(c)
+	print(d)
+	if len(c)==0:
+		message_back="No Back record found. Please update your Back size in tracker."
+		context2={'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Weight Tracker",
+				'message_back':message_back}
+		# context2.update(csrf(request))
+		# return render(request, "user_bodyprogress.html", context2)
+	elif len(c)==1:
+		context2={'len_back':1,
+				'c0':c[0],
+				'd0':d[0],
+				}
+	elif len(c)==2:
+		context2={'len_back':2,
+				'c0':c[0],
+				'd0':d[0],
+				'c1':c[1],
+				'd1':d[1],
+				}
+	elif len(c)==3:
+		context2={'len_back':3,
+				'c0':c[0],
+				'd0':d[0],
+				'c1':c[1],
+				'd1':d[1],
+				'c2':c[2],
+				'd2':d[2],
+				}
+	elif len(c)==4:
+		context2={'len_back':4,
+				'c0':c[0],
+				'd0':d[0],
+				'c1':c[1],
+				'd1':d[1],
+				'c2':c[2],
+				'd2':d[2],
+				'c3':c[3],
+				'd3':d[3],
+				}
+	elif len(c)>4:
+		context2={'len_back':5,
 				'c0':c[0],
 				'd0':d[0],
 				'c1':c[1],
@@ -357,7 +487,67 @@ def bodyprogress(request):
 				'c3':c[3],
 				'd3':d[3],
 				'c4':c[4],
-				'd4':d[4],	
+				'd4':d[4],
+				'c':c,
+				'd':d,
+				'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Progress Tracker",	}
+	
+
+	obj3 = hiptracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
+	e=[]
+	f=[]
+	for i in obj3:
+		print("Object is:")
+		print(i.datetime.date())
+		print(i.hip)
+		e.append(str(i.datetime.date()))
+		f.append(i.hip)
+	print(e)
+	print(f)
+	if len(e)==0:
+		message_hip="No Hip record found. Please update your Hip size in tracker."
+		context3={'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Weight Tracker",
+				'message_hip':message_hip}
+		# context3.update(csrf(request))
+		# return render(request, "user_bodyprogress.html", context3)
+	elif len(e)==1:
+		context3={'len_hip':1,
+				'e0':e[0],
+				'f0':f[0],
+				}
+	elif len(e)==2:
+		context3={'len_hip':2,
+				'e0':e[0],
+				'f0':f[0],
+				'e1':e[1],
+				'f1':f[1],
+				}
+	elif len(e)==3:
+		context3={'len_hip':3,
+				'e0':e[0],
+				'f0':f[0],
+				'e1':e[1],
+				'f1':f[1],
+				'e2':e[2],
+				'f2':f[2],
+				}
+	elif len(e)==4:
+		context3={'len_hip':4,
+				'e0':ec[0],
+				'f0':f[0],
+				'e1':e[1],
+				'f1':f[1],
+				'e2':e[2],
+				'f2':f[2],
+				'e3':e[3],
+				'f3':f[3],
+				}
+	elif len(e)>4:
+		context3={'len_hip':5,
 				'e0':e[0],
 				'f0':f[0],
 				'e1':e[1],
@@ -368,6 +558,73 @@ def bodyprogress(request):
 				'f3':f[3],
 				'e4':e[4],
 				'f4':f[4],
+				'e':e,
+				'f':f,
+				'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Progress Tracker",	}
+	
+
+
+
+
+
+
+	obj4 = thightracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
+	g=[]
+	h=[]
+	for i in obj4:
+		print("Object is:")
+		print(i.datetime.date())
+		print(i.thigh)
+		g.append(str(i.datetime.date()))
+		h.append(i.thigh)
+	print(g)
+	print(h)
+
+
+	if len(g)==0:
+		message_thigh="No Thigh record found. Please update your Thigh size in tracker."
+		context4={'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Weight Tracker",
+				'message_thigh':message_thigh}
+		# context4.update(csrf(request))
+		# return render(request, "user_bodyprogress.html", context4)
+	elif len(g)==1:
+		context4={'len_thigh':1,
+				'g0':g[0],
+				'h0':h[0],
+				}
+	elif len(g)==2:
+		context4={'len_thigh':2,
+				'g0':g[0],
+				'h0':h[0],
+				'g1':g[1],
+				'h1':h[1],
+				}
+	elif len(g)==3:
+		context4={'len_thigh':3,
+				'g0':g[0],
+				'h0':h[0],
+				'g1':g[1],
+				'h1':h[1],
+				'g2':g[2],
+				'h2':h[2],
+				}
+	elif len(g)==4:
+		context4={'len_thigh':4,
+				'g0':g[0],
+				'h0':h[0],
+				'g1':g[1],
+				'h1':h[1],
+				'g2':g[2],
+				'h2':h[2],
+				'g3':g[3],
+				'h3':h[3],
+				}
+	elif len(g)>4:
+		context4={'len_thigh':5,
 				'g0':g[0],
 				'h0':h[0],
 				'g1':g[1],
@@ -378,10 +635,19 @@ def bodyprogress(request):
 				'h3':h[3],
 				'g4':g[4],
 				'h4':h[4],
+				'g':e,
+				'h':h,
 				'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Progress Tracker",	}
-	return render(request, "user_bodyprogress.html", context)
+	# print(context)
+	# print(context1)
+	# print(context2)
+	print(context4)
+	final_list=dict(list(context.items()) + list(context1.items()) + list(context2.items())+ list(context3.items()) + list(context4.items()))
+	print(final_list)
+	return render(request, "user_bodyprogress.html", final_list)
+
 
 
 def goal_settings(request):

@@ -1,0 +1,103 @@
+
+{% if message_biscep %}
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Biscep Progress<small>Graph</small></h2>
+          
+        <div class="clearfix"></div>
+        
+      </div>
+      <div class="x_content" >
+        {{message_biscep}}
+      </div>
+    </div>
+  </div>
+{% elif len == 1 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Biscep Progress<small>Graph</small></h2>
+          
+        <div class="clearfix"></div>
+        
+      </div>
+      <div class="x_content" >
+        <canvas id="lineChart1"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len == 2 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Biscep Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="lineChart2"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len == 3 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Biscep Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="lineChart3"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len == 4 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Biscep Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="lineChart4"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% else %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Biscep Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="lineChart5"></canvas>
+      </div>
+    </div>
+  </div>
+
+
+{% endif %}
+
+
+
+
+

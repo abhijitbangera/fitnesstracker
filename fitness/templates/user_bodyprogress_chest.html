@@ -1,0 +1,104 @@
+
+{% if message_chest %}
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Chest Progress<small>Graph</small></h2>
+          
+        <div class="clearfix"></div>
+        
+      </div>
+      <div class="x_content" >
+        {{message_chest}}
+      </div>
+    </div>
+  </div>
+{% elif len_chest_chest == 1 %}
+
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Chest Progress<small>Graph</small></h2>
+          
+        <div class="clearfix"></div>
+        
+      </div>
+      <div class="x_content" >
+        <canvas id="chestChart1"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len_chest == 2 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Chest Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="chestChart2"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len_chest == 3 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Chest Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="chestChart3"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len_chest_chest == 4 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Chest Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="chestChart4"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% else %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Chest Progress<small>Graph{{len_chest}}</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="chestChart5"></canvas>
+      </div>
+    </div>
+  </div>
+
+
+{% endif %}
+
+
+
+
+

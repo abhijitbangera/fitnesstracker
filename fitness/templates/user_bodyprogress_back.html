@@ -1,0 +1,105 @@
+
+{% if message_back %}
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Back Progress<small>Graph</small></h2>
+          
+        <div class="clearfix"></div>
+        
+      </div>
+      <div class="x_content" >
+        {{message_back}}
+      </div>
+    </div>
+  </div>
+
+{% elif len_back == 1 %}
+
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Back Progress<small>Graph</small></h2>
+          
+        <div class="clearfix"></div>
+        
+      </div>
+      <div class="x_content" >
+        <canvas id="backChart1"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len_back == 2 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Back Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="backChart2"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len_back == 3 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Back Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="backChart3"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len_back_back == 4 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Back Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="backChart4"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% else %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Back Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="backChart5"></canvas>
+      </div>
+    </div>
+  </div>
+
+
+{% endif %}
+
+
+
+
+

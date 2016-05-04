@@ -1,0 +1,105 @@
+
+{% if message_thigh %}
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Thigh Progress<small>Graph</small></h2>
+          
+        <div class="clearfix"></div>
+        
+      </div>
+      <div class="x_content" >
+        {{message_thigh}}
+      </div>
+    </div>
+  </div>
+
+{% elif len_thigh == 1 %}
+
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Thigh Progress<small>Graph</small></h2>
+          
+        <div class="clearfix"></div>
+        
+      </div>
+      <div class="x_content" >
+        <canvas id="thighChart1"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len_thigh == 2 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Thigh Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="thighChart2"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len_thigh == 3 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Thigh Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="thighChart3"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% elif len_thigh_thigh == 4 %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Thigh Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="thighChart4"></canvas>
+      </div>
+    </div>
+  </div>
+
+{% else %}
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Thigh Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="thighChart5"></canvas>
+      </div>
+    </div>
+  </div>
+
+
+{% endif %}
+
+
+
+
+

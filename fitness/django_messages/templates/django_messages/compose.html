@@ -1,13 +1,150 @@
 {% extends "django_messages/base.html" %} 
 {% load i18n %} 
 {% block content %} 
-<h1>{% trans "Compose Message"%}</h1>
-<form action="" method="post">
-{% csrf_token %} 
-<table>
-{{ form.as_table }}
-</table>
-<input type="submit" value="{% trans "Send" %} &raquo;"/>
-</form>
 
+<div class="row">
+<div class="main_container">
+  	<div class="col-md-12 col-sm-3 col-xs-12 ">
+    	<center><h3>Compose message</h3>
+		<form action="" method="post">
+		{% csrf_token %} 
+		<table>
+		{{ form.as_table }}
+		</table>
+		<input type="submit" value="{% trans "Send" %}"/>
+		</form></center>
+	</div><br>
+		
+<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="tile-stats">
+        <div class="profile_img">
+	        <div class="avatar-view" title="Avatar">
+	          <img src="/static/images/img.jpg" alt="Avatar" align="middle">
+	        </div>
+        <!-- Loading state -->
+        	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+
+    	</div>
+    	<h3>{{username}}</h3>
+
+    	<ul class="list-unstyled user_data">
+     	 <li><i class="fa fa-map-marker user-profile-icon"></i> Age: {{age}}, Gender: {{gender}}
+     	 </li>
+
+	      <li>
+	        <i class="fa fa-briefcase user-profile-icon"></i> 
+	        
+	        Goal Plan: {{goal}}
+	      </li>
+
+	      <li class="m-top-xs">
+	        <i class="fa fa-external-link user-profile-icon"></i>
+	        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
+	      </li>
+	    </ul>
+
+	    <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+	    <br />
+    </div>
+</div>
+<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="tile-stats">
+        <div class="profile_img">
+	        <div class="avatar-view" title="Avatar">
+	          <img src="/static/images/img.jpg" alt="Avatar" align="middle">
+	        </div>
+        <!-- Loading state -->
+        	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+
+    	</div>
+    	<h3>{{username}}</h3>
+
+    	<ul class="list-unstyled user_data">
+     	 <li><i class="fa fa-map-marker user-profile-icon"></i> Age: {{age}}, Gender: {{gender}}
+     	 </li>
+
+	      <li>
+	        <i class="fa fa-briefcase user-profile-icon"></i> 
+	        
+	        Goal Plan: {{goal}}
+	      </li>
+
+	      <li class="m-top-xs">
+	        <i class="fa fa-external-link user-profile-icon"></i>
+	        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
+	      </li>
+	    </ul>
+
+	    <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+	    <br />
+    </div>
+</div>
+<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="tile-stats">
+        <div class="profile_img">
+	        <div class="avatar-view" title="Avatar">
+	          <img src="/static/images/img.jpg" alt="Avatar" align="middle">
+	        </div>
+        <!-- Loading state -->
+        	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+
+    	</div>
+    	<h3>{{username}}</h3>
+
+    	<ul class="list-unstyled user_data">
+     	 <li><i class="fa fa-map-marker user-profile-icon"></i> Age: {{age}}, Gender: {{gender}}
+     	 </li>
+
+	      <li>
+	        <i class="fa fa-briefcase user-profile-icon"></i> 
+	        
+	        Goal Plan: {{goal}}
+	      </li>
+
+	      <li class="m-top-xs">
+	        <i class="fa fa-external-link user-profile-icon"></i>
+	        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
+	      </li>
+	    </ul>
+
+	    <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+	    <br />
+    </div>
+</div>
+<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="tile-stats">
+        <div class="profile_img">
+	        <div class="avatar-view" title="Avatar">
+	          <img src="/static/images/img.jpg" alt="Avatar" align="middle">
+	        </div>
+        <!-- Loading state -->
+        	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+
+    	</div>
+    	<h3>{{username}}</h3>
+
+    	<ul class="list-unstyled user_data">
+     	 <li><i class="fa fa-map-marker user-profile-icon"></i> Age: {{age}}, Gender: {{gender}}
+     	 </li>
+
+	      <li>
+	        <i class="fa fa-briefcase user-profile-icon"></i> 
+	        
+	        Goal Plan: {{goal}}
+	      </li>
+
+	      <li class="m-top-xs">
+	        <i class="fa fa-external-link user-profile-icon"></i>
+	        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
+	      </li>
+	    </ul>
+
+	    <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+	    <br />
+    </div>
+</div>
+
+
+  </div>
+</div>
 {% endblock %}
