@@ -11,6 +11,7 @@ from django.conf import settings
 from django_messages.models import Message
 from django_messages.forms import ComposeForm
 from django_messages.utils import format_quote, get_user_model, get_username_field
+from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_extended,backtracker,hiptracker,thightracker
 
 User = get_user_model()
 
@@ -109,9 +110,17 @@ def compose(request, recipient=None, form_class=ComposeForm,
         if recipient is not None:
             recipients = [u for u in User.objects.filter(**{'%s__in' % get_username_field(): [r.strip() for r in recipient.split('+')]})]
             form.fields['recipient'].initial = recipients
+    username=request.user
+    obj=userprofile_extended.objects.filter(user_id=username)
+    profilepic="/media/avatar.png"
+    obj_count=obj.count()
+    if obj_count>0:
+        for i in obj:
+            profilepic=i.image.url
 
     return render_to_response(template_name, {
         'form': form,
+        'profilepic':profilepic,
     }, context_instance=RequestContext(request))
 
 @login_required

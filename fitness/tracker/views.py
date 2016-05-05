@@ -189,9 +189,17 @@ def bodytracker(request):
 @login_required
 def weightprogress(request):
 	username=request.user
+	obj=userprofile_extended.objects.filter(user_id=username)
+	profilepic="/media/avatar.png"
+	obj_count=obj.count()
+	if obj_count>0:
+		for i in obj:
+			profilepic=i.image.url
 	obj = basictracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
 	x=[]
 	y=[]
+	
+
 	for i in obj:
 		print("Object is:")
 		print(i.datetime.date())
@@ -204,6 +212,7 @@ def weightprogress(request):
 		message="You haven't updated your weight details in your profile. Please enter your weight below:"
 		
 		username=request.user
+
 		if request.method=='POST':
 			form= basictrackerForm(request.POST)
 			if form.is_valid():
@@ -228,6 +237,10 @@ def weightprogress(request):
 		context={'len':1,
 				'x0':x[0],
 				'y0':y[0],
+				'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Progress Tracker",
+				'profilepic':profilepic,
 				}
 	elif len(x)==2:
 		context={'len':2,
@@ -235,6 +248,10 @@ def weightprogress(request):
 				'y0':y[0],
 				'y1':y[1],
 				'x1':x[1],
+				'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Progress Tracker",
+				'profilepic':profilepic,
 				}
 	elif len(x)==3:
 		context={'len':3,
@@ -244,6 +261,10 @@ def weightprogress(request):
 				'y1':y[1],
 				'x2':x[2],
 				'y2':y[2],
+				'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Progress Tracker",
+				'profilepic':profilepic,
 				}
 	elif len(x)==4:
 		context={'len':4,
@@ -255,6 +276,10 @@ def weightprogress(request):
 				'y2':y[2],
 				'x3':x[3],
 				'y3':y[3],
+				'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Progress Tracker",
+				'profilepic':profilepic,
 				}
 	else:
 
@@ -272,12 +297,19 @@ def weightprogress(request):
 				'y':y,
 				'username':str(username).title(),
 				'username_original':username,
-				'pagetitle': "Progress Tracker",	}
+				'pagetitle': "Progress Tracker",
+				'profilepic':profilepic,	}
 	return render(request, "user_weightprogress.html", context)
 
 @login_required
 def bodyprogress(request):
 	username=request.user
+	obj=userprofile_extended.objects.filter(user_id=username)
+	profilepic="/media/avatar.png"
+	obj_count=obj.count()
+	if obj_count>0:
+		for i in obj:
+			profilepic=i.image.url
 	obj = bisceptracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
 	x=[]
 	y=[]
@@ -294,14 +326,19 @@ def bodyprogress(request):
 		message_biscep="No Biscep record found. Please update your Biscep size in tracker."
 		context1={'username':str(username).title(),
 				'username_original':username,
-				'pagetitle': "Weight Tracker",
-				'message_biscep':message_biscep}
+				'message_biscep':message_biscep,
+				'pagetitle': "Progress Tracker",
+				'profilepic':profilepic,}
 		# context1.update(csrf(request))
 		# return render(request, "user_bodyprogress.html", context1)
 	elif len(x)==1:
 		context1={'len':1,
 				'x0':x[0],
 				'y0':y[0],
+				'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Progress Tracker",
+				'profilepic':profilepic,
 				}
 		
 	elif len(x)==2:
@@ -310,6 +347,10 @@ def bodyprogress(request):
 				'y0':y[0],
 				'y1':y[1],
 				'x1':x[1],
+				'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Progress Tracker",
+				'profilepic':profilepic,
 				}
 		
 	elif len(x)==3:
@@ -320,6 +361,10 @@ def bodyprogress(request):
 				'y1':y[1],
 				'x2':x[2],
 				'y2':y[2],
+				'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Progress Tracker",
+				'profilepic':profilepic,
 				}
 		
 	elif len(x)==4:
@@ -332,6 +377,10 @@ def bodyprogress(request):
 				'y2':y[2],
 				'x3':x[3],
 				'y3':y[3],
+				'username':str(username).title(),
+				'username_original':username,
+				'pagetitle': "Progress Tracker",
+				'profilepic':profilepic,
 				}
 		
 	elif len(x)>4:
@@ -349,7 +398,8 @@ def bodyprogress(request):
 				'y':y,
 				'username':str(username).title(),
 				'username_original':username,
-				'pagetitle': "Progress Tracker",	}
+				'pagetitle': "Progress Tracker",
+				'profilepic':profilepic,	}
 		# return render(request, "user_bodyprogress.html", context1)
 
 
