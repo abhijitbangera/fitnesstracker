@@ -1,0 +1,150 @@
+@font-face {
+    font-family: 'BebasRegular';
+    src: url('../BEBAS___-webfont.eot');
+    src: url('../BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../BEBAS___-webfont.woff') format('woff'),
+         url('../BEBAS___-webfont.ttf') format('truetype'),
+         url('../BEBAS___-webfont.svg#BebasRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+	padding: 0;
+	background: url('background.gif');
+	margin: 0;
+}
+
+#images-box {
+	/* The total width of the image-box, mainly for centering */
+	width: 850px;
+	margin: 0px auto;
+	position: relative;
+	top: 70px;
+}
+
+.image-lightbox img {
+	/* Inherit the width and height from the parent element */
+	width: inherit;
+	height: inherit;
+	z-index: 3000;
+}
+
+.holder {
+	/* The width and height, you can change these */
+	width: 250px;
+	height: 166px;
+	/* Float left, so everything aligns right */
+	float: left;
+	margin: 0 20px 0 0;
+}
+
+.image-lightbox {
+	/* Inherit width and height from the .holder */
+	width: inherit;
+	height: inherit;
+	padding: 10px;
+	/* Box shadow */
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+	background: #fff;
+	border-radius: 5px;
+	/* Position absolutely so we can zoom it out later */
+	position: absolute;
+	top: 0;
+	font-family: Arial, sans-serif;
+	/* Transitions to provide some eye candy */
+	-webkit-transition: all ease-in 0.5s;
+	-moz-transition: all ease-in 0.5s;
+	-ms-transition: all ease-in 0.5s;
+	-o-transition: all ease-in 0.5s;
+}
+
+.image-lightbox span {
+	display: none;
+}
+
+.image-lightbox .expand {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	z-index: 4000;
+	background: rgba(0,0,0,0); /* Fixes an IE bug */
+	left: 0;
+}
+
+.image-lightbox .close {
+	position: absolute;
+	width: 20px; height: 20px;
+	right: 20px; top: 20px;
+}
+
+.image-lightbox .close a {
+	height: auto; width: auto;
+	padding: 5px 10px;
+	color: #fff;
+	text-decoration: none;
+	background: #22272c;
+	box-shadow: inset 0px 24px 20px -15px rgba(255, 255, 255, 0.1), inset 0px 0px 10px rgba(0,0,0,0.4), 0px 0px 30px rgba(255,255,255,0.4);
+	border-radius: 5px;
+	font-weight: bold;
+	float: right;
+}
+
+.image-lightbox .close a:hover {
+	box-shadow: inset 0px -24px 20px -15px rgba(255, 255, 255, 0.01), inset 0px 0px 10px rgba(0,0,0,0.4), 0px 0px 20px rgba(255,255,255,0.4);
+}
+
+div[id^=image]:target {
+	width: 450px;
+	height: 300px;
+	z-index: 5000;
+	top: 50px;
+	left: 200px;
+}
+div[id^=image]:target .close {
+	display: block;
+}
+
+div[id^=image]:target .expand {
+	display: none;
+}
+
+div#image-1:target, div#image-2:target, div#image-3:target { left: 200px; }
+
+div#image-1 { left: 0; }
+div#image-2 { left: 290px; }
+div#image-3 { left: 580px; }
+
+
+/* ------- IGNORE */
+
+#header {
+	width: 100%;
+	margin: 0px auto;
+}
+
+#header #center {
+	width: 350px;
+	margin: 0px auto;	
+}
+
+#header a {
+	font-family: 'BebasRegular', sans-serif;
+	text-decoration: none;
+	color: #000;
+	font-size: 50px;
+}
+
+#header .head {
+}
+#header .sub-head {
+	color: #909090;
+	display: block;
+	font-size: 18px;
+	position: absolute;
+	left: 20px;
+	top: 25px;
+	vertical-align: middle;
+}

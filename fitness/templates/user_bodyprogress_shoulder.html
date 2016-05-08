@@ -1,80 +1,80 @@
 
-{% if message_chest %}
+{% if message_shoulder %}
 
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Chest Progress<small>Graph</small></h2>
+        <h2>Shoulder Progress<small>Graph</small></h2>
           
         <div class="clearfix"></div>
         
       </div>
       <div class="x_content" >
-        {{message_chest}}
+        {{message_shoulder}}
       </div>
     </div>
   </div>
-{% elif len_chest == 1 %}
+{% elif len_shoulder == 1 %}
 
 
   <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Chest Progress<small>Graph</small></h2>
+        <h2>Shoulder Progress<small>Graph</small></h2>
           
         <div class="clearfix"></div>
         
       </div>
       <div class="x_content" >
-        <canvas id="chestChart1"></canvas>
+        <canvas id="shoulderChart1"></canvas>
       </div>
     </div>
   </div>
 
-{% elif len_chest == 2 %}
+{% elif len_shoulder == 2 %}
 
   <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Chest Progress<small>Graph</small></h2>
+        <h2>Shoulder Progress<small>Graph</small></h2>
         
           
         <div class="clearfix"></div>
       </div>
       <div class="x_content" >
-        <canvas id="chestChart2"></canvas>
+        <canvas id="shoulderChart2"></canvas>
       </div>
     </div>
   </div>
 
-{% elif len_chest == 3 %}
+{% elif len_shoulder == 3 %}
 
   <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Chest Progress<small>Graph</small></h2>
+        <h2>Shoulder Progress<small>Graph</small></h2>
         
           
         <div class="clearfix"></div>
       </div>
       <div class="x_content" >
-        <canvas id="chestChart3"></canvas>
+        <canvas id="shoulderChart3"></canvas>
       </div>
     </div>
   </div>
 
-{% elif len_chest == 4 %}
+{% elif len_shoulder == 4 %}
 
   <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Chest Progress<small>Graph</small></h2>
+        <h2>Shoulder Progress<small>Graph</small></h2>
         
           
         <div class="clearfix"></div>
       </div>
       <div class="x_content" >
-        <canvas id="chestChart4"></canvas>
+        <canvas id="shoulderChart4"></canvas>
       </div>
     </div>
   </div>
@@ -84,13 +84,13 @@
   <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Chest Progress<small>Graph{{len_chest}}</small></h2>
+        <h2>Shoulder Progress<small>Graph{{len_shoulder}}</small></h2>
         
           
         <div class="clearfix"></div>
       </div>
       <div class="x_content" >
-        <canvas id="chestChart5"></canvas>
+        <canvas id="shoulderChart5"></canvas>
       </div>
     </div>
   </div>

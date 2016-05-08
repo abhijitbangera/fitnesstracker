@@ -5,7 +5,7 @@
 <div class="row">
 <div class="main_container">
   	<div class="col-md-12 col-sm-3 col-xs-12 ">
-    	<center><h3>Compose message</h3>
+    	<center><h3s>Compose message</h3>
 		<form action="" method="post">
 		{% csrf_token %} 
 		<table>
@@ -19,31 +19,36 @@
       <div class="tile-stats">
         <div class="profile_img">
 	        <div class="avatar-view" title="Avatar">
-	          <img src="/static/images/img.jpg" alt="Avatar" align="middle">
+	          <img src="{{trainerprofilepic}}" alt="Avatar" align="middle">
 	        </div>
         <!-- Loading state -->
         	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
 
     	</div>
-    	<h3>{{username}}</h3>
+    	
+    	
 
     	<ul class="list-unstyled user_data">
-     	 <li><i class="fa fa-map-marker user-profile-icon"></i> Age: {{age}}, Gender: {{gender}}
-     	 </li>
 
-	      <li>
-	        <i class="fa fa-briefcase user-profile-icon"></i> 
-	        
-	        Goal Plan: {{goal}}
-	      </li>
+	    	<li class="m-top-xs">
+		        <i class="fa fa-suitcase user-profile-icon"></i>
+		        <b>Designation: Fitness Trainer</b>
+		    </li>
+	     	<li><i class="fa fa-info user-profile-icon"></i> Age: {{trainer_age}}, Gender: {{trainer_gender}}
+	     	</li>
 
-	      <li class="m-top-xs">
-	        <i class="fa fa-external-link user-profile-icon"></i>
-	        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
-	      </li>
+		    <li>
+		       <i class="fa fa-at user-profile-icon"></i> 
+		        Receipient: {{trainer}}
+		    </li>
+
+		    <li class="m-top-xs">
+		       <i class="fa fa-external-link user-profile-icon"></i>
+		       About: {{trainer_about}}
+		    </li>
 	    </ul>
 
-	    <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+	    
 	    <br />
     </div>
 </div>
@@ -51,31 +56,33 @@
       <div class="tile-stats">
         <div class="profile_img">
 	        <div class="avatar-view" title="Avatar">
-	          <img src="/static/images/img.jpg" alt="Avatar" align="middle">
+	          <img src="{{nutritionistprofilepic}}" alt="Avatar" align="middle">
 	        </div>
         <!-- Loading state -->
         	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
 
     	</div>
-    	<h3>{{username}}</h3>
-
     	<ul class="list-unstyled user_data">
-     	 <li><i class="fa fa-map-marker user-profile-icon"></i> Age: {{age}}, Gender: {{gender}}
-     	 </li>
 
-	      <li>
-	        <i class="fa fa-briefcase user-profile-icon"></i> 
-	        
-	        Goal Plan: {{goal}}
-	      </li>
+	    	<li class="m-top-xs">
+		        <i class="fa fa-suitcase user-profile-icon"></i>
+		        <b>Designation: Nutritionist/Dietician</b>
+		    </li>
+	     	<li><i class="fa fa-info user-profile-icon"></i> Age: {{nutritionist_age}}, Gender: {{nutritionist_gender}}
+	     	</li>
 
-	      <li class="m-top-xs">
-	        <i class="fa fa-external-link user-profile-icon"></i>
-	        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
-	      </li>
+		    <li>
+		       <i class="fa fa-at user-profile-icon"></i> 
+		        Receipient: {{nutritionist}}
+		    </li>
+
+		    <li class="m-top-xs">
+		       <i class="fa fa-external-link user-profile-icon"></i>
+		       About: {{nutritionist_about}}
+		    </li>
 	    </ul>
 
-	    <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+	    
 	    <br />
     </div>
 </div>
@@ -83,31 +90,33 @@
       <div class="tile-stats">
         <div class="profile_img">
 	        <div class="avatar-view" title="Avatar">
-	          <img src="/static/images/img.jpg" alt="Avatar" align="middle">
+	          <img src="{{supplimentexpertprofilepic}}" alt="Avatar" align="middle">
 	        </div>
         <!-- Loading state -->
         	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
 
     	</div>
-    	<h3>{{username}}</h3>
-
     	<ul class="list-unstyled user_data">
-     	 <li><i class="fa fa-map-marker user-profile-icon"></i> Age: {{age}}, Gender: {{gender}}
-     	 </li>
 
-	      <li>
-	        <i class="fa fa-briefcase user-profile-icon"></i> 
-	        
-	        Goal Plan: {{goal}}
-	      </li>
+	    	<li class="m-top-xs">
+		        <i class="fa fa-suitcase user-profile-icon"></i>
+		        <b>Designation: Suppliment Expert</b>
+		    </li>
+	     	<li><i class="fa fa-info user-profile-icon"></i> Age: {{supplimentexpert_age}}, Gender: {{supplimentexpert_gender}}
+	     	</li>
 
-	      <li class="m-top-xs">
-	        <i class="fa fa-external-link user-profile-icon"></i>
-	        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
-	      </li>
+		    <li>
+		       <i class="fa fa-at user-profile-icon"></i> 
+		        Receipient: {{supplimentexpert}}
+		    </li>
+
+		    <li class="m-top-xs">
+		       <i class="fa fa-external-link user-profile-icon"></i>
+		       About: {{supplimentexpert_about}}
+		    </li>
 	    </ul>
 
-	    <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+	    
 	    <br />
     </div>
 </div>
@@ -115,35 +124,36 @@
       <div class="tile-stats">
         <div class="profile_img">
 	        <div class="avatar-view" title="Avatar">
-	          <img src="/static/images/img.jpg" alt="Avatar" align="middle">
+	          <img src="{{contactprofilepic}}" alt="Avatar" align="middle">
 	        </div>
         <!-- Loading state -->
         	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
 
     	</div>
-    	<h3>{{username}}</h3>
-
     	<ul class="list-unstyled user_data">
-     	 <li><i class="fa fa-map-marker user-profile-icon"></i> Age: {{age}}, Gender: {{gender}}
-     	 </li>
 
-	      <li>
-	        <i class="fa fa-briefcase user-profile-icon"></i> 
-	        
-	        Goal Plan: {{goal}}
-	      </li>
+	    	<li class="m-top-xs">
+		        <i class="fa fa-suitcase user-profile-icon"></i>
+		        <b>Designation: Helpdesk Team</b>
+		    </li>
+	     	<li><i class="fa fa-info user-profile-icon"></i> Age: {{contact_age}}, Gender: {{contact_gender}}
+	     	</li>
 
-	      <li class="m-top-xs">
-	        <i class="fa fa-external-link user-profile-icon"></i>
-	        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
-	      </li>
+		    <li>
+		       <i class="fa fa-at user-profile-icon"></i> 
+		        Receipient: {{contact}}
+		    </li>
+
+		    <li class="m-top-xs">
+		       <i class="fa fa-external-link user-profile-icon"></i>
+		       About: {{contact_about}}
+		    </li>
 	    </ul>
 
-	    <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+	    
 	    <br />
     </div>
 </div>
-
 
   </div>
 </div>

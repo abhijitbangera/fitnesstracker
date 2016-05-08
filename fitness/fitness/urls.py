@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^goalsettings/', 'tracker.views.goal_settings'),
     url(r'^profilesettings/', 'tracker.views.profile_settings'),
     url(r'^messages/', include('django_messages.urls')),
+     url(r'^photos/', 'tracker.views.photosView'),
     
     
 ]

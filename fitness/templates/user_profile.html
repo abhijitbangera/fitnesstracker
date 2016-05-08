@@ -1,9 +1,12 @@
-{% extends "loggedin_base.html" %}
+
+{% extends template %}
+
 
 {% block content %}
-
+ <div class="row">
 <div class="main_container">
-  <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+
+  <div class="col-md-3 col-sm-3 col-sm-6 col-xs-12 profile_left">
 
     <div class="profile_img">
 
@@ -11,15 +14,20 @@
 
         <!-- Current avatar -->
         <div class="avatar-view" title="Avatar">
-          <img src="{{profilepic}}" alt="Avatar" align="middle">
+          <img src="{{profilepic}}" alt="Avatar" >
         </div>
+
+
+
         <!-- Loading state -->
         <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
 
       <!-- end of image cropping -->
 
-    </div>
-    <h3>{{username}}</h3>
+
+
+    </div><br>
+    <h4>{{username}}</h4>
 
     <ul class="list-unstyled user_data">
       <li><i class="fa fa-map-marker user-profile-icon"></i> Age: {{age}}, Gender: {{gender}}
@@ -33,57 +41,1563 @@
 
       <li class="m-top-xs">
         <i class="fa fa-external-link user-profile-icon"></i>
-        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
+        About: {{about}}
       </li>
     </ul>
 
-    <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
-    <br />
     
 </div>
 
   <div class="row">
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
       <div class="tile-stats">
         <div class="icon"><i class="fa fa-male"></i>
         </div>
         <div class="count">{{weight}}</div>
 
         <h3>Weight</h3>
+        {% if weight_date != "///" %}
         <p>Weigh as of {{weight_date}}</p>
+        {% endif %}
       </div>
     </div>
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
       <div class="tile-stats">
         <div class="icon"><i class="fa fa-arrows-v"></i>
         </div>
         <div class="count">{{biscep}}</div>
 
         <h3>Biscep</h3>
+        {% if biscep_date != "///" %}
         <p>Biscep size as of {{biscep_date}}</p>
+        {% endif %}
       </div>
     </div>
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
       <div class="tile-stats">
         <div class="icon"><i class="fa fa-arrows-h"></i>
         </div>
         <div class="count">{{chest}}</div>
 
         <h3>Chest</h3>
+         {% if chest_date != "///" %}
         <p>Chest size as of {{chest_date}}</p>
+        {% endif %}
       </div>
     </div>
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
       <div class="tile-stats">
-        <div class="icon"><i class="fa fa-caret-square-o-right"></i>
+        <div class="icon"><i class="fa fa-arrows"></i>
         </div>
-        <div class="count">179</div>
+        <div class="count">{{back}}</div>
 
-        <h3>New Sign ups</h3>
-        <p>Lorem ipsum psdea itgum rixt.</p>
+        <h3>Back</h3>
+         {% if back_date != "///" %}
+        <p>Back size as of {{back_date}}</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
+      <div class="tile-stats">
+        <div class="icon"><i class="fa fa-undo"></i>
+        </div>
+        <div class="count">{{thigh}}</div>
+
+        <h3>Thigh</h3>
+         {% if thigh_date != "///" %}
+        <p>Thigh size as of {{thigh_date}}</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
+      <div class="tile-stats">
+        <div class="icon"><i class="fa fa-minus"></i>
+        </div>
+        <div class="count">{{shoulder}}</div>
+
+        <h3>Shoulder</h3>
+         {% if shoulder_date != "///" %}
+        <p>Shoulder size as of {{shoulder_date}}</p>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Photo album -->
+
+<div class="x_content">
+
+  <div class="row">
+    
+    <div class="col-md-55">
+      <div class="thumbnail">
+        <div class="image view view-first">
+          <img style="width: 100%; display: block;" src={{img1}} alt="image" />
+          <div class="mask no-caption">            
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-55">
+      <div class="thumbnail">
+        <div class="image view view-first">
+          <img style="width: 100%; display: block;" src={{img2}} alt="image" />
+          <div class="mask no-caption">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-55">
+      <div class="thumbnail">
+        <div class="image view view-first">
+          <img style="width: 100%; display: block;" src={{img3}} alt="image" />
+          <div class="mask no-caption">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-55">
+      <div class="thumbnail">
+        <div class="image view view-first">
+          <img style="width: 100%; display: block;" src={{img4}} alt="image" />
+          <div class="mask no-caption">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-55">
+      <div class="thumbnail">
+        <div class="image view view-first">
+          <img style="width: 100%; display: block;" src={{img5}} alt="image" />
+          <div class="mask no-caption">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+   </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Graphs begin here -->
+
+<div class="row">
+{% if message %}
+
+<center><div class="col-md-12 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Weight Progress<small>Graph</small></h2>
+          
+        <div class="clearfix"></div>
+        
+      </div>
+      <div class="x_content" >
+        {{message}}
+      </div>
+    </div>
+  </div></center>
+{% elif len == 1 %}
+<div class="row" >
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Weight Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="lineChart1"></canvas>
       </div>
     </div>
   </div>
+</div>
+{% elif len == 2 %}
+<div class="row" >
+  <div class="col-md-12 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Weight Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="lineChart2"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+{% elif len == 3 %}
+<div class="row" >
+  <div class="col-md-12 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Weight Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="lineChart3"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+{% elif len == 4 %}
+<div class="row" >
+  <div class="col-md-12 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Weight Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="lineChart4"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="row" >
+  <div class="col-md-12 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Weight Progress<small>Graph</small></h2>
+        
+          
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content" >
+        <canvas id="lineChart5"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+</div>
+
+<div class="row" >
+{% include 'user_bodyprogress_biscep.html' %}
+{% include 'user_bodyprogress_chest.html' %}
+{% include 'user_bodyprogress_back.html' %}
+{% include 'user_bodyprogress_hip.html' %}
+{% include 'user_bodyprogress_thigh.html' %}
+{% include 'user_bodyprogress_shoulder.html' %}
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("lineChart1");
+    var lineChart1 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{w10}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{w20}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("lineChart2");
+    var lineChart2 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{w11}}"),customDate("{{w10}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{w21}},{{w20}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("lineChart3");
+    var lineChart3 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{w12}}"),customDate("{{w11}}"),customDate("{{w10}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{w22}},{{w21}},{{w20}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("lineChart4");
+    var lineChart4 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{w13}}"),customDate("{{w12}}"),customDate("{{w11}}"),customDate("{{w10}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{w23}},{{w22}},{{w21}},{{w20}}]
+        }, ]
+      },
+    });
+</script>
+
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("lineChart5");
+    var lineChart5 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{w14}}"), customDate("{{w13}}"),customDate("{{w12}}"),customDate("{{w11}}"),customDate("{{w10}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{w24}},{{w23}},{{w22}},{{w21}},{{w20}}]
+        }, ]
+      },
+    });
+</script>
+
+<!-- body profile graph script -->
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("biscepChart1");
+    var biscepChart1 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{x0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{y0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("biscepChart2");
+    var biscepChart2 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{x1}}"),customDate("{{x0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{y1}},{{y0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("biscepChart3");
+    var biscepChart3 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{x2}}"),customDate("{{x1}}"),customDate("{{x0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{y2}},{{y1}},{{y0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("biscepChart4");
+    var biscepChart4 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{x3}}"),customDate("{{x2}}"),customDate("{{x1}}"),customDate("{{x0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{y3}},{{y2}},{{y1}},{{y0}}]
+        }, ]
+      },
+    });
+</script>
+
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("biscepChart5");
+    var biscepChart5 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{x4}}"), customDate("{{x3}}"),customDate("{{x2}}"),customDate("{{x1}}"),customDate("{{x0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{y4}},{{y3}},{{y2}},{{y1}},{{y0}}]
+        }, ]
+      },
+    });
+</script>
+
+
+<!--Chest script -->
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("chestChart1");
+    var chestChart1 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{a0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{b0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("chestChart2");
+    var chestChart2 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{a1}}"),customDate("{{a0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{b1}},{{b0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("chestChart3");
+    var chestChart3 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{a2}}"),customDate("{{a1}}"),customDate("{{a0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{b2}},{{b1}},{{b0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("chestChart4");
+    var chestChart4 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{a3}}"),customDate("{{a2}}"),customDate("{{a1}}"),customDate("{{a0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{b3}},{{b2}},{{b1}},{{b0}}]
+        }, ]
+      },
+    });
+</script>
+
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("chestChart5");
+    var chestChart5 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{a4}}"), customDate("{{a3}}"),customDate("{{a2}}"),customDate("{{a1}}"),customDate("{{a0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{b4}},{{b3}},{{b2}},{{b1}},{{b0}}]
+        }, ]
+      },
+    });
+</script>
+
+
+
+<!--Back script -->
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("backChart1");
+    var backChart1 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{c0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{d0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("backChart2");
+    var backChart2 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{c1}}"),customDate("{{c0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{d1}},{{d0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("backChart3");
+    var backChart3 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{c2}}"),customDate("{{c1}}"),customDate("{{c0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{d2}},{{d1}},{{d0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("backChart4");
+    var backChart4 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{c3}}"),customDate("{{c2}}"),customDate("{{c1}}"),customDate("{{c0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{d3}},{{d2}},{{d1}},{{d0}}]
+        }, ]
+      },
+    });
+</script>
+
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("backChart5");
+    var backChart5 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{c4}}"), customDate("{{c3}}"),customDate("{{c2}}"),customDate("{{c1}}"),customDate("{{c0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{d4}},{{d3}},{{d2}},{{d1}},{{d0}}]
+        }, ]
+      },
+    });
+</script>
+
+
+<!-- Hip script -->
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("hipChart1");
+    var hipChart1 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{e0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverhipgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{f0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("hipChart2");
+    var hipChart2 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{e1}}"),customDate("{{e0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverhipgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{f1}},{{f0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("hipChart3");
+    var hipChart3 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{e2}}"),customDate("{{e1}}"),customDate("{{e0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{f2}},{{f1}},{{f0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("hipChart4");
+    var hipChart4 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{e3}}"),customDate("{{e2}}"),customDate("{{e1}}"),customDate("{{e0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{f3}},{{f2}},{{f1}},{{f0}}]
+        }, ]
+      },
+    });
+</script>
+
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("hipChart5");
+    var hipChart5 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{e4}}"), customDate("{{e3}}"),customDate("{{e2}}"),customDate("{{e1}}"),customDate("{{e0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{f4}},{{f3}},{{f2}},{{f1}},{{f0}}]
+        }, ]
+      },
+    });
+</script>
+
+
+<!-- Thigh script -->
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("thighChart1");
+    var thighChart1 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{g0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{h0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("thighChart2");
+    var thighChart2 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{g1}}"),customDate("{{g0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{h1}},{{h0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("thighChart3");
+    var thighChart3 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{g2}}"),customDate("{{g1}}"),customDate("{{g0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{h2}},{{h1}},{{h0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("thighChart4");
+    var thighChart4 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{g3}}"),customDate("{{g2}}"),customDate("{{g1}}"),customDate("{{g0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{h3}},{{h2}},{{h1}},{{h0}}]
+        }, ]
+      },
+    });
+</script>
+
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("thighChart5");
+    var thighChart5 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{e4}}"), customDate("{{e3}}"),customDate("{{e2}}"),customDate("{{e1}}"),customDate("{{e0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{f4}},{{f3}},{{f2}},{{f1}},{{f0}}]
+        }, ]
+      },
+    });
+</script>
+
+
+
+
+<!--Shoulder script -->
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("shoulderChart1");
+    var shoulderChart1 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{j0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{k0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("shoulderChart2");
+    var shoulderChart2 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{j1}}"),customDate("{{j0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{k1}},{{k0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("shoulderChart3");
+    var shoulderChart3 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{j2}}"),customDate("{{j1}}"),customDate("{{j0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{k2}},{{k1}},{{k0}}]
+        }, ]
+      },
+    });
+</script>
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("shoulderChart4");
+    var shoulderChart4 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{j3}}"),customDate("{{j2}}"),customDate("{{j1}}"),customDate("{{j0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{k3}},{{k2}},{{k1}},{{k0}}]
+        }, ]
+      },
+    });
+</script>
+
+
+<script>
+    Chart.defaults.global.legend = {
+      enabled: true
+    };
+  
+  var monthsArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+  
+  // To convert unformatted date string to custom date string
+  var customDate = function(dateString){
+    // alert(dateString);
+    var d = new Date(dateString);
+    return monthsArray[d.getMonth()] + ' '+ d.getDate() + ' '+ d.getFullYear();
+  }
+  
+    // Line chart
+    var ctx = document.getElementById("shoulderChart5");
+    var shoulderChart5 = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [customDate("{{j4}}"), customDate("{{j3}}"),customDate("{{j2}}"),customDate("{{j1}}"),customDate("{{j0}}")],
+
+        datasets: [{
+          label: "Weight",
+          backgroundColor: "rgba(38, 185, 154, 0.31)",
+          borderColor: "rgba(38, 185, 154, 0.7)",
+          pointBorderColor: "rgba(38, 185, 154, 0.7)",
+          pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointBorderWidth: 1,
+          data: [{{k4}},{{k3}},{{k2}},{{k1}},{{k0}}]
+        }, ]
+      },
+    });
+</script>
+
 
 
 

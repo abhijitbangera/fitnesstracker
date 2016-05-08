@@ -16,7 +16,6 @@
 
   <link href="/static/fonts/css/font-awesome.min.css" rel="stylesheet">
   <link href="/static/css/animate.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
 
   <!-- Custom styling plus plugins -->
   <link href="/static/css/custom.css" rel="stylesheet">
@@ -49,22 +48,12 @@
         <div class="left_col scroll-view">
 
           <div class="navbar nav_title" style="border: 0;">
-            <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>Fitness</span></a>
+            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Fitness</span></a>
           </div>
           <div class="clearfix"></div>
 
           <!-- menu prile quick info -->
-          <div class="profile">
-            <div class="profile_pic">
-              <a href="/user/{{username_original}}">
-              <img src="{{profilepic}}" alt="..." class="img-circle profile_img"></a> 
-              <!-- <img src="/static/images/img.jpg" alt="..." class="img-circle profile_img"></a> -->
-            </div>
-            <div class="profile_info">
-              <span>Welcome,</span>
-              <h2> {{username}}</h2>
-            </div>
-          </div>
+         
           <!-- /menu prile quick info -->
 
           <br />
@@ -75,61 +64,9 @@
             <div class="menu_section">
               <h3>Time to Stay Fit</h3>
               <ul class="nav side-menu">
-                <li><a href="/"><i class="fa fa-home"></i> Home </a>
+                <li><a href="/accounts/login/"><i class="fa fa-desktop"></i> Login </a>
                 </li>
-                <li><a href="/user/{{username_original}}"><i class="fa fa-male"></i> My Profile </a>
-                </li>
-                <li><a><i class="fa fa-envelope"></i> Messages ({{ messages_inbox_count }}) <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu" style="display: none">
-                    <li><a href="/messages/inbox">My Inbox ({{ messages_inbox_count }}) </a>
-                    </li>
-                    <li><a href="/messages/compose">Fitness Trainer</a>
-                    </li>
-                    <li><a href="/messages/compose">Nutritionist/Dietician</a>
-                    </li>
-                    <li><a href="/messages/compose">Suppliments and others</a>
-                    </li>
-                    
-                  </ul>
-                </li>
-                <li><a href="/photos"><i class="fa fa-smile-o"></i> Photos </a>
-                </li>
-                <li><a><i class="fa fa-edit"></i> Tracker <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu" style="display: none">
-                    <li><a href="/weighttracker/">Weight Tracker</a>
-                    </li>
-                    <li><a href="/bodytracker/">Body Tracker</a>
-                    </li>
-                    <li><a href="form_upload.html">Advance Tracker</a>
-                    </li>
-                    <li><a href="form_wizards.html">Food Tracker</a>
-                    </li>
-                    <li><a href="form_buttons.html">Others</a>
-                    </li>
-                  </ul>
-                </li>
-                <li><a><i class="fa fa-bar-chart-o"></i> Progress Tracker <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu" style="display: none">
-                    <li><a href="/weightprogress">Weight Progress</a>
-                    </li>
-                    <li><a href="/bodyprogress">Body Progress</a>
-                    </li>
-                    <li><a href="morisjs.html">Motivation Level</a>
-                    </li>
-                    <li><a href="other_charts.html">Other Charts </a>
-                    </li>
-                  </ul>
-                </li>
-                <li><a><i class="fa fa-table"></i> Settings <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu" style="display: none">
-                    <li><a href="/goalsettings/">Goal Setting</a>
-                    </li>
-                    <li><a href="/profilesettings/">Profile Settings</a>
-                    </li>
-                  </ul>
-                </li>
-                
-              </ul>
+                <li><a href="/accounts/register/"><i class="fa fa-file-text-o"></i> Register</a>
             </div>
            
 
@@ -163,10 +100,7 @@
             <div class="nav toggle">
               <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="/accounts/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-              </li>
-            </ul>
+            
               
             
         </div>

@@ -7,13 +7,13 @@ from tracker.models import userprofile_extended
 def homepage(request):
 	username=request.user
 	obj=userprofile_extended.objects.filter(user_id=username)
-
+	
 	obj_count=obj.count()
 	if obj_count>0:
 		for i in obj:
-			print("-----------")
-			print(i.image.url)
-			print("-----------")
+			# print("-----------")
+			# print(i.image.url)
+			# print("-----------")
 			goal_id=i.goal
 			if goal_id =="1":
 				goal_plan="Weight Loss"
@@ -25,7 +25,10 @@ def homepage(request):
 				goal_plan="Stay Fit"
 			else:
 				goal_plan="Not Set"
-			profilepic=i.image.url
+			if i.image:
+				profilepic=i.image.url
+			else:
+				profilepic="/media/avatar.png"
 		context={'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Dashboard",
@@ -64,3 +67,4 @@ def handler500(request):
                                   context_instance=RequestContext(request))
     response.status_code = 500
     return response
+

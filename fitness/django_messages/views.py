@@ -11,7 +11,7 @@ from django.conf import settings
 from django_messages.models import Message
 from django_messages.forms import ComposeForm
 from django_messages.utils import format_quote, get_user_model, get_username_field
-from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_extended,backtracker,hiptracker,thightracker
+from tracker.models import userprofile_extended
 
 User = get_user_model()
 
@@ -110,17 +110,95 @@ def compose(request, recipient=None, form_class=ComposeForm,
         if recipient is not None:
             recipients = [u for u in User.objects.filter(**{'%s__in' % get_username_field(): [r.strip() for r in recipient.split('+')]})]
             form.fields['recipient'].initial = recipients
+
+    #Trainer profile code ------------------------
     username=request.user
     obj=userprofile_extended.objects.filter(user_id=username)
     profilepic="/media/avatar.png"
+    trainerprofilepic="/media/avatar.png"
     obj_count=obj.count()
+    trainer=''
+    
     if obj_count>0:
         for i in obj:
             profilepic=i.image.url
+            trainer=i.trainer
+            nutritionist=i.nutritionist
+            supplimentexpert=i.supplimentexpert
+            contact=i.contact
+    if (trainer):
+        t = User.objects.get(username=trainer)
+        trainerobj=userprofile_extended.objects.filter(user_id=t)
+        trainerprofilepic="/media/avatar.png"
+        trainerobj_count=trainerobj.count()
+        if trainerobj_count>0:
+            for i in trainerobj:
+                trainerprofilepic=i.image.url
+                trainer_about=i.about
+                trainer_age=i.age 
+                trainer_gender=i.gender
+        
+        n = User.objects.get(username=nutritionist)
+        nutritionistobj=userprofile_extended.objects.filter(user_id=n)
+        nutritionistprofilepic="/media/avatar.png"
+        nutritionistobj_count=nutritionistobj.count()
+        if nutritionistobj_count>0:
+            for i in nutritionistobj:
+                nutritionistprofilepic=i.image.url
+                nutritionist_about=i.about
+                nutritionist_age=i.age 
+                nutritionist_gender=i.gender
 
+        s=User.objects.get(username=supplimentexpert)
+        supplimentexpertobj=userprofile_extended.objects.filter(user_id=s)
+        supplimentexpertprofilepic="/media/avatar.png"
+        supplimentexpertobj_count=supplimentexpertobj.count()
+        if supplimentexpertobj_count>0:
+            for i in supplimentexpertobj:
+                supplimentexpertprofilepic=i.image.url
+                supplimentexpert_about=i.about
+                supplimentexpert_age=i.age 
+                supplimentexpert_gender=i.gender
+
+
+
+        c=User.objects.get(username=contact)
+        contactobj=userprofile_extended.objects.filter(user_id=c)
+        contactprofilepic="/media/avatar.png"
+        contactobj_count=contactobj.count()
+        if contactobj_count>0:
+            for i in contactobj:
+                contactprofilepic=i.image.url
+                contact_about=i.about
+                contact_age=i.age 
+                contact_gender=i.gender
+    #-------------------------------------------
+
+
+    # print(trainer)
     return render_to_response(template_name, {
         'form': form,
         'profilepic':profilepic,
+        'trainer':trainer,
+        'trainerprofilepic':trainerprofilepic,
+        'nutritionist':nutritionist,
+        'nutritionistprofilepic':nutritionistprofilepic,
+        'supplimentexpert':'supplimentexpert',
+        'supplimentexpertprofilepic':supplimentexpertprofilepic,
+        'contact':contact,
+        'contactprofilepic':contactprofilepic,
+        'trainer_about':trainer_about,
+        'trainer_age':trainer_age,
+        'trainer_gender':trainer_gender,
+        'nutritionist_about':nutritionist_about,
+        'nutritionist_age':nutritionist_age,
+        'nutritionist_gender':nutritionist_gender,
+        'supplimentexpert_about':supplimentexpert_about,
+        'supplimentexpert_age':supplimentexpert_age,
+        'supplimentexpert_gender':supplimentexpert_gender,
+        'contact_about':contact_about,
+        'contact_age':contact_age,
+        'contact_gender':contact_gender,
     }, context_instance=RequestContext(request))
 
 @login_required
