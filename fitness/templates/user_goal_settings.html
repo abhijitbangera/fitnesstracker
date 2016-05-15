@@ -1,13 +1,30 @@
 {% extends "loggedin_base.html" %}
 
 {% block content %}
-<div>
-	<center><form action="/goalsettings/" method="post">{% csrf_token %}
-		{{form.as_p}}
-		<input type="submit" value="submit">
-		
-	</form></center>
+{% if messages %}
+		<div class="alert alert-info">
+		 {% for message in messages %}
+		        {% if message.tags %} {% endif %}
+		            <center>{{ message }}</center>
+		    {% endfor %}
+		</div>
+	{% endif %}
 
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      	<div class="x_panel">
+            
+			<div>
+				<center><form action="/goalsettings/" method="post">{% csrf_token %}
+					{{form.as_p}}
+					<input type="submit" value="submit">
+					
+				</form></center>
+			</div>
+		</div>
+	</div>
 </div>
 
 

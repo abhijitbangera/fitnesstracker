@@ -1,5 +1,5 @@
 from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, render
 from django.template import RequestContext
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -7,11 +7,12 @@ from django.utils.translation import ugettext as _
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 from django.conf import settings
-
+from django.contrib import messages
 from django_messages.models import Message
 from django_messages.forms import ComposeForm
 from django_messages.utils import format_quote, get_user_model, get_username_field
 from tracker.models import userprofile_extended
+from tracker.forms import userprofile_extended_goalsettings_Form,userprofile_extended_profilesettings_Form
 
 User = get_user_model()
 
@@ -27,9 +28,21 @@ def inbox(request, template_name='django_messages/inbox.html'):
     Optional Arguments:
         ``template_name``: name of the template to use.
     """
+    profilepic="/media/avatar.png"
+    username=request.user
+    obj=userprofile_extended.objects.filter(user_id=request.user)
+    obj_count=obj.count()
+    if obj_count>0:
+                for i in obj:
+                    goal_id=i.image
+                    if goal_id!=None:
+                        profilepic=i.image.url
     message_list = Message.objects.inbox_for(request.user)
     return render_to_response(template_name, {
         'message_list': message_list,
+        'profilepic':profilepic,
+        'username':str(username).title(),
+        'username_original':username,
     }, context_instance=RequestContext(request))
 
 @login_required
@@ -118,18 +131,75 @@ def compose(request, recipient=None, form_class=ComposeForm,
     trainerprofilepic="/media/avatar.png"
     obj_count=obj.count()
     trainer=''
-    
+    nutritionist=''
+    supplimentexpert=''
+    contact=''
+    trainerprofilepic="/media/avatar.png"
+    nutritionistprofilepic="/media/avatar.png"
+    supplimentexpertprofilepic="/media/avatar.png"
+    contactprofilepic="/media/avatar.png"
+    trainer_about=''
+    trainer_age='Not Set' 
+    trainer_gender='Not Set'
+    nutritionist_about=''
+    nutritionist_age='Not Set' 
+    nutritionist_gender='Not Set'
+    supplimentexpert_about=''
+    supplimentexpert_age='Not Set' 
+    supplimentexpert_gender='Not Set'
+    contact_about=''
+    contact_age='Not Set' 
+    contact_gender='Not Set'
+
+    obj=userprofile_extended.objects.filter(user_id=username)
+    profilepic="/media/avatar.png"
+    obj_count=obj.count()
     if obj_count>0:
         for i in obj:
-            profilepic=i.image.url
+            goal_id=i.image
+            if goal_id!=None:
+                profilepic=i.image.url
+
+
+    print("=================")
+    print(obj_count) 
+    if obj_count==0:
+        
+        form=userprofile_extended_goalsettings_Form()
+        messages.add_message(request,messages.SUCCESS, "Please update your workout goal below. Based on your goal the system would allocate appropriate instructors to your profile.")
+        context={'form':form,
+                 'profilepic':profilepic,
+                 'username_original':username,
+                'username':str(username).title(),  }
+        return render(request, "user_goal_settings.html",context) 
+    if obj_count>0:
+        for i in obj:
+            goal_id=i.goal
+
+            print(goal_id)
+            print("=================")
+            print(i.image)
+            if goal_id==None:
+                form=userprofile_extended_goalsettings_Form()
+                messages.add_message(request,messages.SUCCESS, "Please update your workout goal below. Based on your goal the system would allocate appropriate instructors to your profile.")
+                context={'form':form,
+                         'profilepic':profilepic,
+                         'username_original':username, 
+                          'username':str(username).title(),
+                          }
+                return render(request, "user_goal_settings.html",context)
+            
+            if i.image!=None:
+                profilepic=i.image.url
             trainer=i.trainer
             nutritionist=i.nutritionist
             supplimentexpert=i.supplimentexpert
             contact=i.contact
     if (trainer):
+        messages.add_message(request,messages.SUCCESS, "Please select your Recipient from the below list of profiles.")
         t = User.objects.get(username=trainer)
         trainerobj=userprofile_extended.objects.filter(user_id=t)
-        trainerprofilepic="/media/avatar.png"
+        
         trainerobj_count=trainerobj.count()
         if trainerobj_count>0:
             for i in trainerobj:
@@ -140,7 +210,7 @@ def compose(request, recipient=None, form_class=ComposeForm,
         
         n = User.objects.get(username=nutritionist)
         nutritionistobj=userprofile_extended.objects.filter(user_id=n)
-        nutritionistprofilepic="/media/avatar.png"
+        
         nutritionistobj_count=nutritionistobj.count()
         if nutritionistobj_count>0:
             for i in nutritionistobj:
@@ -151,7 +221,7 @@ def compose(request, recipient=None, form_class=ComposeForm,
 
         s=User.objects.get(username=supplimentexpert)
         supplimentexpertobj=userprofile_extended.objects.filter(user_id=s)
-        supplimentexpertprofilepic="/media/avatar.png"
+        
         supplimentexpertobj_count=supplimentexpertobj.count()
         if supplimentexpertobj_count>0:
             for i in supplimentexpertobj:
@@ -164,7 +234,7 @@ def compose(request, recipient=None, form_class=ComposeForm,
 
         c=User.objects.get(username=contact)
         contactobj=userprofile_extended.objects.filter(user_id=c)
-        contactprofilepic="/media/avatar.png"
+        
         contactobj_count=contactobj.count()
         if contactobj_count>0:
             for i in contactobj:
@@ -177,6 +247,8 @@ def compose(request, recipient=None, form_class=ComposeForm,
 
     # print(trainer)
     return render_to_response(template_name, {
+        'username':str(username).title(),
+        'username_original':username,
         'form': form,
         'profilepic':profilepic,
         'trainer':trainer,

@@ -1,25 +1,58 @@
 {% extends "loggedin_base.html" %}
 
 {% block content %}
+	{% if messages %}
+		<div class="alert alert-success">
+		 {% for message in messages %}
+		        {% if message.tags %} {% endif %}
+		            <center>{{ message }}</center>
+		    {% endfor %}
+		</div>
+	{% endif %}
+	
 {% if message %}
 <center>{{message}}</center><br>
-<div>
-	<center><form action="/tracker/" method="post">{% csrf_token %}
-		{{form.as_p}}
-		<input type="submit" value="submit">
-		
-	</form></center>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      	<div class="x_panel">
+            <div class="">
+              <h2>Weight Tracker </h2>
+        	</div>
+			<div>
+				<center><form action="/tracker/" method="post">{% csrf_token %}
+					{{form.as_p}}
+					<input type="submit" value="submit">
+					
+				</form></center>
 
+			</div>
+		</div>
+	</div>
 </div>
+
+
+
 {% else %}
-<div>
-	<center><form action="/tracker/" method="post">{% csrf_token %}
-		{{form.as_p}}
-		<input type="submit" value="submit">
-		
-	</form></center>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      	<div class="x_panel">
+            <div class="">
+              <h2>Weight Tracker </h2>
+        	</div>
+			<div>
+				<center><form action="/tracker/" method="post">{% csrf_token %}
+					{{form.as_p}}
+					<input type="submit" value="submit">
+					
+				</form></center>
 
+			</div>
+		</div>
+	</div>
 </div>
+
+
+
 {% endif %}
 
 

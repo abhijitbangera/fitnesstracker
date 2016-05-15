@@ -2,6 +2,26 @@
 
 {% block content %}
 Current goal: {{goal}} {{goal_id}}
+{% if goal == 'Not Set' %}
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      	<div class="x_panel">
+            <div class="">
+              <h2>Goal Setting</h2>
+        	</div>
+		<div>
+			<center><form action="/goalsettings/" method="post">{% csrf_token %}
+				{{form.as_p}}
+				<input type="submit" value="submit">
+				
+			</form></center>
+		</div>
+		</div>
+	</div>
+</div>
+
+
+{% endif %}
 <br>
 {% if goal_id == '1' %}
 {% include "plans_massgain.html" %}

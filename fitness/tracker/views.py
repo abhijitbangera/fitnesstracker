@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_extended,backtracker,hiptracker,thightracker,shouldertracker,photos
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 # Create your views here.
 def profile(request,username):
@@ -12,8 +13,10 @@ def profile(request,username):
 	# username=request.user
 	if request.user.is_authenticated():
 		template="loggedin_base.html"
+		registered_user='yes'
 	else:
 		template="loggedout_base.html"
+		registered_user='no'
 	biscep='0'
 	chest='0'
 	weight='0'
@@ -38,7 +41,9 @@ def profile(request,username):
 	obj_count=obj.count()
 	if obj_count>0:
 		for i in obj:
-			profilepic=i.image.url
+			goal_id=i.image
+			if goal_id!=None:
+				profilepic=i.image.url
 	obj = basictracker.objects.filter(user_id=u).order_by('datetime').reverse()[:5]
 	w1=[]
 	w2=[]
@@ -62,7 +67,7 @@ def profile(request,username):
 
 	elif len(w1)==1:
 		context7={'len':1,
-				'w10':x[0],
+				'w10':w1[0],
 				'w20':w2[0],
 				'username':str(username).title(),
 				'username_original':username,
@@ -708,7 +713,9 @@ def profile(request,username):
 				goal_plan="Stay Fit"
 			else:
 				goal_plan="Not Set"
-			profilepic=i.image.url
+			goal_id=i.image
+			if goal_id!=None:
+				profilepic=i.image.url
 			about=i.about
 
 		context={'username':str(username).title(),
@@ -730,7 +737,8 @@ def profile(request,username):
 				'goal':goal_plan,
 				'profilepic':profilepic,
 				'about':about,
-				'template':template,}
+				'template':template,
+				'registered_user':registered_user}
 		print(context1)
 		final_list=dict(list(context.items()) + list(context7.items()) + list(context1.items())+list(context2.items()) + list(context3.items()) + list(context4.items())+list(context5.items()) + list(context8.items())+list(context11.items()))
 		return render(request, "user_profile.html", final_list)
@@ -753,7 +761,8 @@ def profile(request,username):
 				'gender':"Not Set",
 				'goal':"Not Set",
 				'about':about,
-				'template':template,}
+				'template':template,
+				'registered_user':registered_user}
 		final_list=dict(list(context.items()) + list(context7.items()) + list(context1.items())+list(context2.items()) + list(context3.items()) + list(context4.items())+list(context5.items()) + list(context8.items())+list(context11.items()))
 		return render(request, "user_profile.html", final_list)
 
@@ -761,9 +770,7 @@ def profile(request,username):
 @login_required
 def weighttracker(request):
 	username=request.user
-	
-		
-	
+
 	if request.method=='POST':
 		form= basictrackerForm(request.POST)
 		if form.is_valid():
@@ -772,7 +779,8 @@ def weighttracker(request):
 
 			save_it.save()
 			print("saved successfully.")
-			return HttpResponseRedirect("/")
+			messages.add_message(request,messages.SUCCESS, "Weight Updated successfully")
+			return HttpResponseRedirect("/weighttracker/")
 	else:
 		form=basictrackerForm()
 	#Profile pic code ------------------------------
@@ -781,12 +789,14 @@ def weighttracker(request):
 	obj_count=obj.count()
 	if obj_count>0:
 		for i in obj:
-			profilepic=i.image.url
+			goal_id=i.image
+			if goal_id!=None:
+				profilepic=i.image.url
 
 	#-------------------------------------------------------
 	context={'username':str(username).title(),
 			'username_original':username,
-			'pagetitle': "Weight Tracker",
+			'pagetitle': "Tracker",
 			'profilepic':profilepic}
 	context.update(csrf(request))
 	form['weight'].label = "Enter your weight"
@@ -801,7 +811,9 @@ def bodytracker(request):
 	obj_count=obj.count()
 	if obj_count>0:
 		for i in obj:
-			profilepic=i.image.url
+			goal_id=i.image
+			if goal_id!=None:
+				profilepic=i.image.url
 
 	if request.method=='POST':
 		form= bisceptrackerForm(request.POST)
@@ -815,37 +827,44 @@ def bodytracker(request):
 			save_it.user = request.user
 			save_it.save()
 			print("saved successfully.")
-			return HttpResponseRedirect("/")
+			messages.add_message(request,messages.SUCCESS, "Updated successfully - Biscep size")
+			return HttpResponseRedirect("/bodytracker/")
 		elif form2.is_valid():
 			save_it=form2.save(commit = False)
 			save_it.user = request.user
 			save_it.save()
+			messages.add_message(request,messages.SUCCESS, "Updated successfully - Chest size")
 			print("saved successfully.")
-			return HttpResponseRedirect("/")
+			return HttpResponseRedirect("/bodytracker/")
 		elif form3.is_valid():
 			save_it=form3.save(commit = False)
 			save_it.user = request.user
 			save_it.save()
+			messages.add_message(request,messages.SUCCESS, "Updated successfully - Back size")
 			print("saved successfully.")
-			return HttpResponseRedirect("/")
+			return HttpResponseRedirect("/bodytracker/")
 		elif form4.is_valid():
 			save_it=form4.save(commit = False)
 			save_it.user = request.user
 			save_it.save()
+			messages.add_message(request,messages.SUCCESS, "Updated successfully - Hip size")
 			print("saved successfully.")
-			return HttpResponseRedirect("/")
+			return HttpResponseRedirect("/bodytracker/")
 		elif form5.is_valid():
 			save_it=form5.save(commit = False)
 			save_it.user = request.user
 			save_it.save()
+			messages.add_message(request,messages.SUCCESS, "Updated successfully - Thigh size")
 			print("saved successfully.")
-			return HttpResponseRedirect("/")
+			return HttpResponseRedirect("/bodytracker/")
 		elif form6.is_valid():
 			save_it=form6.save(commit = False)
 			save_it.user = request.user
 			save_it.save()
+			messages.add_message(request,messages.SUCCESS, "Updated successfully - Shoulder size")
 			print("saved successfully.")
-			return HttpResponseRedirect("/")
+			print(messages)
+			return HttpResponseRedirect("/bodytracker/")
 	else:
 		form=bisceptrackerForm()
 		form2=chesttrackerForm()
@@ -870,7 +889,7 @@ def bodytracker(request):
 			'form6':form6,
 			'username':str(username).title(),
 			'username_original':username,
-			'pagetitle': "Body Tracker",
+			'pagetitle': "Tracker",
 			'profilepic':profilepic}
 	context.update(csrf(request))
 	return render(request, "user_bodytracker.html", context)
@@ -883,7 +902,10 @@ def weightprogress(request):
 	obj_count=obj.count()
 	if obj_count>0:
 		for i in obj:
-			profilepic=i.image.url
+			goal_id=i.image
+			if goal_id!=None:
+				profilepic=i.image.url
+			
 	obj = basictracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
 	x=[]
 	y=[]
@@ -915,8 +937,9 @@ def weightprogress(request):
 
 		context={'username':str(username).title(),
 				'username_original':username,
-				'pagetitle': "Weight Tracker",
-				'message':message}
+				'pagetitle': "Tracker",
+				'message':message,
+				'profilepic':profilepic}
 		context.update(csrf(request))
 		form['weight'].label = "Enter your weight"
 		context['form']=form
@@ -998,7 +1021,9 @@ def bodyprogress(request):
 	obj_count=obj.count()
 	if obj_count>0:
 		for i in obj:
-			profilepic=i.image.url
+			goal_id=i.image
+			if goal_id!=None:
+				profilepic=i.image.url
 	obj = bisceptracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
 	x=[]
 	y=[]
@@ -1109,7 +1134,7 @@ def bodyprogress(request):
 		message_chest="No Chest record found. Please update your Chest size in tracker."
 		context={'username':str(username).title(),
 				'username_original':username,
-				'pagetitle': "Weight Tracker",
+				'pagetitle': " Progress Tracker",
 				'message_chest':message_chest}
 		# context.update(csrf(request))
 		# return render(request, "user_bodyprogress.html", context)
@@ -1117,6 +1142,7 @@ def bodyprogress(request):
 		context={'len_chest':1,
 				'a0':a[0],
 				'b0':b[0],
+				'username_original':username,
 				}
 	elif len(a)==2:
 		context={'len_chest':2,
@@ -1124,6 +1150,7 @@ def bodyprogress(request):
 				'b0':b[0],
 				'b1':b[1],
 				'a1':a[1],
+				'username_original':username,
 				}
 	elif len(a)==3:
 		context={'len_chest':3,
@@ -1133,6 +1160,7 @@ def bodyprogress(request):
 				'b1':b[1],
 				'a2':a[2],
 				'b2':b[2],
+				'username_original':username,
 				}
 	elif len(a)==4:
 		context={'len_chest':4,
@@ -1144,6 +1172,7 @@ def bodyprogress(request):
 				'b2':b[2],
 				'a3':a[3],
 				'b3':b[3],
+				'username_original':username,
 				}
 	elif len(a)>4:
 		context={'len_chest':5,
@@ -1161,7 +1190,8 @@ def bodyprogress(request):
 				'b':b,
 				'username':str(username).title(),
 				'username_original':username,
-				'pagetitle': "Progress Tracker",	}
+				'pagetitle': "Progress Tracker",
+				'username_original':username,	}
 	
 
 	obj2 = backtracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
@@ -1179,7 +1209,7 @@ def bodyprogress(request):
 		message_back="No Back record found. Please update your Back size in tracker."
 		context2={'username':str(username).title(),
 				'username_original':username,
-				'pagetitle': "Weight Tracker",
+				'pagetitle': "Progress Tracker",
 				'message_back':message_back}
 		# context2.update(csrf(request))
 		# return render(request, "user_bodyprogress.html", context2)
@@ -1249,7 +1279,7 @@ def bodyprogress(request):
 		message_hip="No Hip record found. Please update your Hip size in tracker."
 		context3={'username':str(username).title(),
 				'username_original':username,
-				'pagetitle': "Weight Tracker",
+				'pagetitle': "Progress Tracker",
 				'message_hip':message_hip}
 		# context3.update(csrf(request))
 		# return render(request, "user_bodyprogress.html", context3)
@@ -1326,7 +1356,7 @@ def bodyprogress(request):
 		message_thigh="No Thigh record found. Please update your Thigh size in tracker."
 		context4={'username':str(username).title(),
 				'username_original':username,
-				'pagetitle': "Weight Tracker",
+				'pagetitle': "Progress Tracker",
 				'message_thigh':message_thigh}
 		# context4.update(csrf(request))
 		# return render(request, "user_bodyprogress.html", context4)
@@ -1398,7 +1428,7 @@ def bodyprogress(request):
 		message_shoulder="No Shoulder record found. Please update your Shoulder size in tracker."
 		context5={'username':str(username).title(),
 				'username_original':username,
-				'pagetitle': "Body Tracker",
+				'pagetitle': "Progress Tracker",
 				'message_shoulder':message_shoulder}
 		# context.update(csrf(request))
 		# return render(request, "user_bodyprogress.html", context)
@@ -1464,11 +1494,23 @@ def bodyprogress(request):
 
 def goal_settings(request):
 	username=request.user
+	profilepic="/media/avatar.png"
+	obj=userprofile_extended.objects.filter(user_id=request.user)
+	obj_count=obj.count()
+	if obj_count>0:
+				for i in obj:
+					goal_id=i.image
+					if goal_id!=None:
+						profilepic=i.image.url
+	
 	if request.method=='POST':
 		if userprofile_extended.objects.filter(user_id=request.user):
 			userprofile_instance=userprofile_extended.objects.get(user_id=request.user)
 			form= userprofile_extended_goalsettings_Form(request.POST, instance=userprofile_instance)
-			print("yes............")
+			obj=userprofile_extended.objects.filter(user_id=request.user)
+			obj_count=obj.count()
+			
+			print("yes at goal settings............")
 			if form.is_valid():
 				save_it=form.save(commit = False)
 				save_it.user = request.user
@@ -1505,33 +1547,75 @@ def goal_settings(request):
 				save_it.contact=contact
 
 				save_it.save(update_fields=["gender","goal","trainer","nutritionist","supplimentexpert","contact","about"])
-				print("saved successfully.")
-				return HttpResponseRedirect("goalsettings/")
+				print("saved successfully.1")
+				return HttpResponseRedirect("/")
 		else:
 			form= userprofile_extended_goalsettings_Form(request.POST)
 			if form.is_valid():
 				save_it=form.save(commit = False)
 				save_it.user = request.user
+				plan_selected=save_it.goal
+				if plan_selected=='1':
+					trainer='plan1_trainer'
+					nutritionist='plan1_nutritionist'
+					save_it.trainer=trainer
+					save_it.nutritionist=nutritionist
+				elif plan_selected=='2':
+					trainer='plan2_trainer'
+					nutritionist='plan2_nutritionist'
+					save_it.trainer=trainer
+					save_it.nutritionist=nutritionist
+				elif plan_selected=='3':
+					trainer='plan3_trainer'
+					nutritionist='plan3_nutritionist'
+					save_it.trainer=trainer
+					save_it.nutritionist=nutritionist
+				elif plan_selected=='4':
+					trainer='plan4_trainer'
+					nutritionist='plan4_nutritionist'
+					save_it.trainer=trainer
+					save_it.nutritionist=nutritionist
+				else:
+					trainer='plan1_trainer'
+					nutritionist='plan1_nutritionist'
+					save_it.trainer=trainer
+					save_it.nutritionist=nutritionist
+
+				supplimentexpert='supplimentexpert'
+				contact='info'
+				save_it.supplimentexpert=supplimentexpert
+				save_it.contact=contact
+
+				
 				save_it.save()
-				print("saved successfully.")
+				print("saved successfully.2")
 				return HttpResponseRedirect("/")
 	else:
 		form=userprofile_extended_goalsettings_Form()
 	context={'username':str(username).title(),
 			'username_original':username,
-			'pagetitle': "Weight Tracker",
-			'form':form,}
+			'pagetitle': "Goal Setting",
+			'form':form,
+			'profilepic':profilepic}
 	context.update(csrf(request))
 
 	return render(request, "user_goal_settings.html", context)
 
 def profile_settings(request):
-	
+	profilepic="/media/avatar.png"
 	username=request.user
+	obj=userprofile_extended.objects.filter(user_id=request.user)
+	obj_count=obj.count()
+	if obj_count>0:
+				for i in obj:
+					goal_id=i.image
+					if goal_id!=None:
+						profilepic=i.image.url
 	if request.method=='POST':
 		if userprofile_extended.objects.filter(user_id=request.user):
 			userprofile_instance=userprofile_extended.objects.get(user_id=request.user)
 			form= userprofile_extended_profilesettings_Form(request.POST or None,request.FILES or None, instance=userprofile_instance )
+			profilepic=i.image.url
 			print("yes............")
 			if form.is_valid():
 				save_it=form.save(commit = False)
@@ -1551,8 +1635,9 @@ def profile_settings(request):
 		form=userprofile_extended_profilesettings_Form()
 	context={'username':str(username).title(),
 			'username_original':username,
-			'pagetitle': "Weight Tracker",
-			'form':form,}
+			'pagetitle': "Profile Settings",
+			'form':form,
+			'profilepic':profilepic}
 	return render(request, "user_profile_settings.html", context)
 
 
@@ -1585,6 +1670,7 @@ def plot(request):
 
 @login_required
 def photosView(request):
+	profilepic="/media/avatar.png"
 	username=request.user
 	if request.method=='POST':
 		# if photos.objects.filter(user_id=request.user):
@@ -1612,18 +1698,29 @@ def photosView(request):
 	else:
 		form=photosForm()
 		obj=photos.objects.filter(user_id=username).order_by('datetime').reverse()[:5]
+
 		photo_list=[]
 		photo_list_url=[]
 		desc=[]
 		dnt=[]
+		obj2=userprofile_extended.objects.filter(user_id=username)
+		profilepic="/media/avatar.png"
+		obj_count=obj2.count()
+		if obj_count>0:
+			for i in obj2:
+				goal_id=i.image
+				if goal_id!=None:
+					profilepic=i.image.url
+
 		for i in obj:
+			# profilepic=i.image.url
 			photo_list.append(i.user_photo)
 			photo_list_url.append(i.user_photo.url)
 			desc.append(i.description)
 			dnt.append(i.datetime)
-	print(photo_list[0])
-	print(photo_list_url[0])
-	print(dnt)
+	# print(photo_list[0])
+	# print(photo_list_url[0])
+	# print(dnt)
 	img1="/media/avatar.png"
 	img2="/media/avatar.png"
 	img3="/media/avatar.png"
@@ -1710,6 +1807,7 @@ def photosView(request):
 			'dnt3':dnt3,
 			'dnt4':dnt4,
 			'dnt5':dnt5,
+			'profilepic':profilepic,
 			}
 
 

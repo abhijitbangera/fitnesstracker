@@ -1,14 +1,25 @@
 from django.shortcuts import render,redirect,render_to_response
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from tracker.models import userprofile_extended
+from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_extended,backtracker,hiptracker,thightracker,shouldertracker,photos
+from tracker.forms import basictrackerForm,bisceptrackerForm,chesttrackerForm,userprofile_extended_goalsettings_Form,userprofile_extended_profilesettings_Form,backtrackerForm,hiptrackerForm,thightrackerForm,shouldertrackerForm,photosForm
+
+from instamojo import Instamojo
+api = Instamojo(api_key='',
+                auth_token='')
+
 
 @login_required
 def homepage(request):
 	username=request.user
 	obj=userprofile_extended.objects.filter(user_id=username)
-	
+	form=''
 	obj_count=obj.count()
+	profilepic="/media/avatar.png"
+
+	form=userprofile_extended_goalsettings_Form()
+	goal_plan="Not Set"
+	goal_id=''
 	if obj_count>0:
 		for i in obj:
 			# print("-----------")
@@ -24,26 +35,19 @@ def homepage(request):
 			elif goal_id =="4":
 				goal_plan="Stay Fit"
 			else:
-				goal_plan="Not Set"
+				form=userprofile_extended_goalsettings_Form()
 			if i.image:
 				profilepic=i.image.url
 			else:
 				profilepic="/media/avatar.png"
-		context={'username':str(username).title(),
-				'username_original':username,
-				'pagetitle': "Dashboard",
-				'goal':goal_plan,
-				'goal_id':goal_id,
-				'profilepic':profilepic}
-		return render(request, "loggedin_homepage.html", context)
-	else:
-		context={'username':str(username).title(),
-				'username_original':username,
-				'pagetitle': "Dashboard",
-				'goal':"Not Set",
-				'profilepic':"/media/avatar.png"
-				}
-		return render(request, "loggedin_homepage.html", context)
+	context={'username':str(username).title(),
+			'username_original':username,
+			'pagetitle': "Dashboard",
+			'goal':goal_plan,
+			'goal_id':goal_id,
+			'profilepic':profilepic,
+			'form':form,}
+	return render(request, "loggedin_homepage.html", context)
 
 
 @login_required
@@ -68,3 +72,25 @@ def handler500(request):
     response.status_code = 500
     return response
 
+def payment(request):
+
+	response = api.payment_request_create(
+    amount='3499',
+    purpose='FIFA 16',
+    send_email=True,
+    email="foo@example.com",
+    redirect_url="http://www.example.com/handle_redirect.py"
+    )
+	# print the long URL of the payment request.
+	print (response['payment_request']['longurl'])
+	# print the unique ID(or payment request ID)
+	print (response['payment_request']['id'])
+	id1=response['payment_request']['id']
+	
+	response1 = api.payment_request_status(id1)
+	print(response1)
+
+	print (response1['payment_request']['shorturl'])  # Get the short URL
+	print (response1['payment_request']['status'])    # Get the current status
+	print (response1['payment_request']['payments'])  # List of payments
+	return render(request, "loggedin_homepage.html", {})

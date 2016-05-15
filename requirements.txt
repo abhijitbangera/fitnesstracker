@@ -1,10 +1,14 @@
 anyjson==0.3.3
 Django==1.9.4
 django-registration==2.0.4
+django-sortedm2m==1.2.2
+ExifRead==2.1.2
+instamojo==1.1
 Jinja2==2.8
 MarkupSafe==0.23
 Pillow==3.2.0
 python-nvd3==0.14.2
 python-slugify==1.1.4
+requests==2.10.0
 six==1.10.0
 Unidecode==0.4.19

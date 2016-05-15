@@ -3,12 +3,12 @@
 
 
 {% block content %}
- <div class="row">
+ <div class="row x_panel">
 <div class="main_container">
 
-  <div class="col-md-3 col-sm-3 col-sm-6 col-xs-12 profile_left">
+  <div class="col-md-4 col-sm-3 col-sm-6 col-xs-12 profile_left">
 
-    <div class="profile_img">
+    <div class="profile_img ">
 
       <!-- end of image cropping -->
 
@@ -26,27 +26,37 @@
 
 
 
-    </div><br>
-    <h4>{{username}}</h4>
+    </div><br>    
+</div>
+
+ <div class="row">
+<h4>{{username}}</h4>
 
     <ul class="list-unstyled user_data">
-      <li><i class="fa fa-map-marker user-profile-icon"></i> Age: {{age}}, Gender: {{gender}}
-      </li>
-
       <li>
         <i class="fa fa-briefcase user-profile-icon"></i> 
         
         Goal Plan: {{goal}}
       </li>
+      <li>
+        <i class="fa fa-clock-o user-profile-icon"></i> 
+        Age: {{age}}
+      </li>
+      <li>
+        <i class="fa fa-users user-profile-icon"></i> 
+        Gender: {{gender}}
+      </li>
+
+      
 
       <li class="m-top-xs">
         <i class="fa fa-external-link user-profile-icon"></i>
         About: {{about}}
       </li>
+      
     </ul>
-
-    
 </div>
+
 
   <div class="row">
     <div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
@@ -128,11 +138,28 @@
 
 
 <!-- Photo album -->
+{% if registered_user == 'no'%}
+<center><div class="col-md-12 col-sm-6 col-xs-12">
+    <div class="x_panel">
+
+        <h2>Photos</h2>
+
+    <div class="animated flipInY col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="alert alert-warning alert-dismissible fade in">
+            
+            <center><a href="/accounts/login/"><h2>Login to see user photos.</h2></a></center>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+{% else %}
+
 
 <div class="x_content">
 
   <div class="row">
-    
+    <h2>Photos</h2>
     <div class="col-md-55">
       <div class="thumbnail">
         <div class="image view view-first">
@@ -186,7 +213,7 @@
    </div>
 
 </div>
-
+{% endif %}
 
 
 

@@ -1,0 +1,9 @@
+setup.py
+instamojo/__init__.py
+instamojo/api.py
+instamojo.egg-info/PKG-INFO
+instamojo.egg-info/SOURCES.txt
+instamojo.egg-info/dependency_links.txt
+instamojo.egg-info/not-zip-safe
+instamojo.egg-info/requires.txt
+instamojo.egg-info/top_level.txt

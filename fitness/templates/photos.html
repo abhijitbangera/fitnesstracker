@@ -13,97 +13,117 @@ setTimeout(function() {
 
 
 </script>
-<div>
-	<center><form action="/photos/" method="post" enctype="multipart/form-data">{% csrf_token %}
-		{{form.as_p}}
-		<input type="submit" value="submit">
-		
-	</form></center>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="">
+              <h2>Body Showoff <small>Gallery</small> </h2>
+          </div>
+        <div>
 
+          <div class="x_content">
+
+            <div class="row">
+
+              <p>Latest 5 photos</p>
+
+              
+              <div class="col-md-55">
+                <div class="thumbnail">
+                  <div class="image view view-first">
+                    <img style="width: 100%; display: block;" src={{img1}} alt="image" />
+                    <div class="mask">
+                      <p>{{dnt1}}</p>
+                     
+                    </div>
+                  </div>
+                  <div class="caption">
+                    <p>{{desc1}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-55">
+                <div class="thumbnail">
+                  <div class="image view view-first">
+                    <img style="width: 100%; display: block;" src={{img2}} alt="image" />
+                    <div class="mask">
+                      <p>{{dnt2}}</p>
+                      
+                    </div>
+                  </div>
+                  <div class="caption">
+                    <p>{{desc2}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-55">
+                <div class="thumbnail">
+                  <div class="image view view-first">
+                    <img style="width: 100%; display: block;" src={{img3}} alt="image" />
+                    <div class="mask">
+                      <p>{{dnt3}}</p>
+                      
+                    </div>
+                  </div>
+                  <div class="caption">
+                    <p>{{desc3}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-55">
+                <div class="thumbnail">
+                  <div class="image view view-first">
+                    <img style="width: 100%; display: block;" src={{img4}} alt="image" />
+                    <div class="mask">
+                      <p>{{dnt4}}</p>
+                      
+                    </div>
+                  </div>
+                  <div class="caption">
+                    <p>{{desc4}}</p>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-55">
+                <div class="thumbnail">
+                  <div class="image view view-first">
+                    <img style="width: 100%; display: block;" src={{img5}} alt="image" />
+                    <div class="mask">
+                      <p>{{dnt5}}</p>
+                    </div>
+                  </div>
+                  <div class="caption">
+                    <p>{{desc5}}</p>
+                  </div>
+                </div>
+              </div>
+              
+             </div>
+
+          </div>
+
+       </div>
+      </div>
+    </div>
 </div>
 
 
-<div class="x_content">
-
-  <div class="row">
-
-    <p>Latest 5 photos</p>
-
-    
-    <div class="col-md-55">
-      <div class="thumbnail">
-        <div class="image view view-first">
-          <img style="width: 100%; display: block;" src={{img1}} alt="image" />
-          <div class="mask">
-            <p>{{dnt1}}</p>
-           
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="">
+              <h2>Body Showoff <small>Upload Photos</small> </h2>
           </div>
-        </div>
-        <div class="caption">
-          <p>{{desc1}}</p>
-        </div>
-      </div>
+    <div>
+      <center><form action="/photos/" method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="submit">
+      </form></center>
     </div>
-    <div class="col-md-55">
-      <div class="thumbnail">
-        <div class="image view view-first">
-          <img style="width: 100%; display: block;" src={{img2}} alt="image" />
-          <div class="mask">
-            <p>{{dnt2}}</p>
-            
-          </div>
-        </div>
-        <div class="caption">
-          <p>{{desc2}}</p>
-        </div>
-      </div>
     </div>
-    <div class="col-md-55">
-      <div class="thumbnail">
-        <div class="image view view-first">
-          <img style="width: 100%; display: block;" src={{img3}} alt="image" />
-          <div class="mask">
-            <p>{{dnt3}}</p>
-            
-          </div>
-        </div>
-        <div class="caption">
-          <p>{{desc3}}</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-55">
-      <div class="thumbnail">
-        <div class="image view view-first">
-          <img style="width: 100%; display: block;" src={{img4}} alt="image" />
-          <div class="mask">
-            <p>{{dnt4}}</p>
-            
-          </div>
-        </div>
-        <div class="caption">
-          <p>{{desc4}}</p>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-md-55">
-      <div class="thumbnail">
-        <div class="image view view-first">
-          <img style="width: 100%; display: block;" src={{img5}} alt="image" />
-          <div class="mask">
-            <p>{{dnt5}}</p>
-          </div>
-        </div>
-        <div class="caption">
-          <p>{{desc5}}</p>
-        </div>
-      </div>
-    </div>
-    
-   </div>
-
+  </div>
 </div>
 
 

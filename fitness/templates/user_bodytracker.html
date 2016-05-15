@@ -1,36 +1,55 @@
 {% extends "loggedin_base.html" %}
 
 {% block content %}
+	{% if messages %}
+		<div class="alert alert-success">
+		 {% for message in messages %}
+		        {% if message.tags %} {% endif %}
+		            <center>{{ message }}</center>
+		    {% endfor %}
+		</div>
+	{% endif %}
+
+
 <div>
-	<center><form action="/bodytracker/" method="post">{% csrf_token %}
-		{{form.as_p}}
-		<input type="submit" value="submit">
-	</form></center><br>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      	<div class="x_panel">
+            <div class="">
+              <h2>Body Tracker </h2>
+        	</div>
+			<div>
+				<center><form action="/bodytracker/" method="post">{% csrf_token %}
+					Enter/update your Biscep size: {{form.biscep}}
+					<input type="submit" value="submit">
+				</form></center><br>
+				<center><form action="/bodytracker/" method="post">{% csrf_token %}
+					Enter/update your Chest size: {{form2.chest}}
+					<input type="submit" value="submit">
+				</form></center><br>
 
-	<center><form action="/bodytracker/" method="post">{% csrf_token %}
-		{{form2.as_p}}
-		<input type="submit" value="submit">
-	</form></center><br>
+				<center><form action="/bodytracker/" method="post">{% csrf_token %}
+					Enter/update your back size: {{form3.back}}
+					<input type="submit" value="submit">
+				</form></center><br>
 
-	<center><form action="/bodytracker/" method="post">{% csrf_token %}
-		{{form3.as_p}}
-		<input type="submit" value="submit">
-	</form></center><br>
+				<center><form action="/bodytracker/" method="post">{% csrf_token %}
+					Enter/update your hip size: {{form4.hip}}
+					<input type="submit" value="submit">
+				</form></center><br>
 
-	<center><form action="/bodytracker/" method="post">{% csrf_token %}
-		{{form4.as_p}}
-		<input type="submit" value="submit">
-	</form></center><br>
-
-	<center><form action="/bodytracker/" method="post">{% csrf_token %}
-		{{form5.as_p}}
-		<input type="submit" value="submit">
-	</form></center><br>
-	<center><form action="/bodytracker/" method="post">{% csrf_token %}
-		{{form6.as_p}}
-		<input type="submit" value="submit">
-	</form></center><br>
-	
+				<center><form action="/bodytracker/" method="post">{% csrf_token %}
+					Enter/update your thigh size: {{form5.thigh}}
+					<input type="submit" value="submit">
+				</form></center><br>
+				<center><form action="/bodytracker/" method="post">{% csrf_token %}
+					Enter/update your shoulder size: {{form6.shoulder}}
+					<input type="submit" value="submit">
+				</form></center><br>
+			</div>
+		</div>
+	</div>
+</div>
 
 </div>
 
