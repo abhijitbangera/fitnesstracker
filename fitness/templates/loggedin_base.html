@@ -56,13 +56,13 @@
           <!-- menu prile quick info -->
           <div class="profile">
             <div class="profile_pic">
-              <a href="/user/{{username_original}}">
+              <a href="/user/{{username|lower}}">
               <img src="{{profilepic}}" alt="..." class="img-circle profile_img"></a> 
               <!-- <img src="/static/images/img.jpg" alt="..." class="img-circle profile_img"></a> -->
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2> {{username}}</h2>
+              <h2> {{username|title}}</h2>
             </div>
           </div>
           <!-- /menu prile quick info -->
@@ -77,17 +77,23 @@
               <ul class="nav side-menu">
                 <li><a href="/"><i class="fa fa-home"></i> Home </a>
                 </li>
-                <li><a href="/user/{{username_original}}"><i class="fa fa-male"></i> My Profile </a>
-                </li>
-                <li><a><i class="fa fa-envelope"></i> Messages ({{ messages_inbox_count }}) <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-envelope"></i> Profiles <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="/messages/inbox">My Inbox ({{ messages_inbox_count }}) </a>
+                      <li><a href="/user/{{username|lower}}"> My Profile </a></li>
+                      <li><a href="/users">Updated Profiles </a></li>
+                      <li><a href="/newusers">New Users </a></li>
+                  </ul>
+
+                </li>
+                <li><a><i class="fa fa-envelope"></i> Messages ({{ postman_unread_count }}) <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li><a href="/messages/inbox">My Inbox ({{ postman_unread_count }}) </a>
                     </li>
-                    <li><a href="/messages/compose">Fitness Trainer</a>
+                    <li><a href="/messages/write">Fitness Trainer</a>
                     </li>
-                    <li><a href="/messages/compose">Nutritionist/Dietician</a>
+                    <li><a href="/messages/write">Nutritionist/Dietician</a>
                     </li>
-                    <li><a href="/messages/compose">Suppliments and others</a>
+                    <li><a href="/messages/write">Suppliments and others</a>
                     </li>
                     
                   </ul>

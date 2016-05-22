@@ -1,0 +1,102 @@
+{% extends "loggedin_base.html" %}
+
+{% block content %}
+
+<!-- 
+
+{% for profiles in users_page %}
+    {# Each "contact" is a Contact model object. #}
+    {{ profiles|upper }}<br />
+
+{% endfor %} -->
+
+
+
+<div class="row x_panel">
+
+{% for profiles in users_page %}
+    {# Each "contact" is a Contact model object. #}
+
+
+
+<div class="main_container">
+
+  <div class="col-md-4 col-sm-3 col-sm-6 col-xs-12 profile_left">
+
+    <div class="profile_img ">
+
+      <!-- end of image cropping -->
+
+        <!-- Current avatar -->
+        <div class="avatar-view" title={{profiles}}>
+         	{% if profiles.image %}
+	          <a href="/user/{{profiles}}"><img src="/media/{{profiles.image}}" alt={{profiles}}></a>
+	        {% else %}
+	        <img src="/media/avatar.png" alt={{profiles}} >
+         	{% endif %}
+        </div>
+
+
+
+        <!-- Loading state -->
+        <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+
+      <!-- end of image cropping -->
+
+
+
+    </div><br>    
+</div>
+
+ <div class="row">
+
+
+    <ul class="list-unstyled user_data">
+    <li>
+        <i class="fa fa-user user-profile-icon"></i> 
+        
+        Username: {{profiles}}
+      </li>
+      <li>
+        <i class="fa fa-briefcase user-profile-icon"></i> 
+        
+        Goal Plan: {{profiles.goal}}
+      </li>
+      <li>
+        <i class="fa fa-clock-o user-profile-icon"></i> 
+        Age: {{profiles.age}}
+      </li>
+      <li>
+        <i class="fa fa-users user-profile-icon"></i> 
+        Gender: {{profiles.gender}}
+      </li>
+
+      
+
+      <li class="m-top-xs">
+        <i class="fa fa-external-link user-profile-icon"></i>
+        About: {{profiles.about}}
+      </li>
+      
+    </ul>
+</div>
+
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if users_page.has_previous %}
+            <a href="?page={{ profiles.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ users_page.number }} of {{ users_page.paginator.num_pages }}.
+        </span>
+
+        {% if users_page.has_next %}
+            <a href="?page={{ users_page.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% comment %}
+This is a custom template for django-ajax-selects version 1.3+ (not for 1.2.x).
+Channel:		postman_multiple_as1-3
+Form Field:		AutoCompleteField
+Usage:			Entering of multiple values.
+
+There is no such template provided in the django-ajax-selects application.
+
+This templage could almost {% extends "autocomplete.html" %}
+ and our field would be first processed as an ordinary "autocomplete" by ajax_select.js.
+ An autocomplete("option", opts) in the extra_script block would provide only the additions & overrides.
+Alas, we need to register our keydown handler before the one set by autocomplete(),
+ otherwise there will be no longer a menu.active at runtime.
+So data-ajax-select has any other value - the contents doesn't matter.
+{% endcomment %}
+<input type="text" name="{{name}}" id="{{html_id}}" value="{{current_repr}}" autocomplete="off" data-ajax-select="autocomplete-postman" data-plugin-options="{{ data_plugin_options }}" {{ extra_attrs }} />
+<script type="text/javascript">
+(function ($) {
+  $(document).ready(function(){
+    {# can't call addAutoComplete() here, available only in the scope of ajax_select.js inner function #}
+    var $inp = $("#{{html_id}}"),
+      opts = JSON.parse($inp.attr('data-plugin-options'));
+
+    {# derived from http://jqueryui.com/resources/demos/autocomplete/multiple-remote.html #}
+    function split(val) {
+      return val.split(/,\s*/);
+    }
+    function extractLast(term) {
+      return split(term).pop();
+    }
+    $inp.bind("keydown", function(event) {
+      {# don't navigate away from the field on tab when selecting an item #}
+      if (event.keyCode === $.ui.keyCode.TAB &&
+          $(this).data("ui-autocomplete").menu.active) {  {# autocomplete("instance") is 1.11, not 1.10 of v1.3.6 #}
+        event.preventDefault();
+      }
+    });
+    var option_source = opts.source;
+    opts.source = function(request, response) {
+        $.getJSON(option_source, {
+          term: extractLast(request.term)
+        }, response);
+      };
+    opts.search = function() {
+        {# custom minLength #}
+        var term = extractLast(this.value);
+        if (term.length < {{min_length}}) {
+          return false;
+        }
+      };
+    opts.focus = function() {
+        {# prevent value inserted on focus #}
+        return false;
+      };
+    opts.select = function(event, ui) {
+        var terms = split(this.value);
+        {# remove the current input #}
+        terms.pop();
+        {# add the selected item #}
+        terms.push(ui.item.value);
+        {# add placeholder to get the comma-and-space at the end #}
+        terms.push("");
+        this.value = terms.join(", ");
+        $(this).trigger("added", [ui.item.pk, ui.item]);
+        return false;
+      };
+    $inp.autocomplete(opts);
+  });
+})(window.jQuery);
+</script>
+{% block help %}{% if help_text %}<p class="help">{{ help_text }}</p>{% endif %}{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "loggedin_base.html" %}
+
+{% block content %}
+
+<!-- 
+
+{% for profiles in users_page %}
+    {# Each "contact" is a Contact model object. #}
+    {{ profiles|upper }}<br />
+
+{% endfor %} -->
+
+
+
+<div class="row x_panel">
+
+{% for profiles in users_page %}
+    {# Each "contact" is a Contact model object. #}
+
+
+
+
+ <div class="row">
+
+
+    <ul class="list-unstyled user_data">
+
+        
+        <li>User: <a href="/user/{{profiles|lower}}"> {{profiles}}</a></li>
+
+      
+    </ul>
+</div>
+
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if users_page.has_previous %}
+            <a href="?page={{ profiles.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ users_page.number }} of {{ users_page.paginator.num_pages }}.
+        </span>
+
+        {% if users_page.has_next %}
+            <a href="?page={{ users_page.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

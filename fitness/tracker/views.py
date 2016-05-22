@@ -9,6 +9,8 @@ from django.contrib import messages
 
 # Create your views here.
 def profile(request,username):
+
+
 	u = User.objects.get(username=username)
 	# username=request.user
 	if request.user.is_authenticated():
@@ -34,15 +36,24 @@ def profile(request,username):
 	goal_plan='Not Set'
 	about=''
 	print(u)
+	print(request.user)
 	#Weight progress tracker-----------------
 
 	obj=userprofile_extended.objects.filter(user_id=u)
+	profilepic1="/media/avatar.png"
+	obj_count=obj.count()
+	if obj_count>0:
+		for i in obj:
+			goal_id=i.image
+			if goal_id:
+				profilepic1=i.image.url
+	obj=userprofile_extended.objects.filter(user_id=request.user)
 	profilepic="/media/avatar.png"
 	obj_count=obj.count()
 	if obj_count>0:
 		for i in obj:
 			goal_id=i.image
-			if goal_id!=None:
+			if goal_id:
 				profilepic=i.image.url
 	obj = basictracker.objects.filter(user_id=u).order_by('datetime').reverse()[:5]
 	w1=[]
@@ -61,8 +72,9 @@ def profile(request,username):
 		context7={'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Profile",
-				'profilepic':profilepic,
-				'message':message}
+				'profilepic1':profilepic1,
+				'message':message,
+				}
 		
 
 	elif len(w1)==1:
@@ -72,7 +84,7 @@ def profile(request,username):
 				'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Profile",
-				'profilepic':profilepic,
+				'profilepic1':profilepic1,
 				}
 	elif len(w1)==2:
 		context7={'len':2,
@@ -83,7 +95,7 @@ def profile(request,username):
 				'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Profile",
-				'profilepic':profilepic,
+				'profilepic1':profilepic1,
 				}
 	elif len(w1)==3:
 		context7={'len':3,
@@ -96,7 +108,7 @@ def profile(request,username):
 				'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Profile",
-				'profilepic':profilepic,
+				'profilepic1':profilepic1,
 				}
 	elif len(w1)==4:
 		context7={'len':4,
@@ -111,7 +123,7 @@ def profile(request,username):
 				'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Profile",
-				'profilepic':profilepic,
+				'profilepic1':profilepic1,
 				}
 	elif len(w1)>4:
 		context7={'w10':w1[0],
@@ -129,7 +141,7 @@ def profile(request,username):
 				'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Profile",
-				'profilepic':profilepic,}
+				'profilepic1':profilepic1,}
 	obj_bis = bisceptracker.objects.filter(user_id=u).order_by('datetime').reverse()[:5]
 	x=[]
 	y=[]
@@ -149,7 +161,7 @@ def profile(request,username):
 				'username_original':username,
 				'message_biscep':message_biscep,
 				'pagetitle': "Profile",
-				'profilepic':profilepic,}
+				'profilepic1':profilepic1,}
 		# context1.update(csrf(request))
 		# return render(request, "user_bodyprogress.html", context1)
 	elif len(x)==1:
@@ -159,7 +171,7 @@ def profile(request,username):
 				'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Profile",
-				'profilepic':profilepic,
+				'profilepic1':profilepic1,
 				}
 		
 	elif len(x)==2:
@@ -171,7 +183,7 @@ def profile(request,username):
 				'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Profile",
-				'profilepic':profilepic,
+				'profilepic1':profilepic1,
 				}
 		
 	elif len(x)==3:
@@ -185,7 +197,7 @@ def profile(request,username):
 				'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Profile",
-				'profilepic':profilepic,
+				'profilepic1':profilepic1,
 				}
 		
 	elif len(x)==4:
@@ -201,7 +213,7 @@ def profile(request,username):
 				'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Profile",
-				'profilepic':profilepic,
+				'profilepic1':profilepic1,
 				}
 		
 	elif len(x)>4:
@@ -220,7 +232,7 @@ def profile(request,username):
 				'username':str(username).title(),
 				'username_original':username,
 				'pagetitle': "Profile",
-				'profilepic':profilepic,	}
+				'profilepic1':profilepic1,	}
 
 	obj1 = chesttracker.objects.filter(user_id=u).order_by('datetime').reverse()[:5]
 	a=[]
@@ -714,12 +726,13 @@ def profile(request,username):
 			else:
 				goal_plan="Not Set"
 			goal_id=i.image
-			if goal_id!=None:
-				profilepic=i.image.url
+			if goal_id:
+				profilepic1=i.image.url
 			about=i.about
 
-		context={'username':str(username).title(),
-				'username_original':username,
+		context={'username1':str(username).title(),
+				'username_original1':username,
+				'username':request.user,
 				'biscep':biscep,
 				'chest':chest,
 				'back':back,
@@ -735,16 +748,19 @@ def profile(request,username):
 				'age':age1,
 				'gender':gender_full,
 				'goal':goal_plan,
+				'profilepic1':profilepic1,
 				'profilepic':profilepic,
 				'about':about,
 				'template':template,
-				'registered_user':registered_user}
+				'registered_user':registered_user,
+				}
 		print(context1)
-		final_list=dict(list(context.items()) + list(context7.items()) + list(context1.items())+list(context2.items()) + list(context3.items()) + list(context4.items())+list(context5.items()) + list(context8.items())+list(context11.items()))
+		final_list=dict(list(context7.items()) + list(context1.items())+list(context2.items()) + list(context3.items()) + list(context4.items())+list(context5.items()) + list(context8.items())+list(context11.items()) + list(context.items()))
 		return render(request, "user_profile.html", final_list)
 	else:
-		context={'username':str(username).title(),
-				'username_original':username,
+		context={'username1':str(username).title(),
+				'username_original1':username,
+				'username':request.user,
 				'biscep':biscep,
 				'chest':chest,
 				'back':back,
@@ -762,8 +778,11 @@ def profile(request,username):
 				'goal':"Not Set",
 				'about':about,
 				'template':template,
-				'registered_user':registered_user}
-		final_list=dict(list(context.items()) + list(context7.items()) + list(context1.items())+list(context2.items()) + list(context3.items()) + list(context4.items())+list(context5.items()) + list(context8.items())+list(context11.items()))
+				'registered_user':registered_user,
+				'profilepic1':profilepic1,
+				'profilepic':profilepic,
+				}
+		final_list=dict( list(context7.items()) + list(context1.items())+list(context2.items()) + list(context3.items()) + list(context4.items())+list(context5.items()) + list(context8.items())+list(context11.items())+ list(context.items()))
 		return render(request, "user_profile.html", final_list)
 
 
@@ -790,7 +809,7 @@ def weighttracker(request):
 	if obj_count>0:
 		for i in obj:
 			goal_id=i.image
-			if goal_id!=None:
+			if goal_id:
 				profilepic=i.image.url
 
 	#-------------------------------------------------------
@@ -812,7 +831,7 @@ def bodytracker(request):
 	if obj_count>0:
 		for i in obj:
 			goal_id=i.image
-			if goal_id!=None:
+			if goal_id:
 				profilepic=i.image.url
 
 	if request.method=='POST':
@@ -903,7 +922,7 @@ def weightprogress(request):
 	if obj_count>0:
 		for i in obj:
 			goal_id=i.image
-			if goal_id!=None:
+			if goal_id:
 				profilepic=i.image.url
 			
 	obj = basictracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
@@ -1022,7 +1041,7 @@ def bodyprogress(request):
 	if obj_count>0:
 		for i in obj:
 			goal_id=i.image
-			if goal_id!=None:
+			if goal_id:
 				profilepic=i.image.url
 	obj = bisceptracker.objects.filter(user_id=request.user).order_by('datetime').reverse()[:5]
 	x=[]
@@ -1497,11 +1516,14 @@ def goal_settings(request):
 	profilepic="/media/avatar.png"
 	obj=userprofile_extended.objects.filter(user_id=request.user)
 	obj_count=obj.count()
+	a=None
+	
 	if obj_count>0:
-				for i in obj:
-					goal_id=i.image
-					if goal_id!=None:
-						profilepic=i.image.url
+		a=userprofile_extended.objects.get(user_id=request.user)
+		for i in obj:
+			goal_id=i.image
+			if goal_id:
+				profilepic=i.image.url
 	
 	if request.method=='POST':
 		if userprofile_extended.objects.filter(user_id=request.user):
@@ -1591,7 +1613,7 @@ def goal_settings(request):
 				print("saved successfully.2")
 				return HttpResponseRedirect("/")
 	else:
-		form=userprofile_extended_goalsettings_Form()
+		form=userprofile_extended_goalsettings_Form(instance=a)
 	context={'username':str(username).title(),
 			'username_original':username,
 			'pagetitle': "Goal Setting",
@@ -1606,11 +1628,13 @@ def profile_settings(request):
 	username=request.user
 	obj=userprofile_extended.objects.filter(user_id=request.user)
 	obj_count=obj.count()
+	a=None
 	if obj_count>0:
-				for i in obj:
-					goal_id=i.image
-					if goal_id!=None:
-						profilepic=i.image.url
+		a=userprofile_extended.objects.get(user_id=request.user)
+		for i in obj:
+			goal_id=i.image
+			if goal_id:
+				profilepic=i.image.url
 	if request.method=='POST':
 		if userprofile_extended.objects.filter(user_id=request.user):
 			userprofile_instance=userprofile_extended.objects.get(user_id=request.user)
@@ -1632,7 +1656,7 @@ def profile_settings(request):
 				print("saved successfully.")
 				return HttpResponseRedirect("/")
 	else:
-		form=userprofile_extended_profilesettings_Form()
+		form=userprofile_extended_profilesettings_Form(instance=a)
 	context={'username':str(username).title(),
 			'username_original':username,
 			'pagetitle': "Profile Settings",
@@ -1709,7 +1733,7 @@ def photosView(request):
 		if obj_count>0:
 			for i in obj2:
 				goal_id=i.image
-				if goal_id!=None:
+				if goal_id:
 					profilepic=i.image.url
 
 		for i in obj:

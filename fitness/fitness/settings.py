@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'tracker',   
-    'django_messages',
+  
     'instamojo-py-master',
+    'postman',
 
 ]
 
@@ -74,7 +75,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django_messages.context_processors.inbox',
+                # 'django_messages.context_processors.inbox',
+                'postman.context_processors.inbox',
             ],
         },
     },
@@ -142,3 +144,4 @@ STATICFILES_DIRS = (
 
 
     
+POSTMAN_AUTO_MODERATE_AS = True

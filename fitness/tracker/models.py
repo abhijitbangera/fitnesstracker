@@ -10,7 +10,7 @@ class userprofile_extended(models.Model):
 	goal=models.CharField(max_length=1, choices=GOAL_CHOICES,null=True, blank=True)
 	age=models.IntegerField(max_length=3, null=True, blank=True)
 	about=models.CharField(max_length=400,null=True, blank=True)
-	image=models.ImageField(null=True,blank=True,default="/media/avatar.png")
+	image=models.ImageField(null=True,blank=True,default="./avatar.png")
 	trainer=models.CharField(max_length=100,null=True, blank=True)
 	nutritionist=models.CharField(max_length=100,null=True, blank=True)
 	supplimentexpert=models.CharField(max_length=100,null=True, blank=True)
