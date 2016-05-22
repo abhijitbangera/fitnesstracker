@@ -1,0 +1,29 @@
+{% extends "django_messages/base.html" %} 
+{% load i18n %} 
+{% block content %} 
+<div class="row">
+
+
+	 <div class="col-md-12 col-sm-6 col-xs-12">
+	    <div class="x_panel tile ">
+	      <div class="x_title">
+	        <center><h2>Compose Message</h2></center>
+	       
+	        <div class="clearfix"></div>
+	      </div>
+	      <div class="x_content">
+	       
+	        <form action="" method="post">
+			{% csrf_token %} 
+			<table>
+			{{ form.as_table }}
+			</table>
+			<input type="submit" value="{% trans 'Send' %}"/>
+			</form></center> 
+	        
+	      </div>
+	    </div>
+	</div>
+</div>
+
+{% endblock %}

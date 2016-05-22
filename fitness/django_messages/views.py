@@ -123,7 +123,8 @@ def compose(request, recipient=None, form_class=ComposeForm,
         if recipient is not None:
             recipients = [u for u in User.objects.filter(**{'%s__in' % get_username_field(): [r.strip() for r in recipient.split('+')]})]
             form.fields['recipient'].initial = recipients
-
+            print("---------")
+            print(recipient)
     #Trainer profile code ------------------------
     username=request.user
     obj=userprofile_extended.objects.filter(user_id=username)
@@ -275,7 +276,7 @@ def compose(request, recipient=None, form_class=ComposeForm,
 
 @login_required
 def reply(request, message_id, form_class=ComposeForm,
-        template_name='django_messages/compose.html', success_url=None,
+        template_name='django_messages/compose_reply.html', success_url=None,
         recipient_filter=None, quote_helper=format_quote,
         subject_template=_(u"Re: %(subject)s"),):
     """
@@ -386,6 +387,17 @@ def view(request, message_id, form_class=ComposeForm, quote_helper=format_quote,
     tenplate context, otherwise 'reply_form' will be None.
     """
     user = request.user
+    profilepic="/media/avatar.png"
+    username=request.user
+    obj=userprofile_extended.objects.filter(user_id=request.user)
+    obj_count=obj.count()
+    if obj_count>0:
+                for i in obj:
+                    goal_id=i.image
+                    if goal_id!=None:
+                        profilepic=i.image.url
+
+    
     now = timezone.now()
     message = get_object_or_404(Message, id=message_id)
     if (message.sender != user) and (message.recipient != user):

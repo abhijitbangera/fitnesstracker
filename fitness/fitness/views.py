@@ -5,8 +5,9 @@ from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_e
 from tracker.forms import basictrackerForm,bisceptrackerForm,chesttrackerForm,userprofile_extended_goalsettings_Form,userprofile_extended_profilesettings_Form,backtrackerForm,hiptrackerForm,thightrackerForm,shouldertrackerForm,photosForm
 
 from instamojo import Instamojo
-api = Instamojo(api_key='',
-                auth_token='')
+api = Instamojo(api_key='b01a80d566585ce4c10fd76e72ee052d',
+                auth_token='3d03b6076af55593df904d15f255a3e6',
+                endpoint='https://test.instamojo.com/api/1.1/')
 
 
 @login_required
@@ -74,23 +75,16 @@ def handler500(request):
 
 def payment(request):
 
-	response = api.payment_request_create(
-    amount='3499',
-    purpose='FIFA 16',
-    send_email=True,
-    email="foo@example.com",
-    redirect_url="http://www.example.com/handle_redirect.py"
-    )
-	# print the long URL of the payment request.
-	print (response['payment_request']['longurl'])
-	# print the unique ID(or payment request ID)
-	print (response['payment_request']['id'])
-	id1=response['payment_request']['id']
-	
-	response1 = api.payment_request_status(id1)
-	print(response1)
+	# response = api.link_create(title='Hello, world1!',
+ #                           description='Well, hello again.',
+ #                           base_price=0)
+	# print(response)
 
-	print (response1['payment_request']['shorturl'])  # Get the short URL
-	print (response1['payment_request']['status'])    # Get the current status
-	print (response1['payment_request']['payments'])  # List of payments
+	# print (response['link'])
+
+	response = api.payment_request_status('MOJO6519000F07999514')
+	print(response)
+	print (response['payment_request']['shorturl'])  # Get the short URL
+	print (response['payment_request']['status'] )   # Get the current status
+	print (response['payment_request']['payments'])  # List of payments
 	return render(request, "loggedin_homepage.html", {})

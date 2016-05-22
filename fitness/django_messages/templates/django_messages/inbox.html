@@ -8,13 +8,15 @@
 
               
 
-{% for message in message_list %} 
+
             
         <div class="col-md-12">
             <div class="x_panel">
+
                 <div class="x_content">
+
                   <div class="row">
-                  
+                  {% for message in message_list %} 
                     <div class="col-sm-3 mail_list_column">
 
                       <div class="mail_list">
@@ -56,15 +58,24 @@
 
                     </div>
                     <!-- /CONTENT MAIL -->
+                    {% endfor %}
                   </div>
                 </div>
               </div>
             </div>
 
 
-{% endfor %}
+
 
 {% else %}
-<p>{% trans "No messages." %}</p>
+ <div class="col-md-12">
+      <div class="x_panel">
+          <div class="x_content">
+            <div class="row">
+              <center><p>{% trans "No messages." %}</p></center>
+            </div>
+          </div>
+      </div>
+  </div>
 {% endif %}  
 {% endblock %}
