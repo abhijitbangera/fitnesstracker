@@ -35,13 +35,12 @@ urlpatterns = [
     url(r'^goalsettings/', 'tracker.views.goal_settings'),
     url(r'^profilesettings/', 'tracker.views.profile_settings'),
     # url(r'^messages/', include('django_messages.urls')),
-    url(r'^photos/', 'tracker.views.photosView'),
+    url(r'^photos/$', 'tracker.views.photosView'),
     url(r'^messages/', include('postman.urls', namespace="postman")),
     url(r'^users/', 'fitness.views.allusers'),
     url(r'^newusers/', 'fitness.views.newusers'),
     url(r'^payment/', 'fitness.views.payment_confirmation'),
-
-    
+    url(r'^photos/delete/media/(?P<id>.+)$','tracker.views.photodelete'),  
     
 ]
 

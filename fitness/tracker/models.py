@@ -22,7 +22,7 @@ class photos(models.Model):
 	user=models.ForeignKey(User)
 	user_photo=models.ImageField(null=True,blank=True)
 	datetime = models.DateTimeField(auto_now_add=True)
-	description=models.CharField(max_length=100,null=True, blank=True)
+	description=models.CharField(max_length=50,null=True, blank=True)
 	def __str__(self):
 		return str(self.user)
 

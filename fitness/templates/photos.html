@@ -31,21 +31,28 @@ setTimeout(function() {
               <div class="col-md-55">
                 <div class="thumbnail">
                   <div class="image view view-first">
-                    <img style="width: 100%; display: block;" src={{img1}} alt="image" />
+                    <a href={{img1}}><img style="width: 100%; display: block;" src={{img1}} alt="image" /></a>
                     <div class="mask">
                       <p>{{dnt1}}</p>
                      
                     </div>
                   </div>
                   <div class="caption">
-                    <p>{{desc1}}</p>
+                    <center><p>{{desc1}}</p></center>
+                  </div>
+                  <div >
+                    <center>{% if img1 != '/media/avatar.png' %}
+                      <a href="delete{{img1}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                    {% endif %}
+                    <br>
+                    </center>
                   </div>
                 </div>
               </div>
               <div class="col-md-55">
                 <div class="thumbnail">
                   <div class="image view view-first">
-                    <img style="width: 100%; display: block;" src={{img2}} alt="image" />
+                    <a href={{img2}}><img style="width: 100%; display: block;" src={{img2}} alt="image" /></a>
                     <div class="mask">
                       <p>{{dnt2}}</p>
                       
@@ -54,12 +61,18 @@ setTimeout(function() {
                   <div class="caption">
                     <p>{{desc2}}</p>
                   </div>
+                  <div >
+                    <center>{% if img2 != '/media/avatar.png' %}
+                      <a href="delete{{img2}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                    {% endif %}<br>
+                    </center>
+                  </div>
                 </div>
               </div>
               <div class="col-md-55">
                 <div class="thumbnail">
                   <div class="image view view-first">
-                    <img style="width: 100%; display: block;" src={{img3}} alt="image" />
+                    <a href={{img3}}><img style="width: 100%; display: block;" src={{img3}} alt="image" /></a>
                     <div class="mask">
                       <p>{{dnt3}}</p>
                       
@@ -68,12 +81,18 @@ setTimeout(function() {
                   <div class="caption">
                     <p>{{desc3}}</p>
                   </div>
+                  <div >
+                    <center>{% if img3 != '/media/avatar.png' %}
+                      <a href="delete{{img3}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                    {% endif %}<br>
+                    </center>
+                  </div>
                 </div>
               </div>
               <div class="col-md-55">
                 <div class="thumbnail">
                   <div class="image view view-first">
-                    <img style="width: 100%; display: block;" src={{img4}} alt="image" />
+                    <a href={{img4}}><img style="width: 100%; display: block;" src={{img4}} alt="image" /></a>
                     <div class="mask">
                       <p>{{dnt4}}</p>
                       
@@ -82,6 +101,12 @@ setTimeout(function() {
                   <div class="caption">
                     <p>{{desc4}}</p>
                   </div>
+                  <div >
+                    <center>{% if img4 != '/media/avatar.png' %}
+                      <a href="delete{{img4}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                    {% endif %}<br>
+                    </center>
+                  </div>
                 </div>
               </div>
 
@@ -89,13 +114,19 @@ setTimeout(function() {
               <div class="col-md-55">
                 <div class="thumbnail">
                   <div class="image view view-first">
-                    <img style="width: 100%; display: block;" src={{img5}} alt="image" />
+                    <a href={{img5}}><img style="width: 100%; display: block;" src={{img5}} alt="image" /></a>
                     <div class="mask">
                       <p>{{dnt5}}</p>
                     </div>
                   </div>
                   <div class="caption">
                     <p>{{desc5}}</p>
+                  </div>
+                  <div >
+                    <center>{% if img5 != '/media/avatar.png' %}
+                      <a href="delete{{img5}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                    {% endif %}<br>
+                    </center>
                   </div>
                 </div>
               </div>

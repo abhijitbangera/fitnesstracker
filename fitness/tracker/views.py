@@ -41,20 +41,22 @@ def profile(request,username):
 
 	obj=userprofile_extended.objects.filter(user_id=u)
 	profilepic1="/media/avatar.png"
-	obj_count=obj.count()
-	if obj_count>0:
-		for i in obj:
-			goal_id=i.image
-			if goal_id:
-				profilepic1=i.image.url
-	obj=userprofile_extended.objects.filter(user_id=request.user)
 	profilepic="/media/avatar.png"
 	obj_count=obj.count()
 	if obj_count>0:
 		for i in obj:
 			goal_id=i.image
 			if goal_id:
-				profilepic=i.image.url
+				profilepic1=i.image.url
+	if request.user.is_authenticated():
+		obj=userprofile_extended.objects.filter(user_id=request.user)
+		profilepic="/media/avatar.png"
+		obj_count=obj.count()
+		if obj_count>0:
+			for i in obj:
+				goal_id=i.image
+				if goal_id:
+					profilepic=i.image.url
 	obj = basictracker.objects.filter(user_id=u).order_by('datetime').reverse()[:5]
 	w1=[]
 	w2=[]
@@ -1812,6 +1814,8 @@ def photosView(request):
 		desc5=desc[4]
 		dnt5=dnt[4]
 
+	a=userprofile_extended.objects.get(user_id=request.user)
+	
 	context={'username':str(username).title(),
 			'username_original':username,
 			'pagetitle': "Photos",
@@ -1836,3 +1840,11 @@ def photosView(request):
 
 
 	return render(request, "photos.html", context)
+
+@login_required
+def photodelete(request,id):
+	print(request.user.id)
+	print(get_object_or_404(photos, user_photo="./"+id).user_id)
+	if request.user.id==get_object_or_404(photos, user_photo="./"+id).user_id:
+		note = get_object_or_404(photos, user_photo="./"+id).delete()
+	return HttpResponseRedirect("/photos")
