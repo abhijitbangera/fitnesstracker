@@ -6,8 +6,8 @@ from tracker.forms import basictrackerForm,bisceptrackerForm,chesttrackerForm,us
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from instamojo import Instamojo
-api = Instamojo(api_key='b01a80d566585ce4c10fd76e72ee052d',
-                auth_token='3d03b6076af55593df904d15f255a3e6',
+api = Instamojo(api_key='',
+                auth_token='',
                 endpoint='https://test.instamojo.com/api/1.1/')
 
 
