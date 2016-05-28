@@ -1,15 +1,30 @@
-{% extends "base.html" %}
+{% extends "registration/registration_base.html" %}
 {% load i18n %}
-
 {% block content %}
-<form method="post" action=".">
-  {% csrf_token %} 
-  {{ form.as_p }}
+<section id="content">
+	<div class="content-wrap">
+		<div class="container clearfix">
+			<div class="accordion accordion-lg divcenter nobottommargin clearfix" style="max-width: 550px;">
 
-  <input type="submit" value="{% trans 'Log in' %}"  style="width:250px"  />
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
+				<div class="acctitle"><i class="acc-closed icon-lock3"></i><i class="acc-open icon-unlock"></i>Login to your Account</div>
+				<div class="acc_content clearfix">
+					<form id="login-form" name="login-form" class="nobottommargin" action="." method="post">
+					{% csrf_token %} 
+						{{ form.as_p }}
+						<input class="button button-3d button-black nomargin" type="submit" value="{% trans 'Log in' %}" />
+						<input type="hidden" name="next" value="{{ next }}" />
 
-<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
-<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+						<div class="col_full nobottommargin">
+							
+							<a href="{% url 'auth_password_reset' %}" class="fright">Forgot Password?</a>
+						</div>
+					</form>
+				</div>
+
+				<div><a href="{% url 'registration_register' %}">New Signup? Register for an Account</a></div>
+			</div>
+		</div>
+	</div>
+</section><!-- #content end -->
 {% endblock %}
+

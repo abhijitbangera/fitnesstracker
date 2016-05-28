@@ -1,0 +1,5 @@
+{% if registered_user == 'no' %}
+{% include 'index.html' %}
+{% else %}
+{% include 'loggedin_homepage.html' %}
+{% endif %}

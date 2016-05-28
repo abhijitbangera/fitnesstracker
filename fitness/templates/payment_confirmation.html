@@ -2,4 +2,12 @@
 
 {% block content %}
 {{response}}
+{% if messages %}
+		<div class="alert alert-info">
+		 {% for message in messages %}
+		        {% if message.tags %} {% endif %}
+		            <center>{{ message }}</center>
+		    {% endfor %}
+		</div>
+	{% endif %}
 {% endblock %}

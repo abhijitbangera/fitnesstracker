@@ -1,11 +1,27 @@
-{% extends "base.html" %}
+{% extends "registration/registration_base.html" %}
 {% load i18n %}
-
 {% block content %}
-<form method="post" action=".">
-  {% csrf_token %}
-  {{ form.as_p }}
+<section id="content">
+	<div class="content-wrap">
+		<div class="container clearfix">
+			<div class="accordion accordion-lg divcenter nobottommargin clearfix" style="max-width: 550px;">
 
-  <input type="submit" value="{% trans 'Submit' %}" />
-</form>
+				<div class="acctitle"><i class="acc-closed icon-lock3"></i><i class="acc-open icon-unlock"></i>Register</div>
+				<div class="acc_content clearfix">
+					<form id="login-form" name="login-form" class="nobottommargin" action="." method="post">
+					{% csrf_token %} 
+						{{ form.as_p }}
+						<input class="button button-3d button-black nomargin" type="submit" value="{% trans 'Submit' %}" />
+
+					</form>
+				</div>
+
+				<div><a href="/accounts/login">Already Member? Login in</a></div>
+			</div>
+		</div>
+	</div>
+</section><!-- #content end -->
+
+
+
 {% endblock %}

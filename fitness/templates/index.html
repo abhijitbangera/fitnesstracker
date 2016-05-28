@@ -1,0 +1,801 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:300,400,700" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="/static/style.css" type="text/css" />
+
+	<!-- One Page Module Specific Stylesheet -->
+	<link rel="stylesheet" href="/static/onepage.css" type="text/css" />
+	<!-- / -->
+
+	<link rel="stylesheet" href="/static/css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/et-line.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/magnific-popup.css" type="text/css" />
+
+	<link rel="stylesheet" href="/static/css/fonts.css" type="text/css" />
+
+	<link rel="stylesheet" href="/static/css/responsive.css" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+
+
+	<!-- Document Title
+	============================================= -->
+	<title>One Page with Common Height Content Sections | Canvas</title>
+
+</head>
+
+<body class="stretched side-push-panel">
+
+<div class="body-overlay"></div>
+
+	<div id="side-panel" class="dark">
+
+		<div id="side-panel-trigger-close" class="side-panel-trigger"><a href="#"><i class="icon-line-cross"></i></a></div>
+
+		<div class="side-panel-wrap">
+
+			<div class="widget widget_links clearfix">
+
+				<h4>About Canvas</h4>
+
+				<div style="font-size: 14px; line-height: 1.7;">
+					<address style="line-height: 1.7;">
+						795 Folsom Ave, Suite 600<br>
+						San Francisco, CA 94107<br>
+					</address>
+
+					<div class="clear topmargin-sm"></div>
+
+					<abbr title="Phone Number">Phone:</abbr> (91) 8547 632521<br>
+					<abbr title="Fax">Fax:</abbr> (91) 11 4752 1433<br>
+					<abbr title="Email Address">Email:</abbr> info@canvas.com
+				</div>
+
+			</div>
+
+			<div class="widget quick-contact-widget clearfix">
+
+				<h4>Connect Socially</h4>
+
+				<a href="#" class="social-icon si-small si-colored si-facebook" title="Facebook">
+					<i class="icon-facebook"></i>
+					<i class="icon-facebook"></i>
+				</a>
+				<a href="#" class="social-icon si-small si-colored si-twitter" title="Twitter">
+					<i class="icon-twitter"></i>
+					<i class="icon-twitter"></i>
+				</a>
+				<a href="#" class="social-icon si-small si-colored si-github" title="Github">
+					<i class="icon-github"></i>
+					<i class="icon-github"></i>
+				</a>
+				<a href="#" class="social-icon si-small si-colored si-pinterest" title="Pinterest">
+					<i class="icon-pinterest"></i>
+					<i class="icon-pinterest"></i>
+				</a>
+				<a href="#" class="social-icon si-small si-colored si-forrst" title="Forrst">
+					<i class="icon-forrst"></i>
+					<i class="icon-forrst"></i>
+				</a>
+				<a href="#" class="social-icon si-small si-colored si-linkedin" title="LinkedIn">
+					<i class="icon-linkedin"></i>
+					<i class="icon-linkedin"></i>
+				</a>
+				<a href="#" class="social-icon si-small si-colored si-gplus" title="Google Plus">
+					<i class="icon-gplus"></i>
+					<i class="icon-gplus"></i>
+				</a>
+				<a href="#" class="social-icon si-small si-colored si-instagram" title="Instagram">
+					<i class="icon-instagram"></i>
+					<i class="icon-instagram"></i>
+				</a>
+				<a href="#" class="social-icon si-small si-colored si-flickr" title="Flickr">
+					<i class="icon-flickr"></i>
+					<i class="icon-flickr"></i>
+				</a>
+				<a href="#" class="social-icon si-small si-colored si-skype" title="Skype">
+					<i class="icon-skype"></i>
+					<i class="icon-skype"></i>
+				</a>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+		<!-- Header
+		============================================= -->
+		<header id="header" class="full-header static-sticky">
+
+			<div id="header-wrap">
+
+				<div class="container clearfix">
+
+					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+					<!-- Logo
+					============================================= -->
+					<div id="logo">
+						<a href="index.html" class="standard-logo" data-dark-logo="/static/images/canvasone-dark.png"><img src="/static/images/canvasone.png" alt="Canvas Logo"></a>
+						<a href="index.html" class="retina-logo" data-dark-logo="/static/images/canvasone-dark@2x.png"><img src="/static/images/canvasone@2x.png" alt="Canvas Logo"></a>
+					</div><!-- #logo end -->
+
+					<!-- Primary Navigation
+					============================================= -->
+					<nav id="primary-menu">
+
+						<ul class="one-page-menu" data-easing="easeInOutExpo" data-speed="1250" data-offset="65">
+							<li><a href="#" data-href="#wrapper"><div>Home</div></a></li>
+							<li><a href="#" data-href="#section-about" data-offset="60"><div>About</div></a></li>
+							<li><a href="#" data-href="#section-works"><div>Works</div></a></li>
+							<li><a href="#" data-href="#section-services"><div>Services</div></a></li>
+				<!-- 			<li><a href="#" data-href="#section-blog"><div>Blog</div></a></li> -->
+							<li><a href="#" data-href="#section-contact"><div>Contact</div></a></li>
+						</ul>
+
+						<div id="side-panel-trigger" class="side-panel-trigger"><a href="#"><i class="icon-reorder"></i></a></div>
+
+					</nav><!-- #primary-menu end -->
+
+				</div>
+
+			</div>
+
+		</header><!-- #header end -->
+
+		<!-- Slider
+		============================================= -->
+		<section id="slider" class="slider-parallax full-screen">
+
+			<div class="slider-parallax-inner">
+
+				<div class="col-md-7 col-sm-6 full-screen center nopadding" style="background: url('/static/images/page/bodyshape.jpg') center center no-repeat; background-size: cover;">
+					<div class="vertical-middle dark center clearfix" style="z-index: 2;">
+
+						<div class="emphasis-title nobottommargin">
+							<h1>
+								<span class="text-rotater nocolor" data-separator="|" data-rotate="fadeIn" data-speed="6000">
+									<span class="t-rotate t700 font-body opm-medium-word">Fitness.|Health.|Shape.|Training.|Vision.</span>
+								</span>
+							</h1>
+						</div>
+
+					</div>
+					<div class="video-wrap" style="position: absolute; z-index:1; height:100%;">
+						<div class="video-overlay" style="background-color: rgba(0,0,0,0.2);"></div>
+					</div>
+				</div>
+
+				<div class="col-md-5 col-sm-6 full-screen" style="background-color: #F5F5F5;">
+					<div class="vertical-middle subscribe-widget" data-loader="button">
+						<div class="col-padding">
+							<div class="heading-block nobottomborder bottommargin-sm">
+								<h1 style="line-height: 1.4;font-size: 24px;">It's time to get in Shape</h1>
+								<span style="font-size:16px; top-margin: 20px;" class="t300">Weight tracker, body tracker, trainer, nutrionist, suppliment expert and lots more. We help you get fit.</span>
+							</div>
+							<div class="widget-subscribe-form-result"></div>
+							<a href="/accounts/login"><button type="submit" class="button button-dark button-3d button-rounded btn-block nomargin" value="submit"><i class="icon-email2"></i> Login </button></a><br><br>
+							<a href="/accounts/register"><button type="submit" class="button button-dark button-3d button-rounded btn-block nomargin" value="submit"><i class="icon-email2"></i> Register for Free </button></a>
+							
+						</div>
+					</div>
+					<a href="#" data-scrollto="#section-about" data-easing="easeInOutExpo" data-speed="1250" data-offset="65" class="one-page-arrow"><i class="icon-angle-down infinite animated fadeInDown"></i></a>
+				</div>
+
+			</div>
+
+		</section><!-- #slider end -->
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+
+			<div class="content-wrap nopadding">
+
+				<div id="section-about" class="center page-section">
+
+					<div class="container clearfix">
+
+						<h2 class="divcenter bottommargin font-body" style="max-width: 700px; font-size: 40px;">A digital web studio creating stunning &amp; engaging online experiences</h2>
+
+						<p class="lead divcenter bottommargin" style="max-width: 800px;">Ford Foundation reduce child mortality fight against oppression refugee disruption pursue these aspirations effect. Free-speech Nelson Mandela change liberal; challenges of our times sustainability institutions.</p>
+
+						<p class="bottommargin" style="font-size: 16px;"><a href="#" data-scrollto="#section-services" data-easing="easeInOutExpo" data-speed="1250" data-offset="70" class="more-link">Learn more <i class="icon-angle-right"></i></a></p>
+
+						<div class="clear"></div>
+
+						<div class="row topmargin-lg divcenter" style="max-width: 1000px;">
+
+							<div class="col-sm-4 bottommargin">
+
+								<div class="team">
+									<div class="team-image">
+										<img src="/static/images/team/1.jpg" alt="John Doe">
+										<div class="team-overlay">
+											<div class="team-social-icons">
+												<a href="#" class="social-icon si-borderless si-small si-facebook" title="Facebook">
+													<i class="icon-facebook"></i>
+													<i class="icon-facebook"></i>
+												</a>
+												<a href="#" class="social-icon si-borderless si-small si-twitter" title="Twitter">
+													<i class="icon-twitter"></i>
+													<i class="icon-twitter"></i>
+												</a>
+												<a href="#" class="social-icon si-borderless si-small si-github" title="Github">
+													<i class="icon-github"></i>
+													<i class="icon-github"></i>
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="team-desc team-desc-bg">
+										<div class="team-title"><h4>John Doe</h4><span>CEO</span></div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-sm-4 bottommargin">
+
+								<div class="team">
+									<div class="team-image">
+										<img src="/static/images/team/2.jpg" alt="Josh Clark">
+										<div class="team-overlay">
+											<div class="team-social-icons">
+												<a href="#" class="social-icon si-borderless si-small si-twitter" title="Twitter">
+													<i class="icon-twitter"></i>
+													<i class="icon-twitter"></i>
+												</a>
+												<a href="#" class="social-icon si-borderless si-small si-linkedin" title="LinkedIn">
+													<i class="icon-linkedin"></i>
+													<i class="icon-linkedin"></i>
+												</a>
+												<a href="#" class="social-icon si-borderless si-small si-flickr" title="Flickr">
+													<i class="icon-flickr"></i>
+													<i class="icon-flickr"></i>
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="team-desc team-desc-bg">
+										<div class="team-title"><h4>Mary Jane</h4><span>Co-Founder</span></div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="col-sm-4 bottommargin">
+
+								<div class="team">
+									<div class="team-image">
+										<img src="/static/images/team/3.jpg" alt="Mary Jane">
+										<div class="team-overlay">
+											<div class="team-social-icons">
+												<a href="#" class="social-icon si-borderless si-small si-twitter" title="Twitter">
+													<i class="icon-twitter"></i>
+													<i class="icon-twitter"></i>
+												</a>
+												<a href="#" class="social-icon si-borderless si-small si-vimeo" title="Vimeo">
+													<i class="icon-vimeo"></i>
+													<i class="icon-vimeo"></i>
+												</a>
+												<a href="#" class="social-icon si-borderless si-small si-instagram" title="Instagram">
+													<i class="icon-instagram"></i>
+													<i class="icon-instagram"></i>
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="team-desc team-desc-bg">
+										<div class="team-title"><h4>Josh Clark</h4><span>Sales</span></div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div id="section-works" class="page-section notoppadding">
+
+					<div class="section nomargin">
+						<div class="container clearfix">
+							<div class="divcenter center" style="max-width: 900px;">
+								<h2 class="nobottommargin t300 ls1">We create &amp; craft projects that ooze creativity in every aspect. We try to create a benchmark in everything we do. Take a moment to browse through some of our recent completed work.</h2>
+							</div>
+						</div>
+					</div>
+
+					<!-- Portfolio Items
+					============================================= -->
+					<div id="portfolio" class="portfolio grid-container portfolio-nomargin portfolio-full portfolio-masonry mixed-masonry clearfix">
+
+						<article class="portfolio-item pf-media pf-icons wide">
+							<div class="portfolio-image">
+								<a href="#">
+									<img src="/static/images/portfolio/mixed/1.jpg" alt="Open Imagination">
+								</a>
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3><a href="#">Open Imagination</a></h3>
+										<span><a href="#">Media</a>, <a href="#">Icons</a></span>
+									</div>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item pf-illustrations">
+							<div class="portfolio-image">
+								<a href="#">
+									<img src="/static/images/portfolio/mixed/2.jpg" alt="Locked Steel Gate">
+								</a>
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3><a href="#">Locked Steel Gate</a></h3>
+										<span><a href="#">Illustrations</a></span>
+									</div>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item pf-graphics pf-uielements">
+							<div class="portfolio-image">
+								<a href="#">
+									<img src="/static/images/portfolio/mixed/3.jpg" alt="Mac Sunglasses">
+								</a>
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3><a href="#">Mac Sunglasses</a></h3>
+										<span><a href="#">Graphics</a>, <a href="#">UI Elements</a></span>
+									</div>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item pf-media pf-icons wide">
+							<div class="portfolio-image">
+								<a href="#">
+									<img src="/static/images/portfolio/mixed/4.jpg" alt="Open Imagination">
+								</a>
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3><a href="#">Open Imagination</a></h3>
+										<span><a href="#">Media</a>, <a href="#">Icons</a></span>
+									</div>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item pf-uielements pf-media wide">
+							<div class="portfolio-image">
+								<a href="#">
+									<img src="/static/images/portfolio/mixed/5.jpg" alt="Console Activity">
+								</a>
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3><a href="#">Console Activity</a></h3>
+										<span><a href="#">UI Elements</a>, <a href="#">Media</a></span>
+									</div>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item pf-media pf-icons">
+							<div class="portfolio-image">
+								<a href="#">
+									<img src="/static/images/portfolio/mixed/6.jpg" alt="Open Imagination">
+								</a>
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3><a href="#">Open Imagination</a></h3>
+										<span><a href="#">Media</a>, <a href="#">Icons</a></span>
+									</div>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item pf-uielements pf-icons">
+							<div class="portfolio-image">
+								<a href="#">
+									<img src="/static/images/portfolio/mixed/7.jpg" alt="Backpack Contents">
+								</a>
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3><a href="#">Backpack Contents</a></h3>
+										<span><a href="#">UI Elements</a>, <a href="#">Icons</a></span>
+									</div>
+								</div>
+							</div>
+						</article>
+
+					</div><!-- #portfolio end -->
+
+					<div class="topmargin center"><a href="#" class="button button-border button-circle t600">View More Projects</a></div>
+
+				</div>
+
+				<div id="section-services" class="page-section notoppadding">
+
+					<div class="section nomargin">
+						<div class="container clearfix">
+							<div class="divcenter center" style="max-width: 900px;">
+								<h2 class="nobottommargin t300 ls1">How does XYZ help?</h2>
+							</div>
+						</div>
+					</div>
+
+					<div class="common-height clearfix">
+
+						<div class="col-md-4 hidden-xs" style="background: url('/static/images/services/13.jpg') center center no-repeat; background-size: cover;"></div>
+						<div class="col-md-8">
+							<div class="max-height">
+								<div class="row common-height grid-border clearfix">
+									<div class="col-md-4 col-sm-6 col-padding">
+										<div class="feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder">
+											<div class="fbox-icon">
+												<a href="#"><i class="icon-et-mobile"></i></a>
+											</div>
+											<h3>Easy Accessibility</h3>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-padding">
+										<div class="feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder">
+											<div class="fbox-icon">
+												<a href="#"><i class="icon-et-presentation"></i></a>
+											</div>
+											<h3>Progress Trackers</h3>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-padding">
+										<div class="feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder">
+											<div class="fbox-icon">
+												<a href="#"><i class="icon-et-puzzle"></i></a>
+											</div>
+											<h3>Extensive Support</h3>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-padding">
+										<div class="feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder">
+											<div class="fbox-icon">
+												<a href="#"><i class="icon-et-gears"></i></a>
+											</div>
+											<h3>Complete Connectivity</h3>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-padding">
+										<div class="feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder">
+											<div class="fbox-icon">
+												<a href="#"><i class="icon-et-genius"></i></a>
+											</div>
+											<h3>Geniusly Transformation</h3>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6 col-padding">
+										<div class="feature-box fbox-center fbox-dark fbox-plain fbox-small nobottomborder">
+											<div class="fbox-icon">
+												<a href="#"><i class="icon-et-hotairballoon"></i></a>
+											</div>
+											<h3>Knowledge Source</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="section dark nomargin">
+						<div class="divcenter center" style="max-width: 900px;">
+							<h2 class="nobottommargin t300 ls1">Like Our Services? Get an <a href="#" data-scrollto="#template-contactform" data-offset="140" data-easing="easeInOutExpo" data-speed="1250" class="button button-border button-circle button-light button-large notopmargin nobottommargin" style="position: relative; top: -3px;">Instant Quote</a></h2>
+						</div>
+					</div>
+
+					<div class="section parallax nomargin dark" style="background-image: url('/static/images/page/testimonials.jpg'); padding: 150px 0;" data-stellar-background-ratio="0.3">
+
+						<div class="container clearfix">
+
+							<div class="col_two_fifth nobottommargin">&nbsp;</div>
+
+							<div class="col_three_fifth nobottommargin col_last">
+
+								<div class="fslider testimonial testimonial-full nobgcolor noborder noshadow nopadding" data-arrows="false">
+									<div class="flexslider">
+										<div class="slider-wrap">
+											<div class="slide">
+												<div class="testi-content">
+													<p>I had the goal to be the best since day one.</p>
+													<div class="testi-meta">
+														Jay Cutler
+														<span>Professional Bodybuilder</span>
+													</div>
+												</div>
+											</div>
+											<div class="slide">
+												<div class="testi-content">
+													<p>Bodybuilding is much like any other sport. To be successful, you must dedicate yourself 100% to your training, diet and mental approach.</p>
+													<div class="testi-meta">
+														Arnold Schwarzenegger
+														<span>Actor/Professional Bodybuilder</span>
+													</div>
+												</div>
+											</div>
+											<div class="slide">
+												<div class="testi-content">
+													<p>Champions aren't made in the gyms. Champions are made from something they have deep inside them—a desire, a dream, a vision.</p>
+													<div class="testi-meta">
+														Muhammad Ali
+														<span>Professional Boxer</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			
+
+				<div id="section-contact" class="page-section notoppadding">
+
+					<div class="row noleftmargin norightmargin bottommargin-lg common-height">
+						<div id="headquarters-map" class="col-md-8 col-sm-6 gmap hidden-xs"></div>
+						<div class="col-md-4 col-sm-6" style="background-color: #F5F5F5;">
+							<div class="col-padding max-height">
+								<h3 class="font-body t400 ls1">Our Headquarters</h3>
+
+								<div style="font-size: 16px; line-height: 1.7;">
+									<address style="line-height: 1.7;">
+										<strong>North America:</strong><br>
+										795 Folsom Ave, Suite 600<br>
+										San Francisco, CA 94107<br>
+									</address>
+
+									<div class="clear topmargin-sm"></div>
+
+									<address style="line-height: 1.7;">
+										<strong>Europe:</strong><br>
+										795 Folsom Ave, Suite 600<br>
+										San Francisco, CA 94107<br>
+									</address>
+
+									<div class="clear topmargin"></div>
+
+									<abbr title="Phone Number"><strong>Phone:</strong></abbr> (91) 8547 632521<br>
+									<abbr title="Fax"><strong>Fax:</strong></abbr> (91) 11 4752 1433<br>
+									<abbr title="Email Address"><strong>Email:</strong></abbr> info@canvas.com
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="container clearfix">
+
+						<div class="divcenter topmargin" style="max-width: 850px;">
+
+							<div class="contact-widget">
+
+								<div class="contact-form-result"></div>
+
+								<form class="nobottommargin" id="template-contactform" name="template-contactform" action="include/sendemail.php" method="post">
+
+									<div class="form-process"></div>
+
+									<div class="col_half">
+										<input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control border-form-control required" placeholder="Name" />
+									</div>
+									<div class="col_half col_last">
+										<input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control border-form-control" placeholder="Email Address" />
+									</div>
+
+									<div class="clear"></div>
+
+									<div class="col_one_third">
+										<input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control border-form-control" placeholder="Phone" />
+									</div>
+
+									<div class="col_two_third col_last">
+										<input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control border-form-control" placeholder="Subject" />
+									</div>
+
+									<div class="clear"></div>
+
+									<div class="col_full">
+										<textarea class="required sm-form-control border-form-control" id="template-contactform-message" name="template-contactform-message" rows="7" cols="30" placeholder="Your Message"></textarea>
+									</div>
+
+									<div class="col_full center">
+										<button class="button button-border button-circle t500 noleftmargin topmargin-sm" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Send Message</button>
+										<br>
+										<small style="display: block; font-size: 13px; margin-top: 15px;">We'll do our best to get back to you within 6-8 working hours.</small>
+									</div>
+
+									<div class="clear"></div>
+
+									<div class="col_full hidden">
+										<input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
+									</div>
+
+								</form>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section><!-- #content end -->
+
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="dark noborder">
+
+			<div class="container center">
+				<div class="footer-widgets-wrap">
+
+					<div class="row divcenter clearfix">
+
+						<div class="col-md-4">
+
+							<div class="widget clearfix">
+								<h4>Site Links</h4>
+
+								<ul class="list-unstyled footer-site-links nobottommargin">
+									<li><a href="#" data-scrollto="#wrapper" data-easing="easeInOutExpo" data-speed="1250" data-offset="70">Top</a></li>
+									<li><a href="#" data-scrollto="#section-about" data-easing="easeInOutExpo" data-speed="1250" data-offset="70">About</a></li>
+									<li><a href="#" data-scrollto="#section-works" data-easing="easeInOutExpo" data-speed="1250" data-offset="70">Works</a></li>
+									<li><a href="#" data-scrollto="#section-services" data-easing="easeInOutExpo" data-speed="1250" data-offset="70">Services</a></li>
+								<!-- 	<li><a href="#" data-scrollto="#section-blog" data-easing="easeInOutExpo" data-speed="1250" data-offset="70">Blog</a></li> -->
+									<li><a href="#" data-scrollto="#section-contact" data-easing="easeInOutExpo" data-speed="1250" data-offset="70">Contact</a></li>
+								</ul>
+							</div>
+
+						</div>
+
+						<div class="col-md-4">
+
+							<div class="widget subscribe-widget clearfix" data-loader="button">
+								<h4>Subscribe</h4>
+
+								<div class="widget-subscribe-form-result"></div>
+								<form id="widget-subscribe-form" action="../include/subscribe.php" role="form" method="post" class="nobottommargin">
+									<input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control input-lg not-dark required email" placeholder="Your Email Address">
+									<button class="button button-border button-circle button-light topmargin-sm" type="submit">Subscribe Now</button>
+								</form>
+							</div>
+
+						</div>
+
+						<div class="col-md-4">
+
+							<div class="widget clearfix">
+								<h4>Contact</h4>
+
+								<p class="lead">795 Folsom Ave, Suite 600<br>San Francisco, CA 94107</p>
+
+								<div class="center topmargin-sm">
+									<a href="#" class="social-icon inline-block noborder si-small si-facebook" title="Facebook">
+										<i class="icon-facebook"></i>
+										<i class="icon-facebook"></i>
+									</a>
+									<a href="#" class="social-icon inline-block noborder si-small si-twitter" title="Twitter">
+										<i class="icon-twitter"></i>
+										<i class="icon-twitter"></i>
+									</a>
+									<a href="#" class="social-icon inline-block noborder si-small si-github" title="Github">
+										<i class="icon-github"></i>
+										<i class="icon-github"></i>
+									</a>
+									<a href="#" class="social-icon inline-block noborder si-small si-pinterest" title="Pinterest">
+										<i class="icon-pinterest"></i>
+										<i class="icon-pinterest"></i>
+									</a>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			<div id="copyrights">
+				<div class="container center clearfix">
+					Copyright Canvas 2015 | All Rights Reserved
+				</div>
+			</div>
+
+		</footer><!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- External JavaScripts
+	============================================= -->
+	<script type="text/javascript" src="/static/js/jquery.js"></script>
+	<script type="text/javascript" src="/static/js/plugins.js"></script>
+
+	<!-- Google Map JavaScripts
+	============================================= -->
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js"></script>
+	<script type="text/javascript" src="/static/js/jquery.gmap.js"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script type="text/javascript" src="/static/js/functions.js"></script>
+
+	<script type="text/javascript">
+
+		jQuery(window).load(function(){
+
+			// Google Map
+			jQuery('#headquarters-map').gMap({
+				address: 'Melbourne, Australia',
+				maptype: 'ROADMAP',
+				zoom: 14,
+				markers: [
+					{
+						address: "Melbourne, Australia",
+						html: "Melbourne, Australia",
+						icon: {
+							image: "/static/images/icons/map-icon-red.png",
+							iconsize: [32, 32],
+							iconanchor: [14,44]
+						}
+					}
+				],
+				doubleclickzoom: false,
+				controls: {
+					panControl: false,
+					zoomControl: false,
+					mapTypeControl: false,
+					scaleControl: false,
+					streetViewControl: false,
+					overviewMapControl: false
+				},
+				styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"administrative.country","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"administrative.country","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"administrative.country","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.locality","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":"-100"},{"lightness":"30"}]},{"featureType":"administrative.neighborhood","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"visibility":"simplified"},{"gamma":"0.00"},{"lightness":"74"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"lightness":"3"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
+			});
+
+		});
+
+	</script>
+
+</body>
+</html>
