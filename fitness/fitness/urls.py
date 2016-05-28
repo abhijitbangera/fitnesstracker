@@ -23,11 +23,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', 'fitness.views.homepage'),
-    url(r'^accounts/',include('registration.backends.hmac.urls')),
+    url(r'^accounts/',include('registration.backends.simple.urls')),
     url(r'^tracker/', 'tracker.views.weighttracker'),
     url(r'^bodytracker/', 'tracker.views.bodytracker'),
     url(r'^plot/', 'tracker.views.plot'),
-    url(r'^test/', 'fitness.views.payment'),
+    url(r'^enroll/', 'fitness.views.payment'),
     url(r'^weighttracker/', 'tracker.views.weighttracker'),
     url(r'^weightprogress/', 'tracker.views.weightprogress'),
     url(r'^bodyprogress/', 'tracker.views.bodyprogress'),

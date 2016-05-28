@@ -30,7 +30,7 @@ from .forms import WriteForm, AnonymousWriteForm, QuickReplyForm, FullReplyForm
 from .models import Message, get_order_by
 from .utils import format_subject, format_body
 import requests 
-from tracker.models import userprofile_extended
+from tracker.models import userprofile_extended,subscription
 from tracker.forms import userprofile_extended_goalsettings_Form,userprofile_extended_profilesettings_Form
 from django.http import HttpResponseRedirect
 
@@ -103,6 +103,7 @@ class FolderMixin(NamespaceMixin, object):
             'current_url': self.request.get_full_path(),
             'gets': self.request.GET,  # useful to postman_order_by template tag
             'profilepic':profilepic,
+            'username':self.request.user,
 
         })
         return context
@@ -254,6 +255,7 @@ class ComposeMixin(NamespaceMixin, object):
         print("=================")
         print(obj_count) 
         if obj_count==0:
+            subscrition_member='no'
             
             form=userprofile_extended_goalsettings_Form()
             messages.add_message(self.request,messages.SUCCESS, "Please update your workout goal. Based on your goal the system would allocate appropriate instructors to your profile.")
@@ -272,6 +274,11 @@ class ComposeMixin(NamespaceMixin, object):
             return context
             # return render(self.request, "user_goal_settings.html",context) 
         if obj_count>0:
+            subscrition_member='no'
+            obj1=subscription.objects.filter(user_id=self.request.user)
+            for i in obj1:
+                if i.subscription_status:
+                    subscrition_member='yes'
             for i in obj:
                 goal_id=i.goal
 
@@ -344,9 +351,6 @@ class ComposeMixin(NamespaceMixin, object):
                     contact_gender=i.gender
 
 
-
-
-
         context = super(ComposeMixin, self).get_context_data(**kwargs)
         context.update({
             'autocompleter_app': autocompleter_app,
@@ -374,8 +378,9 @@ class ComposeMixin(NamespaceMixin, object):
             'contact_about':contact_about,
             'contact_age':contact_age,
             'contact_gender':contact_gender,
+            'subscrition_member':subscrition_member,
 
-        })
+            })
         return context
 
 

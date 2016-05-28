@@ -1,7 +1,7 @@
 {% extends "loggedin_base.html" %}
 
 {% block content %}
-Current goal: {{goal}} {{goal_id}}
+<!-- Current goal: {{goal}} {{goal_id}} -->
 {% if goal == 'Not Set' %}
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -24,9 +24,9 @@ Current goal: {{goal}} {{goal_id}}
 {% endif %}
 <br>
 {% if goal_id == '1' %}
-{% include "plans_massgain.html" %}
-{% elif goal_id == '3' %}
 {% include "plans_weightloss.html" %}
+{% elif goal_id == '2' %}
+{% include "plans_massgain.html" %}
 {% endif %}
 
 {% endblock %}

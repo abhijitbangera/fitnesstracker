@@ -1,6 +1,5 @@
 from django import forms
-from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_extended,backtracker,hiptracker,thightracker,shouldertracker,photos
-
+from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_extended,backtracker,hiptracker,thightracker,shouldertracker,photos,subscription
 class basictrackerForm(forms.ModelForm):
 	class Meta:
 		model=basictracker
@@ -61,3 +60,8 @@ class photosForm(forms.ModelForm):
 		model=photos
 		fields = '__all__'
 		exclude = ["user"]
+
+class subscriptionForm(forms.ModelForm):
+	class Meta:
+		model=subscription
+		fields='__all__'

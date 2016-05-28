@@ -3,13 +3,12 @@ from tracker.forms import basictrackerForm,bisceptrackerForm,chesttrackerForm,us
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_extended,backtracker,hiptracker,thightracker,shouldertracker,photos
 from django.contrib.auth.models import User
+from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_extended,backtracker,hiptracker,thightracker,shouldertracker,photos,subscription
 from django.contrib import messages
 
 # Create your views here.
 def profile(request,username):
-
 
 	u = User.objects.get(username=username)
 	# username=request.user
@@ -1609,8 +1608,6 @@ def goal_settings(request):
 				contact='info'
 				save_it.supplimentexpert=supplimentexpert
 				save_it.contact=contact
-
-				
 				save_it.save()
 				print("saved successfully.2")
 				return HttpResponseRedirect("/")
@@ -1641,7 +1638,7 @@ def profile_settings(request):
 		if userprofile_extended.objects.filter(user_id=request.user):
 			userprofile_instance=userprofile_extended.objects.get(user_id=request.user)
 			form= userprofile_extended_profilesettings_Form(request.POST or None,request.FILES or None, instance=userprofile_instance )
-			profilepic=i.image.url
+			# profilepic=i.image.url
 			print("yes............")
 			if form.is_valid():
 				save_it=form.save(commit = False)
@@ -1813,8 +1810,8 @@ def photosView(request):
 		img5=photo_list_url[4]
 		desc5=desc[4]
 		dnt5=dnt[4]
-
-	a=userprofile_extended.objects.get(user_id=request.user)
+	
+	# a=userprofile_extended.objects.get(user_id=request.user)
 	
 	context={'username':str(username).title(),
 			'username_original':username,

@@ -14,21 +14,36 @@
 	    <div class="x_panel tile ">
 	      	<div class="x_title">
 	      	{% if form %}
-		        <center><h2>Compose Message</h2></center>
+	      		{% if subscrition_member == 'yes' %}
+		        <center><h2>Compose Message {{subscrition_member}}</h2></center>
 		       
 		        <div class="clearfix"></div>
-		    </div>
-		    <div class="x_content">
+		    	</div>
+		    	<div class="x_content">
+			       
+			        <form action="{% if next_url %}?next={{ next_url|urlencode }}{% endif %}" method="post">{% csrf_token %}
+			        
+			        <table>
+					{{ form.as_table }}
+					</table>
+					<input type="submit" value="{% trans 'Send' %}"/>
+					</form></center> 
+	        	
+	      		</div>
+	      		{% else %}
+	      		<center><h2>Compose Message {{subscrition_member}}</h2></center>
 		       
-		        <form action="{% if next_url %}?next={{ next_url|urlencode }}{% endif %}" method="post">{% csrf_token %}
-		        
-		        <table>
-				{{ form.as_table }}
-				</table>
-				<input type="submit" value="{% trans 'Send' %}"/>
-				</form></center> 
-	        
-	      	</div>
+		        <div class="clearfix"></div>
+		    	</div>
+		    	<div class="x_content">
+			       
+			        <div class="alert alert-info col-md-12 col-sm-12 col-sm-12 col-xs-12">
+			        <center>Please enroll to have a chat with your Trainer/Nutritionist/Suppliment expert. ENROLL NOW.</center>
+			        </div>
+	        	
+	      		</div>
+	      		{% endif %}
+
 	    </div>
 	  </div>
 

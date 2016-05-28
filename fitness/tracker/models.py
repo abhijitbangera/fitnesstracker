@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime   
+
 
 class userprofile_extended(models.Model):
 	GENDER_CHOICES = (('M', 'Male'),('F', 'Female'),)
@@ -15,6 +17,15 @@ class userprofile_extended(models.Model):
 	nutritionist=models.CharField(max_length=100,null=True, blank=True)
 	supplimentexpert=models.CharField(max_length=100,null=True, blank=True)
 	contact=models.CharField(max_length=100,null=True, blank=True)
+	def __str__(self):
+		return str(self.user)
+
+class subscription(models.Model):
+	user=models.ForeignKey(User)
+	user_name=models.CharField(max_length=100,null=True, blank=True)
+	subscription_startdate=models.DateTimeField(default=datetime.now(), blank=True)
+	expire_days=models.IntegerField(max_length=5, null=True, blank=True)
+	subscription_status=models.BooleanField(default=False)
 	def __str__(self):
 		return str(self.user)
 		

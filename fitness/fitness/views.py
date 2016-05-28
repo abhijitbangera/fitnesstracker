@@ -1,18 +1,31 @@
 from django.shortcuts import render,redirect,render_to_response
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_extended,backtracker,hiptracker,thightracker,shouldertracker,photos
-from tracker.forms import basictrackerForm,bisceptrackerForm,chesttrackerForm,userprofile_extended_goalsettings_Form,userprofile_extended_profilesettings_Form,backtrackerForm,hiptrackerForm,thightrackerForm,shouldertrackerForm,photosForm
+from tracker.models import basictracker,bisceptracker,chesttracker,userprofile_extended,backtracker,hiptracker,thightracker,shouldertracker,photos,subscription
+from tracker.forms import basictrackerForm,bisceptrackerForm,chesttrackerForm,userprofile_extended_goalsettings_Form,userprofile_extended_profilesettings_Form,backtrackerForm,hiptrackerForm,thightrackerForm,shouldertrackerForm,photosForm,subscriptionForm
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from datetime import datetime, timedelta,timezone
 from instamojo import Instamojo
 api = Instamojo(api_key='',
                 auth_token='',
                 endpoint='https://test.instamojo.com/api/1.1/')
 
-
 @login_required
 def homepage(request):
+	date_now = datetime.now(timezone.utc)
+	obj=subscription.objects.filter(user_id=request.user)
+	for i in obj:
+ 		print("*********")
+ 		print(i.subscription_startdate)
+ 		print(i.expire_days)
+ 		days=(date_now-i.subscription_startdate).days
+ 		if days>i.expire_days:
+ 			defaults={'subscription_status':0}
+ 			y=subscription.objects.update_or_create(user_id=request.user.id,defaults=defaults)
+
+
+
 	username=request.user
 	obj=userprofile_extended.objects.filter(user_id=username)
 	form=''
@@ -143,12 +156,14 @@ def newusers(request):
 
 def payment(request):
 
-	# response = api.link_create(title='Hello, world1!',
- #                           description='Well, hello again.',
- #                           base_price=0)
-	# print(response)
-
-	# print (response['link'])
+	obj=userprofile_extended.objects.filter(user_id=request.user)
+	profilepic="/media/avatar.png"
+	obj_count=obj.count()
+	if obj_count>0:
+		for i in obj:
+			goal_id=i.image
+			if goal_id:
+				profilepic=i.image.url
 
 	response = api.payment_request_create(
     amount='3499',
@@ -158,13 +173,16 @@ def payment(request):
     redirect_url="http://127.0.0.1:8000/payment/"
     )
 
+	plan1=response['payment_request']['longurl']
 	# print the long URL of the payment request.
 	print (response['payment_request']['longurl'])
 	# print the unique ID(or payment request ID)
 	print (response['payment_request']['id'])
-	id1=response['payment_request']['id']
-	print(api.payment_request_payment_status(id1,'MOJO6519000F07999514'))
-	return render(request, "loggedin_homepage.html", {})
+
+	context={'plan1':plan1,
+			'profilepic':profilepic,
+			'username':request.user}
+	return render(request, "subscription.html", context)
 
 def payment_confirmation(request):
 	url=request
@@ -173,5 +191,9 @@ def payment_confirmation(request):
 	payment_id=request.GET.get('payment_id')
 	response=api.payment_request_payment_status(payment_request_id, payment_id)
 	print(response['success'])
+	if response['success']:
+		defaults={'expire_days':'15','subscription_status':1,'user_name':request.user.username}
+		y=subscription.objects.update_or_create(user_id=request.user.id,defaults=defaults)
+
 
 	return render(request, "payment_confirmation.html", {'response':response})
