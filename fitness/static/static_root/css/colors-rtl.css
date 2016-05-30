@@ -1,0 +1,18 @@
+/* ----------------------------------------------------------------
+    Colors
+
+    Replace the HEX Code with your Desired Color HEX
+-----------------------------------------------------------------*/
+
+#page-menu.dots-menu nav li span:after,
+.title-block { border-right-color: #1ABC9C; }
+
+.title-block-right { border-left-color: #1ABC9C; }
+
+.fbox-effect.fbox-dark .fbox-icon i:after,
+.dark .fbox-effect.fbox-dark .fbox-icon i:after { box-shadow: 0 2px 0 0 #1ABC9C; }
+
+.fbox-border.fbox-effect.fbox-dark .fbox-icon i:hover,
+.fbox-border.fbox-effect.fbox-dark:hover .fbox-icon i,
+.dark .fbox-border.fbox-effect.fbox-dark .fbox-icon i:hover,
+.dark .fbox-border.fbox-effect.fbox-dark:hover .fbox-icon i { box-shadow: 0 1px 0 0 #1ABC9C; }

@@ -1,0 +1,53 @@
+
+
+/**************************
+*
+*	GENERAL
+*
+**************************/
+
+.camera_pie canvas {
+	top: 10px !important;
+	left: 10px !important;
+	right: 0 !important;
+}
+
+.camera_target {
+	text-align: right;
+}
+.camera_loader {
+ 	right: 50%;
+	margin: -24px -24px 0 0;
+}
+.camera_nav_cont {
+	left: 9px;
+	right: 0;
+}
+.camera_prevThumbs {
+	right: 0;
+	left: auto;
+}
+.camera_nextThumbs {
+	left: 0;
+	right: auto;
+}
+.camera_wrap .camera_pag .camera_pag_ul {
+	left: 20px;
+	right: auto;
+}
+.camera_wrap .camera_pag .camera_pag_ul li {
+	text-align: right;
+}
+.camera_pag_ul .thumb_arrow {
+	right: 50%;
+	left: auto;
+	margin-right: -4px;
+	margin-left: 0;
+}
+.camera_commands {
+    left: 76px;
+	right: 0;
+}
+.camera_caption {
+	right: 0;
+}
