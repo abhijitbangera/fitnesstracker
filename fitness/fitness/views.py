@@ -217,3 +217,6 @@ def payment_confirmation(request):
 
 def faqs(request):
 	return render(request,"faqs.html",{})
+
+def bisceps(request):
+	return render(request,"workouts_bisceps.html",{})

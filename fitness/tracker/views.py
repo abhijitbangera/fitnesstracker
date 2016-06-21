@@ -819,7 +819,7 @@ def weighttracker(request):
 			'pagetitle': "Tracker",
 			'profilepic':profilepic}
 	context.update(csrf(request))
-	form['weight'].label = "Enter your weight"
+	form['weight'].label = "Enter your weight (in Kgs)"
 	context['form']=form
 	return render(request, "user_weighttracker.html", context)
 
@@ -895,12 +895,12 @@ def bodytracker(request):
 
 	
 	
-	form['biscep'].label = "Enter your biscep size"
-	form2['chest'].label = "Enter your chest size"
-	form3['back'].label = "Enter your back size"
-	form4['hip'].label = "Enter your hip size"
-	form5['thigh'].label = "Enter your thigh size"
-	form6['shoulder'].label = "Enter your shoulder size"
+	form['biscep'].label = "Enter your biscep size (in inches)"
+	form2['chest'].label = "Enter your chest size (in inches)"
+	form3['back'].label = "Enter your back size (in inches)"
+	form4['hip'].label = "Enter your hip size (in inches)"
+	form5['thigh'].label = "Enter your thigh size (in inches)"
+	form6['shoulder'].label = "Enter your shoulder size (in inches)"
 	context={'form':form,
 			'form2':form2,
 			'form3':form3,
@@ -961,7 +961,7 @@ def weightprogress(request):
 				'message':message,
 				'profilepic':profilepic}
 		context.update(csrf(request))
-		form['weight'].label = "Enter your weight"
+		form['weight'].label = "Enter your weight (in Kgs)"
 		context['form']=form
 		return render(request, "user_weighttracker.html", context)
 

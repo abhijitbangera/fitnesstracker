@@ -20,30 +20,30 @@
         	</div>
 			<div>
 				<center><form action="/bodytracker/" method="post">{% csrf_token %}
-					Enter/update your Biscep size: {{form.biscep}}
+					Enter/update your Biscep size (in inches): {{form.biscep}}
 					<input type="submit" value="submit">
 				</form></center><br>
 				<center><form action="/bodytracker/" method="post">{% csrf_token %}
-					Enter/update your Chest size: {{form2.chest}}
-					<input type="submit" value="submit">
-				</form></center><br>
-
-				<center><form action="/bodytracker/" method="post">{% csrf_token %}
-					Enter/update your back size: {{form3.back}}
+					Enter/update your Chest size (in inches): {{form2.chest}}
 					<input type="submit" value="submit">
 				</form></center><br>
 
 				<center><form action="/bodytracker/" method="post">{% csrf_token %}
-					Enter/update your hip size: {{form4.hip}}
+					Enter/update your back size (in inches): {{form3.back}}
 					<input type="submit" value="submit">
 				</form></center><br>
 
 				<center><form action="/bodytracker/" method="post">{% csrf_token %}
-					Enter/update your thigh size: {{form5.thigh}}
+					Enter/update your hip size (in inches): {{form4.hip}}
+					<input type="submit" value="submit">
+				</form></center><br>
+
+				<center><form action="/bodytracker/" method="post">{% csrf_token %}
+					Enter/update your thigh size (in inches): {{form5.thigh}}
 					<input type="submit" value="submit">
 				</form></center><br>
 				<center><form action="/bodytracker/" method="post">{% csrf_token %}
-					Enter/update your shoulder size: {{form6.shoulder}}
+					Enter/update your shoulder size (in inches): {{form6.shoulder}}
 					<input type="submit" value="submit">
 				</form></center><br>
 			</div>
