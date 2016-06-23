@@ -39,7 +39,7 @@ class photos(models.Model):
 
 # Create your models here.
 class basictracker(models.Model):
-	weight=models.IntegerField()
+	weight=models.FloatField()
 	datetime = models.DateTimeField(auto_now_add=True)
 	user= models.ForeignKey(User)
 
@@ -48,7 +48,7 @@ class basictracker(models.Model):
 
 
 class bisceptracker(models.Model):
-	biscep=models.IntegerField()
+	biscep=models.FloatField()
 	datetime = models.DateTimeField(auto_now_add=True)
 	user= models.ForeignKey(User)
 
@@ -57,7 +57,7 @@ class bisceptracker(models.Model):
 
 
 class chesttracker(models.Model):
-	chest=models.IntegerField()
+	chest=models.FloatField()
 	datetime = models.DateTimeField(auto_now_add=True)
 	user= models.ForeignKey(User)
 
@@ -66,7 +66,7 @@ class chesttracker(models.Model):
 
 
 class backtracker(models.Model):
-	back=models.IntegerField()
+	back=models.FloatField()
 	datetime = models.DateTimeField(auto_now_add=True)
 	user= models.ForeignKey(User)
 
@@ -75,7 +75,7 @@ class backtracker(models.Model):
 
 
 class hiptracker(models.Model):
-	hip=models.IntegerField()
+	hip=models.FloatField()
 	datetime = models.DateTimeField(auto_now_add=True)
 	user= models.ForeignKey(User)
 
@@ -84,7 +84,7 @@ class hiptracker(models.Model):
 
 
 class thightracker(models.Model):
-	thigh=models.IntegerField()
+	thigh=models.FloatField()
 	datetime = models.DateTimeField(auto_now_add=True)
 	user= models.ForeignKey(User)
 
@@ -92,7 +92,7 @@ class thightracker(models.Model):
 		return str(self.user)
 
 class shouldertracker(models.Model):
-	shoulder=models.IntegerField()
+	shoulder=models.FloatField()
 	datetime = models.DateTimeField(auto_now_add=True)
 	user= models.ForeignKey(User)
 
