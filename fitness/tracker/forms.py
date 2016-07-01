@@ -47,7 +47,7 @@ class userprofile_extended_goalsettings_Form(forms.ModelForm):
 	class Meta:
 		model=userprofile_extended
 		fields = '__all__'
-		exclude = ["mobile","user","age","image","trainer","nutritionist","supplimentexpert","contact","about"]
+		exclude = ["height","mobile","user","age","image","trainer","nutritionist","supplimentexpert","contact","about"]
 
 class userprofile_extended_profilesettings_Form(forms.ModelForm):
 	class Meta:

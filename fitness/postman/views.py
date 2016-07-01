@@ -254,27 +254,28 @@ class ComposeMixin(NamespaceMixin, object):
 
         print("=================")
         print(obj_count) 
-        if obj_count==0:
-            subscrition_member='no'
-            
-            form=userprofile_extended_goalsettings_Form()
-            messages.add_message(self.request,messages.SUCCESS, "Please update your workout goal. Based on your goal the system would allocate appropriate instructors to your profile.")
-            print("i m here")
-            template_name='user_goal_settings.html'
-            context={
-                     'profilepic':profilepic,
-                     'username_original':username,
-                    'username':str(username).title(), 
-                     'trainerprofilepic':trainerprofilepic,
-                    'nutritionistprofilepic':nutritionistprofilepic,
-                    'supplimentexpertprofilepic':supplimentexpertprofilepic,
-                    'contactprofilepic':contactprofilepic,
-                    }
-            print(context)
-            return context
+        # if obj_count==0:
+        #     subscrition_member='no'
+        #     subscrition_member='yes'
+        #     form=userprofile_extended_goalsettings_Form()
+        #     messages.add_message(self.request,messages.SUCCESS, "Please update your workout goal. Based on your goal the system would allocate appropriate instructors to your profile.")
+        #     print("i m here")
+        #     template_name='user_goal_settings.html'
+        #     context={
+        #              'profilepic':profilepic,
+        #              'username_original':username,
+        #             'username':str(username).title(), 
+        #              'trainerprofilepic':trainerprofilepic,
+        #             'nutritionistprofilepic':nutritionistprofilepic,
+        #             'supplimentexpertprofilepic':supplimentexpertprofilepic,
+        #             'contactprofilepic':contactprofilepic,
+        #             }
+        #     print(context)
+        #     return context
             # return render(self.request, "user_goal_settings.html",context) 
-        if obj_count>0:
+        if obj_count>=0:
             subscrition_member='no'
+            subscrition_member='yes' #All members can see
             obj1=subscription.objects.filter(user_id=self.request.user)
             for i in obj1:
                 if i.subscription_status:
@@ -285,15 +286,15 @@ class ComposeMixin(NamespaceMixin, object):
                 print(goal_id)
                 print("=================")
                 print(i.image)
-                if goal_id==None:
-                    form=userprofile_extended_goalsettings_Form()
-                    messages.add_message(self.request,messages.SUCCESS, "Please update your workout goal below. Based on your goal the system would allocate appropriate instructors to your profile.")
-                    context={
-                             'profilepic':profilepic,
-                             'username_original':username, 
-                              'username':str(username).title(),
-                              }
-                    return context
+                # if goal_id==None:
+                #     form=userprofile_extended_goalsettings_Form()
+                #     messages.add_message(self.request,messages.SUCCESS, "Please update your workout goal below. Based on your goal the system would allocate appropriate instructors to your profile.")
+                #     context={
+                #              'profilepic':profilepic,
+                #              'username_original':username, 
+                #               'username':str(username).title(),
+                #               }
+                #     return context
                 
                 if i.image:
                     profilepic=i.image.url

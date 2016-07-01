@@ -22,8 +22,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', 'fitness.views.homepage'),
-    url(r'^home/$', 'fitness.views.homepage'),
+    url(r'^$', 'tracker.views.dashboard'),
+    url(r'^home/$', 'tracker.views.dashboard'),
     url(r'^accounts/',include('registration.backends.simple.urls')),
     url(r'^tracker/$', 'tracker.views.weighttracker'),
     url(r'^bodytracker/$', 'tracker.views.bodytracker'),

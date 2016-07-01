@@ -10,7 +10,7 @@
 {% block content %}
 
 <div class="row">
-	  <div class="col-md-6 col-sm-6 col-xs-12">
+	  <div class="col-md-12 col-sm-12 col-xs-12">
 	    <div class="x_panel tile ">
 	      	<div class="x_title">
 	      	{% if form %}
@@ -47,7 +47,7 @@
 	    </div>
 	  </div>
 
-	  <div class="col-md-6 col-sm-6 col-xs-12">
+<!-- 	  <div class="col-md-6 col-sm-6 col-xs-12">
 	    <div class="x_panel tile fixed_height_320 overflow_hidden">
 	      <div class="x_title">
 	        <h2>Recipients:</h2>
@@ -91,7 +91,7 @@
 	       
 	      </div>
 	    </div>
-	  </div>   
+	  </div>    -->
 
 	</div>
 
@@ -101,7 +101,7 @@
 
 
 
-<div class="row">
+<!-- <div class="row">
 <div class="main_container">
   	
 		
@@ -111,13 +111,11 @@
 	        <div class="avatar-view" title="{{trainer}}">
 	          <img src="{{trainerprofilepic}}" alt="Avatar" align="middle">
 	        </div>
-        <!-- Loading state -->
+
         	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
 
     	</div>
     	
-    	
-
     	<ul class="list-unstyled user_data">
 
 	    	<li class="m-top-xs">
@@ -147,7 +145,6 @@
 	        <div class="avatar-view" title="{{nutritionist}}">
 	          <img src="{{nutritionistprofilepic}}" alt="Avatar" align="middle">
 	        </div>
-        <!-- Loading state -->
         	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
 
     	</div>
@@ -182,7 +179,7 @@
 	        <div class="avatar-view" title="Avatar">
 	          <img src="{{supplimentexpertprofilepic}}" alt="Avatar" align="middle">
 	        </div>
-        <!-- Loading state -->
+
         	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
 
     	</div>
@@ -217,7 +214,7 @@
 	        <div class="avatar-view" title="Avatar">
 	          <img src="{{contactprofilepic}}" alt="Avatar" align="middle">
 	        </div>
-        <!-- Loading state -->
+
         	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
 
     	</div>
@@ -246,11 +243,10 @@
 	    <br />
     </div>
 </div>
-
-  </div>
 </div>
+</div> -->
 	
-{% else %}
+<!-- {% else %}
 <div class="row">
 	  	<div class="alert alert-info animated flipInY col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
     	{% if messages %}
@@ -261,7 +257,7 @@
 			    {% endfor %}
 			</div>
 	{% endif %}
-</div>
+</div> -->
 
 {% endif %}
 {% endblock %}

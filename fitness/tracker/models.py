@@ -11,6 +11,7 @@ class userprofile_extended(models.Model):
 	gender = models.CharField(max_length=1, choices=GENDER_CHOICES,null=True, blank=True)
 	goal=models.CharField(max_length=1, choices=GOAL_CHOICES,null=True, blank=True)
 	age=models.IntegerField(max_length=3, null=True, blank=True)
+	height=models.FloatField(max_length=3, null=True, blank=True)
 	about=models.CharField(max_length=400,null=True, blank=True)
 	image=models.ImageField(null=True,blank=True,default="./avatar.png")
 	trainer=models.CharField(max_length=100,null=True, blank=True)
