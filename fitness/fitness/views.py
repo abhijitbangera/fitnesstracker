@@ -215,8 +215,7 @@ def payment_confirmation(request):
 	context={'username':request.user,'response':response,'profilepic':profilepic}
 	return render(request, "payment_confirmation.html",context)
 
-def faqs(request):
-	return render(request,"faqs.html",{})
+
 
 def bisceps(request):
 	return render(request,"workouts_bisceps.html",{})

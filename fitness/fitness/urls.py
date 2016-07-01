@@ -42,7 +42,6 @@ urlpatterns = [
     url(r'^newusers/$', 'fitness.views.newusers'),
     url(r'^payment/$', 'fitness.views.payment_confirmation'),
     url(r'^photos/delete/media/(?P<id>.+)$','tracker.views.photodelete'),  
-    url(r'^faqs/$', 'fitness.views.faqs'),
     url(r'^bisceps1/$', 'fitness.views.bisceps'),
     
 ]
