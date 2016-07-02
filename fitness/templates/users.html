@@ -12,7 +12,7 @@
 
 
 
-<div class="row x_panel">
+<center><div class="row x_panel">
 
 {% for profiles in users_page %}
     {# Each "contact" is a Contact model object. #}
@@ -86,7 +86,7 @@
 <div class="pagination">
     <span class="step-links">
         {% if users_page.has_previous %}
-            <a href="?page={{ profiles.previous_page_number }}">previous</a>
+            <a href="?page={{ profiles.previous_page_number }}"><button type="button" class="btn btn-primary">previous</button></a>
         {% endif %}
 
         <span class="current">
@@ -94,9 +94,9 @@
         </span>
 
         {% if users_page.has_next %}
-            <a href="?page={{ users_page.next_page_number }}">next</a>
+            <a href="?page={{ users_page.next_page_number }}"><button type="button" class="btn btn-success">next</button></a>
         {% endif %}
     </span>
-</div>
+</div></center>
 
 {% endblock %}

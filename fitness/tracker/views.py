@@ -1645,7 +1645,7 @@ def profile_settings(request):
 			if form.is_valid():
 				save_it=form.save(commit = False)
 				save_it.user = request.user
-				save_it.save(update_fields=["mobile","age","image","about"])
+				save_it.save(update_fields=["mobile","age","image","about","height"])
 				print("saved successfully.")
 				return HttpResponseRedirect("/")
 		else:

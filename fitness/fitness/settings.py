@@ -61,9 +61,9 @@ MIDDLEWARE_CLASSES = [
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST ='smtp.gmail.com'                                   
+EMAIL_HOST ='smtp.zoho.com'                                   
 EMAIL_PORT = 587                                                             
-EMAIL_HOST_USER = ''      
+EMAIL_HOST_USER = 'info@bodyshapeplus.com'      
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 
@@ -152,3 +152,5 @@ STATICFILES_DIRS = (
 POSTMAN_AUTO_MODERATE_AS = True
 
 LOGIN_REDIRECT_URL="/home"
+
+DEFAULT_FROM_EMAIL="info@bodyshapeplus.com"
