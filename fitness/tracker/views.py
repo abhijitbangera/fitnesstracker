@@ -1658,6 +1658,7 @@ def profile_settings(request):
 				return HttpResponseRedirect("/")
 	else:
 		form=userprofile_extended_profilesettings_Form(instance=a)
+		form['image'].label = "Profile Pic"
 	context={'username':str(username).title(),
 			'username_original':username,
 			'pagetitle': "Profile Settings",
