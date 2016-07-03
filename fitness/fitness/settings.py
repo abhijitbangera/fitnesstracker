@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'tracker',   
   
-    'instamojo-py-master',
+    # 'instamojo-py-master',
     'postman',
 
 ]
