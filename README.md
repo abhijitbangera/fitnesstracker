@@ -21,3 +21,4 @@ Feature include:
 ![alt tag](https://github.com/abhijitbangera/fitnesstracker/blob/v_2.0/fitness/screenshots/trainers.jpg)
 
 Note: Above screenshots are of v_2.0 and not master branch.
+:)
