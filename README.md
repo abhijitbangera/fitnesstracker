@@ -1,7 +1,7 @@
-# fitnesstracker
+# Fitnesstracker - Now track your fitness goals more effectively.
 
 ### Description:
-Fitnesstracker, as the name suggests is a social network site to track your fitness goals.
+Fitnesstracker, as the name suggests is a social network site to track your daily fitness goals.
 Feature include:
 1. User profile page
 2. Dashboard
