@@ -1,4 +1,4 @@
-# fitnesstracker
+# fitness hunter
 
 ### Description:
 Fitnesstracker, as the name suggests is a social network site to track your fitness goals.
