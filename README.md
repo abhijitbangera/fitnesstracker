@@ -4,7 +4,7 @@
 Fitnesstracker, as the name suggests is a social network site to track your fitness goals.
 Feature include:
 1. User profile page
-2. Dashboard
+2. Dashboard / Control Panel
 3. Body tracker
 4. Body Gallery (i.e image gallery to showoff your body)
 5. Progress tracker
