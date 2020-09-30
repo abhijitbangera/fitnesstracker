@@ -10,6 +10,8 @@ Feature include:
 5. Progress tracker
 6. Trainers profile and messaging option to chat with trainer/nutritionist, etc
 7. Login/Registration page
+8. Trending fitness challanges
+9. Fitness Diet plan
 
 ### Screenshots:
 ![alt tag](https://github.com/abhijitbangera/fitnesstracker/blob/v_2.0/fitness/screenshots/bodygallery.jpg)
