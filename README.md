@@ -2,7 +2,7 @@
 
 ### Description:
 Fitnesstracker, as the name suggests is a social network site to track your fitness goals.
-Feature include:
+Amazing Features included are:
 1. User profile page
 2. Dashboard
 3. Body tracker
